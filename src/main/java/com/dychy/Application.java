@@ -13,6 +13,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application implements CommandLineRunner{
 
+
+
+    // 修改
     @Autowired
     private UserRepository repository;
 
