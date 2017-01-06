@@ -12,9 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class Application implements CommandLineRunner{
-//    public static void main(String ...arg){
-//        SpringApplication.run(Application.class,arg);
-//    }
+
     @Autowired
     private UserRepository repository;
 
