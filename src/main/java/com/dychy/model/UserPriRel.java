@@ -10,25 +10,25 @@ import java.util.Date;
  */
 public class UserPriRel {
     @Id
-    public String id;
+    private String id;
 
     // 用户id
-    public String userId;
+    private String userId;
 
     // 权限实例id
-    public String priInsId;
+    private String priInsId;
 
     // 应用id
-    public String appId;
+    private String appId;
 
     // 描述信息
-    public String desc;
+    private String desc;
 
     // 创建时间
-    public Date createdTime;
+    private Date createdTime;
 
     // 角色id
-    public String roleId;
+    private String roleId;
 
     public UserPriRel(String userId, String priInsId, String appId, String desc, Date createdTime, String roleId) {
         this.userId = userId;
@@ -40,5 +40,61 @@ public class UserPriRel {
     }
 
     public UserPriRel() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getPriInsId() {
+        return priInsId;
+    }
+
+    public void setPriInsId(String priInsId) {
+        this.priInsId = priInsId;
+    }
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public Date getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public String getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
     }
 }

@@ -10,23 +10,62 @@ import java.util.Date;
  */
 public class RolePriRel {
     @Id
-    public String id;
+    private String id;
 
     // 角色id
-    public String roleId;
+    private String roleId;
 
     // 权限实例
-    public String priInsId;
+    private String priInsId;
 
     // 应用系统id
-    public String appId;
+    private String appId;
 
     // 描述信息
-    public String desc;
+    private String desc;
 
     // 创建时间
-    public Date createdTime;
+    private Date createdTime;
 
+    public String getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getPriInsId() {
+        return priInsId;
+    }
+
+    public void setPriInsId(String priInsId) {
+        this.priInsId = priInsId;
+    }
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public Date getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
 
     public RolePriRel(String roleId, String priInsId, String appId, String desc, Date createdTime) {
         this.roleId = roleId;

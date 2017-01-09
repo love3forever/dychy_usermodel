@@ -8,13 +8,13 @@ import org.springframework.data.annotation.Id;
  */
 public class UserDeptRel {
     @Id
-    public String id;
+    private String id;
 
     // 用户id
-    public String userId;
+    private String userId;
 
     // 部门id
-    public String deptId;
+    private String deptId;
 
     public UserDeptRel(String userId, String deptId) {
         this.userId = userId;
@@ -22,5 +22,29 @@ public class UserDeptRel {
     }
 
     public UserDeptRel() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(String deptId) {
+        this.deptId = deptId;
     }
 }

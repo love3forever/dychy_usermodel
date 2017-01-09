@@ -7,13 +7,29 @@ import org.springframework.data.annotation.Id;
  */
 public class DepartmentRole {
     @Id
-    public String id;
+    private String id;
 
     // 角色id
-    public String roleId;
+    private String roleId;
+
+    public String getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
+    }
 
     // 部门id
-    public String departmentId;
+    private String departmentId;
 
     public DepartmentRole(String roleId, String departmentId) {
         this.roleId = roleId;

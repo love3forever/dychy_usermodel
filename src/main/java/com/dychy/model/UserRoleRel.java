@@ -8,13 +8,13 @@ import org.springframework.data.annotation.Id;
  */
 public class UserRoleRel {
     @Id
-    public String id;
+    private String id;
 
     // 用户id
-    public String userId;
+    private String userId;
 
     // 角色id
-    public String roleId;
+    private String roleId;
 
     public UserRoleRel(String userId, String roleId) {
         this.userId = userId;
@@ -22,5 +22,21 @@ public class UserRoleRel {
     }
 
     public UserRoleRel() {
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
     }
 }

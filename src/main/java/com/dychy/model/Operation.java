@@ -7,18 +7,50 @@ import org.springframework.data.annotation.Id;
  */
 public class Operation {
     @Id
-    public String id;
+    private String id;
 
     // 操作名称
-    public String orName;
+    private String orName;
 
     // 操作键值
-    public String orKey;
+    private String orKey;
 
     // 描述信息
-    public String descInfo;
+    private String descInfo;
 
-    public int orderIndex;
+    public String getOrName() {
+        return orName;
+    }
+
+    public void setOrName(String orName) {
+        this.orName = orName;
+    }
+
+    public String getOrKey() {
+        return orKey;
+    }
+
+    public void setOrKey(String orKey) {
+        this.orKey = orKey;
+    }
+
+    public String getDescInfo() {
+        return descInfo;
+    }
+
+    public void setDescInfo(String descInfo) {
+        this.descInfo = descInfo;
+    }
+
+    public int getOrderIndex() {
+        return orderIndex;
+    }
+
+    public void setOrderIndex(int orderIndex) {
+        this.orderIndex = orderIndex;
+    }
+
+    private int orderIndex;
 
     public Operation(String orName, String orKey, String descInfo, int orderIndex) {
         this.orName = orName;

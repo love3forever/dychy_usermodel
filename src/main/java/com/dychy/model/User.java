@@ -9,34 +9,122 @@ import java.util.Date;
  */
 public class User {
     @Id
-    public String id;
+    private String id;
 
     // 登录名
-    public String loginName;
+    private String loginName;
 
     // 密码
-    public String password;
+    private String password;
 
     // 用户名
-    public String userName;
+    private String userName;
 
     // 用户编号
-    public String userNum;
+    private String userNum;
 
     // email地址
-    public String userEmail;
+    private String userEmail;
 
     // 地址
-    public String userAddress;
+    private String userAddress;
 
     // 电话
-    public String userPhone;
+    private String userPhone;
 
     // 用户创建时间
-    public Date createdTime;
+    private Date createdTime;
 
     // 最后一次登录时间
-    public Date lastLoginTime;
+    private Date lastLoginTime;
+
+    public String getLoginName() {
+        return loginName;
+    }
+
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserNum() {
+        return userNum;
+    }
+
+    public void setUserNum(String userNum) {
+        this.userNum = userNum;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public Date getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public Date getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+    }
+
+    public int getLoginTimes() {
+        return loginTimes;
+    }
+
+    public void setLoginTimes(int loginTimes) {
+        this.loginTimes = loginTimes;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 
     // 登录次数
     public int loginTimes;
