@@ -1,7 +1,8 @@
 package com.dychy.controller;
 
 import com.dychy.model.User;
-import com.dychy.service.UserRepository;
+import com.dychy.repository.UserRepository;
+import com.dychy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,19 +15,21 @@ public class indexController {
     @Autowired
     private UserRepository userRepository;
 
+
     @RequestMapping("/")
     public String index(){
+        UserService userService = new UserService(userRepository);
         User wangmeng = new User();
         wangmeng.setUserName("wangmeng");
         wangmeng.setLoginName("eclipsesv");
         wangmeng.setUserEmail("eclipse_sv@163.com");
 
-        userRepository.save(wangmeng);
-        User u = userRepository.findByuserEmail("eclipse_sv@163.com");
+        userService.saveUser(wangmeng);
+        User u = userService.getUserByLoginName("eclipsesv");
         System.out.println(u.getUserName());
 
-        User u1 = userRepository.findByloginName("eclipsesv");
-        System.out.println(u1.getUserName());
+
+//        userRepository.findByuserEmail("eclipse_sv@163.com");
         return "index";
     }
 }

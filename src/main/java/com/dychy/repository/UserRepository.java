@@ -1,7 +1,6 @@
-package com.dychy.service;
+package com.dychy.repository;
 
 import com.dychy.model.User;
-import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
