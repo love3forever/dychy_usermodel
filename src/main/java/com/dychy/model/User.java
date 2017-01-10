@@ -11,14 +11,30 @@ public class User {
     @Id
     private String id;
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
     // 登录名
-    private String loginName;
+    private String username;
 
     // 密码
     private String password;
 
     // 用户名
-    private String userName;
+    private String nickname;
 
     // 用户编号
     private String userNum;
@@ -38,13 +54,6 @@ public class User {
     // 最后一次登录时间
     private Date lastLoginTime;
 
-    public String getLoginName() {
-        return loginName;
-    }
-
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
-    }
 
     public String getPassword() {
         return password;
@@ -52,14 +61,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public String getUserNum() {
@@ -133,9 +134,9 @@ public class User {
     public String desc;
 
     public User(String loginName, String password, String userName, String userNum, String userEmail, String userAddress, String userPhone, Date createdTime, Date lastLoginTime, int loginTimes, String desc) {
-        this.loginName = loginName;
+        this.username = loginName;
         this.password = password;
-        this.userName = userName;
+        this.nickname = userName;
         this.userNum = userNum;
         this.userEmail = userEmail;
         this.userAddress = userAddress;
@@ -149,10 +150,16 @@ public class User {
     public User() {
     }
 
-    @Override
-    public String toString() {
-        return String.format("UserLoginName:{} ,UserEmail:{} ,UserName:{}", this.getLoginName(), this.getUserEmail(), this.getUserName());
+    public User(User user) {
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.userEmail = user.getUserEmail();
     }
+
+//    @Override
+//    public String toString() {
+//        return String.format("UserLoginName:{} ,UserEmail:{} ,UserName:{}", this.getLoginName(), this.getUserEmail(), this.getUserName());
+//    }
 
     public String getId() {
         return id;

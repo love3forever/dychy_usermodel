@@ -41,13 +41,13 @@ public class UserServiceTest {
         userService.initDB();
 
         User target = new User();
-        target.setLoginName("eclipse");
+        target.setUsername("eclipse");
         target.setUserEmail("eclipse_sv@163.com");
-        target.setUserName("wangmeng");
+        target.setNickname("wangmeng");
         userService.saveUser(target);
 
         User test = userService.getUserByEmail("eclipse_sv@163.com");
-        assertTrue(test.getLoginName().equals("eclipse"));
+        assertTrue(test.getUsername().equals("eclipse"));
 
         userService.clearDB();
     }

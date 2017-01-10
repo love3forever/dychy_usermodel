@@ -25,6 +25,6 @@ public class loginIndex {
     @RequestMapping("/home")
     public String home(ModelMap modelMap) {
         modelMap.addAttribute("user", new User());
-        return "index";
+        return "200";
     }
 }

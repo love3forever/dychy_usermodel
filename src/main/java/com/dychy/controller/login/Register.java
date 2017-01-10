@@ -41,7 +41,7 @@ public class Register {
         UUID uuid = UUID.randomUUID();
         user.setUserNum(uuid.toString());
         userService.saveUser(user);
-        model.addAttribute("username",user.getUserName());
+        model.addAttribute("username",user.getUsername());
         return "index";
     }
 

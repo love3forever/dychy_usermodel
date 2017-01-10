@@ -12,9 +12,9 @@
 				<h3 id="sub-title">登录页面</h3>
 				<div class="container-fluid">
 					<div class="row" id="profile">
-						<form method="POST" class="form-horizontal" th:action="@{/userlogin}" th:object="${user}">
+						<form method="POST" class="form-horizontal" th:action="@{/login}" th:object="${user}">
 							<div id="login-group" class="input-group">
-								<input type="text" th:field="*{loginName}" class="form-control" id="username" placeholder="用户名" aria-describedby="basic-addon2"></input>
+								<input type="text" th:field="*{username}" class="form-control" id="username" placeholder="用户名" aria-describedby="basic-addon2"></input>
 								<input type="password" th:field="*{password}" class="form-control" id="password" placeholder="密码" aria-describedby="basic-addon2"></input>
 								<button type="submit" class="btn btn-primary">点击登录</button>
 							</div>

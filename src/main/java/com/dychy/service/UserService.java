@@ -17,7 +17,7 @@ public class UserService implements IUserService {
     }
 
     public User getUserByLoginName(String loginName) {
-        return userRepository.findByloginName(loginName);
+        return userRepository.findByusername(loginName);
     }
 
     @Override
@@ -26,7 +26,7 @@ public class UserService implements IUserService {
     }
 
     public boolean isUserExits(User newUser) {
-        return (userRepository.findByloginName(newUser.getLoginName()) != null) || (userRepository.findByuserEmail(newUser.getUserEmail()) != null);
+        return (userRepository.findByusername(newUser.getUsername()) != null) || (userRepository.findByuserEmail(newUser.getUserEmail()) != null);
     }
 
     public boolean saveUser(User user) {
@@ -37,7 +37,7 @@ public class UserService implements IUserService {
     }
 
     public boolean deleteUserByloginName(String loginName) {
-        User target = userRepository.findByloginName(loginName);
+        User target = userRepository.findByusername(loginName);
         if (target == null)
             return false;
         userRepository.delete(target);
@@ -55,7 +55,7 @@ public class UserService implements IUserService {
 
     @Override
     public boolean verifyPasswordWithloginName(String loginName, String password) {
-        User target = userRepository.findByloginName(loginName);
+        User target = userRepository.findByusername(loginName);
         return target != null && target.getPassword().equals(password);
     }
 

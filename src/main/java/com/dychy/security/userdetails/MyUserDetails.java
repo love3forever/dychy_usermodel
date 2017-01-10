@@ -14,10 +14,9 @@ import java.util.List;
  */
 public class MyUserDetails extends User implements UserDetails{
     private List<PrivilegeIns> privs;
-    private User user;
 
     public MyUserDetails(User user, List<PrivilegeIns> privs) {
-        this.user = user;
+        super(user);
         this.privs = privs;
     }
 
@@ -35,27 +34,32 @@ public class MyUserDetails extends User implements UserDetails{
     }
 
     @Override
+    public String getPassword() {
+        return super.getPassword();
+    }
+
+    @Override
     public String getUsername() {
-        return super.getLoginName();
+        return super.getUsername();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

@@ -1,6 +1,7 @@
 package com.dychy.security;
 
 import com.dychy.security.provider.MyAuthenticationProvider;
+import com.dychy.security.userdetails.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -21,6 +22,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private MyAuthenticationProvider provider;
 
     @Autowired
+    private MyUserDetailsService myUserDetailsService;
+
+    @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
     }
 
@@ -29,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-            .antMatchers("/","/userlogin","/register","/logout","/static/**").permitAll()
+            .antMatchers("/","/userlogin","/register","/static/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .formLogin()
@@ -37,7 +41,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .permitAll()
             .and()
             .logout()
-            .permitAll();
+            .permitAll()
+            .logoutUrl("/logout")
+            .logoutSuccessUrl("/login") ;
     }
 
     @Autowired

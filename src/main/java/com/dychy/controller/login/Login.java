@@ -4,6 +4,7 @@ import com.dychy.model.User;
 import com.dychy.repository.UserRepository;
 import com.dychy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,10 +26,10 @@ public class Login {
         return "index";
     }
 
-    @RequestMapping(value = "/userlogin",method = RequestMethod.POST)
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String loginUser(User user) {
         UserService userService = new UserService(userRepository);
-        if (userService.verifyPasswordWithloginName(user.getLoginName(), user.getPassword())) {
+        if (userService.verifyPasswordWithloginName(user.getUsername(), user.getPassword())) {
             System.out.println(user.toString());
         }
         else{
