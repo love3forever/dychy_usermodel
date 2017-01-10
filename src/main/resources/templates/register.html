@@ -14,11 +14,15 @@
 				<form method="POST" th:action="@{/register}" th:object="${user}">
 					<div class="form-group">
 						<label for="username">用户名</label>
-						<input type="text" th:field="*{userName}" class="form-control" id="username" placeholder="用户名"></input>
+						<input type="text" th:field="*{loginName}" class="form-control" id="username" placeholder="用户名"></input>
 					</div>
 					<div class="form-group">
 						<label for="email">邮箱</label>
-						<input type="email" th:field="*{email}" class="form-control" id="email" placeholder="邮箱"></input>
+						<input type="email" th:field="*{userEmail}" class="form-control" id="email" placeholder="邮箱"></input>
+					</div>
+					<div class="form-group">
+						<label for="userName">昵称</label>
+						<input type="text" th:field="*{userName}" class="form-control" id="userName" placeholder="昵称"></input>
 					</div>
 					<div class="form-group">
 						<label for="password">密码</label>
@@ -28,22 +32,17 @@
 						<label for="confirmpassword">确认密码</label>
 						<input type="password"  class="form-control" id="confirmpassword" placeholder="确认密码"></input>
 					</div>
-					<div class="form-group">
-						<label for="username">性别</label>
-						<label class="radio-inline">
-							<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">男</input>
-						</label>
-						<label class="radio-inline">
-							<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">女</input>
-						</label>
+						<div class="form-group">
+						<label for="userAddress">地址</label>
+						<input type="text"  class="form-control" id="userAddress" placeholder="地址"></input>
 					</div>
 					<div class="form-group">
-						<label for="title">职称</label>
-						<input type="text" class="form-control" id="title" placeholder="职称"></input>
+						<label for="userPhone">电话</label>
+						<input type="text"  class="form-control" id="userPhone" placeholder="电话"></input>
 					</div>
 					<div class="form-group">
-						<label for="department">所属部门</label>
-						<input type="text" class="form-control" id="department" placeholder="部门"></input>
+						<label for="desc">简介</label>
+						<input type="text" class="form-control" id="desc" placeholder="简介"></input>
 					</div>
 					<button type="submit" class="btn btn-default">Submit</button>
 				</form>

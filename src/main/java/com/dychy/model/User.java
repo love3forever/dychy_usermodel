@@ -153,5 +153,9 @@ public class User {
     public String toString() {
         return String.format("UserLoginName:{} ,UserEmail:{} ,UserName:{}", this.getLoginName(), this.getUserEmail(), this.getUserName());
     }
+
+    public String getId() {
+        return id;
+    }
 }
 
