@@ -148,5 +148,10 @@ public class User {
 
     public User() {
     }
+
+    @Override
+    public String toString() {
+        return String.format("UserLoginName:{} ,UserEmail:{} ,UserName:{}", this.getLoginName(), this.getUserEmail(), this.getUserName());
+    }
 }
 
