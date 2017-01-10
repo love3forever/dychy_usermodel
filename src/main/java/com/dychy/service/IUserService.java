@@ -1,6 +1,9 @@
 package com.dychy.service;
 
+import com.dychy.model.PrivilegeIns;
 import com.dychy.model.User;
+
+import java.util.List;
 
 /**
  * Created by eclipse on 2017/1/9.
@@ -27,4 +30,7 @@ public interface IUserService {
     public boolean addUser(User user);
 
     public void clearDB();
+
+
+    public List<PrivilegeIns> getPrivByUser(User user);
 }

@@ -1,7 +1,10 @@
 package com.dychy.service;
 
+import com.dychy.model.PrivilegeIns;
 import com.dychy.model.User;
 import com.dychy.repository.UserRepository;
+
+import java.util.List;
 
 /**
  * Created by eclipse on 2017/1/9.
@@ -81,6 +84,11 @@ public class UserService implements IUserService {
     public void clearDB() {
         userRepository.deleteAll();
         System.out.println("Clear db");
+    }
+
+    @Override
+    public List<PrivilegeIns> getPrivByUser(User user) {
+        return null;
     }
 
 

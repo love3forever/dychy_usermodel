@@ -23,7 +23,7 @@ UserManager.iml
 target/
 *.ipr
 *.iws
-src/main/webapp/static/img/
+src/main/resources/templates/static/img/
 
 /.idea/
 /.idea/copyright/
