@@ -25,7 +25,7 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">用户
 									<span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a th:text="|当前登录用户: ${user.userName}|" href="#"></a></li>
+									<li><a th:text="|当前登录用户: ${user.username}|" href="#"></a></li>
 									<li class="divider"></li>
 									<li><a href="./logout">登出</a></li>
 									<li><a href="#">设置</a></li>
@@ -48,7 +48,7 @@
 				所属分组
 			</div>
 			<div class="panel-body">
-				<div class="row">  
+				<!-- <div class="row">  
 					<div class="groupitem" th:each="group,groupstat:${groups}">
 						<div class="thumbnail">
 							<a th:href="@{'/group/'+${group.groupID}}">
@@ -93,43 +93,10 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
-	<!-- <div class="row" id="taskpanel">
-		<div class="panel panel-default">
-			<div class="panel-heading">讨论组</div>
-			<div class="panel-body">
-				<div class="row">
-					<div class="groupitem">
-						<div class="thumbnail">
-							<img src="./static/img/avatar/Fruit-2.png" alt=""></img>
-							<div class="caption">
-								<h3>Group1</h3>
-							</div>
-						</div>
-					</div>
-					<div class="groupitem">
-						<div class="thumbnail">
-							<img src="./static/img/avatar/Fruit-1.png" alt=""></img>
-							<div class="caption">
-								<h3>Group1</h3>
-							</div>
-						</div>
-					</div>
-					<div class="groupitem">
-						<div class="thumbnail">
-							<img src="./static/img/avatar/Fruit-3.png" alt=""></img>
-							<div class="caption">
-								<h3>Group1</h3>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> -->
 </div>
 </body>
 <footer>

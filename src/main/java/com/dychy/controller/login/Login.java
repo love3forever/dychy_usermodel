@@ -35,6 +35,6 @@ public class Login {
         else{
             System.out.println("abc");
         }
-        return "200";
+        return "main";
     }
 }

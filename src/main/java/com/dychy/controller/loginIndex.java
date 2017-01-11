@@ -2,7 +2,9 @@ package com.dychy.controller;
 
 import com.dychy.model.User;
 import com.dychy.repository.UserRepository;
+import com.dychy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +20,11 @@ public class loginIndex {
 
     @RequestMapping("/")
     public String index(ModelMap modelMap){
-        modelMap.addAttribute("user", new User());
-        return "index";
+        UserService userService = new UserService(userRepository);
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User currentUser = userService.getUserByLoginName(username);
+        modelMap.addAttribute("user", currentUser);
+        return "main";
     }
 
     @RequestMapping("/home")
