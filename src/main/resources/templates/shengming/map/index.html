@@ -1,0 +1,431 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>资源展示</title>
+    <link rel="icon" href="favicon.ico" mce_href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/function.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/dyn-menu.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/resulttable.css">
+    <link rel="stylesheet" href="css/opa-icons.css">
+ </head> 
+<body class="home-ns"><div class="" style="left: 0px; top: 0px; visibility: hidden; position: absolute;"><table class="ui_border"><tbody><tr><td class="ui_lt"></td><td class="ui_t"></td><td class="ui_rt"></td></tr><tr><td class="ui_l"></td><td class="ui_c"><div class="ui_inner"><table class="ui_dialog"><tbody><tr><td colspan="2"><div class="ui_title_bar"><div class="ui_title" unselectable="on" style="cursor: move;"></div><div class="ui_title_buttons"><a class="ui_min" href="javascript:void(0);" title="最小化" style="display: inline-block;"><b class="ui_min_b"></b></a><a class="ui_max" href="javascript:void(0);" title="最大化" style="display: inline-block;"><b class="ui_max_b"></b></a><a class="ui_res" href="javascript:void(0);" title="还原"><b class="ui_res_b"></b><b class="ui_res_t"></b></a><a class="ui_close" href="javascript:void(0);" title="关闭(esc键)" style="display: inline-block;">×</a></div></div></td></tr><tr><td class="ui_icon" style="display: none;"></td><td class="ui_main" style="width: auto; height: auto;"><div class="ui_content" style="padding: 10px;"></div></td></tr><tr><td colspan="2"><div class="ui_buttons" style="display: none;"></div></td></tr></tbody></table></div></td><td class="ui_r"></td></tr><tr><td class="ui_lb"></td><td class="ui_b"></td><td class="ui_rb" style="cursor: se-resize;"></td></tr></tbody></table></div>
+<div class="wrapper">
+    <header id="header">
+    	<div class="caption-bg"></div>      
+       	<div class="index-login">
+        	<div class="left-index"></div>
+        	<div class="index-user">
+        		<div class="log-img admin-img"></div><span class="index-username"><a class="usercenter index-logout-color" target="_blank" href="http://127.0.0.1:8080/usercenter">超级管理员</a></span>
+        	</div>
+        	<div class="index-out">
+        		<div class="log-img logout-img"></div><div class="index-loginout"><a class="index-logout-color" href="http://127.0.0.1:8080/cas/logout?service=http%3A%2F%2F127.0.0.1%3A8080%2Fnav%3Fr%3D0.6345393778139312">注销</a><a class="index-logout-color" style="display:inline-blokc;margin-left:10px" href="http://127.0.0.1:8080/nav" target="_blank">首页</a></div>
+        	</div>
+        	<div class="right-index"></div>
+        </div>
+      
+        <nav id="main-menu" class="main-menu">
+            <ul>
+            
+                
+                <li mid="32c2d3d9453a4884b8e74d5de618a8f2">
+                    <div class="menu-icon menu-1-hover"></div>
+  		            <div class="menu-text">地图浏览</div>
+                </li>
+                
+                <li mid="f2a48bec88c5479abf2463e7c339174c">
+                    <div class="menu-icon menu-2"></div>
+  		            <div class="menu-text">我的地图</div>
+                </li>
+                
+            </ul>
+            </nav>
+    </header>
+
+    <!-- 二级菜单
+    <!-- <div id="sub-menu" class="sub-menu clearfix hide">
+        <ul>
+            
+            <li targeturl="static/mapview/mapview.html" pkid="12cf4bd54bb6412090431b15ffea863e" class="tabs-icon-s-onlyone"><div class="tabTxt">地图浏览</div></li>
+            
+        </ul>
+    </div> -->
+    <!-- <script id="sub-menu-template" type="text/template">
+        <ul>
+            <%_.each(obj, function(data,i) {%>
+            <li targetUrl="<%=data.href%>" pkid="<%=data.pkid%>" class="tabs-icon tabs-icon-s"><div class="tabTxt"><%=data.name%></div></li>
+            <%});%>
+        </ul>
+<!--     </scri -->
+
+    <div id="main-container" class="main-container row-fluid" minheight="500" style="height: 666px;">
+        <div class="span12 height100">
+            <div id="frame" class="row-fluid height100">
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+label{
+	font-size:12px;
+}
+</style>
+<article id="middle-container" class="middle-container" style="width:100%;position:relative;border-top:2px solid #4C8BDC;">
+		<div class="mapTool" id="mapTool" style="position:absolute;width:100%;height:27px;background-color:#F4F4F3;z-index:9999999;border-bottom:1px solid rgba(204, 204, 204, 1);">
+			<div style="float:left;height:100%;width:18%;min-width:346px;" class="tool-bar">
+				<div id="div-arrows-left" class="" style="color:#FFFFFF;width:100%;background-color:#4D8ADB;"><strong class="icons-font" style="margin-left:15px;">操作面板</strong><span class="panel-control-bg arrows-left"></span></div>
+				<div class="hide" style="color:#FFFFFF;background-color:#4D8ADB;height:100%;width:24px;" id="div-arrows-right"><span class="panel-control-bg arrows-right"></span></div>
+			</div> 
+			<div id="tool-bar" class="tool-bar" style="float:right;">
+				<span class="tool query-container">
+					<input class="input-sm  nameinput" type="text" style="margin: 1px;padding: 1px;height: 20px;" placeholder="输入您要查询的地址！">
+					<input class="btn  namequery icons-font" value="搜索" style="margin: 1px;padding: 1px;height: 20px;">
+				</span>
+				<span class="tool 2dmaptool fullMap"><span class="icons-bg icons-img icons-fullmap"></span><span class="icons-font">全幅</span></span>
+                <span class="tool 3dmaptool 3dstart" style="display:none"><span class="icons-netbg icons-img icons-start"></span><span class="icons-font">起点</span></span>
+                <span class="tool 3dmaptool 3daccess" style="display:none"><span class="icons-netbg icons-img icons-access"></span><span class="icons-font">途经点</span></span>
+                <span class="tool 3dmaptool 3dbarrier" style="display:none"><span class="icons-netbg icons-img icons-bar"></span><span class="icons-font">障碍点</span></span>
+                <span class="tool 3dmaptool 3dend" style="display:none"><span class="icons-netbg icons-img icons-end"></span><span class="icons-font">终点</span></span>
+                <span class="tool 3dmaptool 3dfullMap" style="display:none"><span class="icons-bg icons-img icons-fullmap"></span><span class="icons-font">全球</span></span>
+
+
+				<span class="tool  3dmove" style="display:none"><span class="icons-bg icons-img icons-move"></span><span class="icons-font">漫游</span></span>
+
+				<span class="tool  3dselect" style="display:none"><span class="icons-bg icons-img icons-select"></span><span class="icons-font">选择</span></span>
+		
+				<span class="tool  3drefresh" style="display:none"><span class="icons-bg icons-img icons-refresh"></span><span class="icons-font">刷新</span></span>
+				
+				<span class="tool 2dmaptool zoomIn"><span class="icons-bg icons-img  icons-zoomin"></span><span class="icons-font">放大</span><span class="separation"></span></span>
+				
+				<span class="tool 2dmaptool zoomOut"><span class="icons-bg icons-img  icons-zoomout"></span><span class="icons-font">缩小</span><span class="separation"></span></span>
+				
+				<span class="tool clear"><span class="icons-bg icons-img  icons-clear"></span><span class="icons-font">测距</span><span class="separation"></span></span>
+				
+				<span class="tool fullScreen"><span class="icons-bg icons-img  icons-fullscreen"></span><span class="icons-font">侧面</span><span class="separation"></span></span>
+				
+				<span class="tool clear"><span class="icons-bg icons-img  icons-clear"></span><span class="icons-font">清除</span><span class="separation"></span></span>
+				
+				<span class="tool fullScreen"><span class="icons-bg icons-img  icons-fullscreen"></span><span class="icons-font">全屏</span><span class="separation"></span></span>
+				
+				<span class="tool exitFullScreen" style="display:none"><span class="icons-bg icons-img  icons-fullscreen"></span><span class="icons-font">退出全屏</span></span>
+				
+				<span class="tool 2dmaptool 3dmap dropdown" id="dropdownMenu1-scenes" data-toggle="dropdown"><span class="icons-bg icons-img  icons-3dmap"></span><span class="icons-font">切换三维</span><span class="separation">
+				</span>
+				
+				<div class="radius-4-bottomLeft-bottomRight maps-list" id="dropdownMenuList-scenes" style="border-top:0px;position:absolute;width:100%;display:none;"></div>
+				</span>
+				
+				<span class="tool 3dmaptool 2dmap" style="display:none;position:relative"><span class="icons-bg icons-img  icons-3dmap"></span><span class="icons-font">切换二维</span><span class="separation"></span></span>
+				
+				
+				
+				<!-- 更多工具（
+				<a class="distanceMeasure">测距</a>
+				<a class="areaMeasure">测面</a>
+				） 
+				<a class="printMap">打印</a>
+				-->
+			</div>
+		</div>
+	<div class="left-page" minwidth="360" style="width: 360px;">
+		<div class="left-page-content radius-5">
+				<div class="data-bg radius-5 catalog-tab" id="catalog-tab">
+					<div class="title-panel tab-rescatalog activeTitle" target="catalog-control">资源目录</div>
+					<div class="title-panel tab-panelcontrol" target="panel-control">图层控制</div>
+					<div class="title-panel tab-resultscontrol" target="results-control">结果列表</div>
+				</div>
+				<div class="catalog-content radius-5-bottomRight left-content" id="catalog-control" style="height: 93%; display: block;">
+						<div style="position:relative" class="">
+							<div type="text" id="catalog-format" class="catalog-format" formattype="dist-dept">部门目录</div>
+							<div class="checkbox catalog-model-checkbox">
+    							<label>
+      								<div class="icheckbox_minimal-blue" style="position: relative;"><input type="checkbox" id="catalog-model" name="catalog-model" class="catalog-model" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>完整目录
+    							</label>
+  							</div>
+							
+							<div class="radius-5 catalog-format-list hide" id="dropdownMenuList-catalogformat" style="position:absolute;border:1px solid rgba(204, 204, 204, 1)">
+
+	                            <a formattype="dist-dept" style="display:block;">部门目录</a>
+
+	                            <a formattype="dist-spec" style="display:block;">专题目录</a>
+
+                            </div>
+						</div>
+						<div class="catalog-tree" style="width:100%;height:96%;">
+							<div class="ztree Tree" id="catalogTree" style="width:96%;height:100%;overflow:auto;"></div>
+						</div>
+				</div>
+				
+				<div class="hide accordion left-content" id="panel-control" style="width: 95%; margin: 0px auto; height: 93%; overflow-y: auto; display: none;"></div>
+				
+				<div class="hide accordion left-content" id="results-control" style="width: 95%; margin: 0px auto; height: 93%; overflow-y: auto; overflow-x: hidden; display: none;">
+                    <div class="path-data" style="display: none">
+                        <div class="path-list" style="padding:10px 0px 10px 0px;">
+                            <ul class="list_street" style="cursor:pointer;" id="pathList"></ul>
+                        </div>
+
+                    </div>
+                    <div style="text-align: right; color: rgb(131, 130, 130); width: 300px; display: none;" id="pathDisDiv">
+                        <span id="pathDis" style="margin-right: 4px "></span>
+                    </div>
+                    <div class="result-data">
+							<div class="result-list" style="padding:10px 0px 10px 0px;"></div>
+							 <div class="pagination" style="margin-left:auto;margin-right:auto;width:360px;">
+								  <ul class="pagination-ul"></ul>
+							</div>
+                    </div>
+
+				</div>
+
+		</div>
+	</div>
+	<!-- <div class="right-page" id="right-page" style="width: 760px;">
+		<div class="map" id="map" style="position:relative">
+			<div id="map-map" style="width: 100%; height: 100%; touch-action: none; cursor: url(&quot;../../webframe/lib/supermap/iClient/forJavaScript/libs/../theme/images/cursors/Pan.cur&quot;), default;" class="smMap"><div id="SuperMap.Map_57_SuperMap_ViewPort" class="smMapViewport smControlDragPanActive smControlZoomBoxActive smControlPinchZoomActive smControlNavigationActive smControlMousePositionActive" style="position: relative; overflow: hidden; width: 100%; height: 100%;"><div id="SuperMap.Map_57_events" style="position: absolute; width: 100%; height: 100%; z-index: 1249;"><div id="SuperMap.Map_57_SuperMap_Container" style="position: absolute; z-index: 999; left: 0px; top: 0px;"><div id="layerContainerShadowDiv" style="position: absolute; z-index: 524;"></div><div id="SuperMap.Layer.WMTS_94" dir="ltr" class="smLayerDiv" style="position: absolute; width: 100%; height: 100%; z-index: 100;"><div style="overflow: hidden; position: absolute; z-index: 1; left: 324px; top: 128px; width: 256px; height: 256px;"><img id="SuperMapDiv136" class="smTileImage" src="http://127.0.0.1:8081/geoesb/proxy/49c7185fa4ee478390d2c8e16a68404b/886e60bb7e014f22a707de23e6f6505d?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=img&amp;STYLE=default&amp;TILEMATRIXSET=c&amp;TILEMATRIX=4&amp;TILEROW=2&amp;TILECOL=11&amp;FORMAT=tiles" style="width: 256px; height: 256px; position: relative; opacity: 1; visibility: inherit;"></div><div style="overflow: hidden; position: absolute; z-index: 1; left: 580px; top: 128px; width: 256px; height: 256px;"><img id="SuperMapDiv138" class="smTileImage" src="http://127.0.0.1:8081/geoesb/proxy/49c7185fa4ee478390d2c8e16a68404b/886e60bb7e014f22a707de23e6f6505d?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=img&amp;STYLE=default&amp;TILEMATRIXSET=c&amp;TILEMATRIX=4&amp;TILEROW=2&amp;TILECOL=12&amp;FORMAT=tiles" style="width: 256px; height: 256px; position: relative; opacity: 1; visibility: inherit;"></div><div style="overflow: hidden; position: absolute; z-index: 1; left: 324px; top: 384px; width: 256px; height: 256px;"><img id="SuperMapDiv140" class="smTileImage" src="http://127.0.0.1:8081/geoesb/proxy/49c7185fa4ee478390d2c8e16a68404b/886e60bb7e014f22a707de23e6f6505d?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=img&amp;STYLE=default&amp;TILEMATRIXSET=c&amp;TILEMATRIX=4&amp;TILEROW=3&amp;TILECOL=11&amp;FORMAT=tiles" style="width: 256px; height: 256px; position: relative; opacity: 1; visibility: inherit;"></div><div style="overflow: hidden; position: absolute; z-index: 1; left: 580px; top: 384px; width: 256px; height: 256px;"><img id="SuperMapDiv142" class="smTileImage" src="http://127.0.0.1:8081/geoesb/proxy/49c7185fa4ee478390d2c8e16a68404b/886e60bb7e014f22a707de23e6f6505d?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=img&amp;STYLE=default&amp;TILEMATRIXSET=c&amp;TILEMATRIX=4&amp;TILEROW=3&amp;TILECOL=12&amp;FORMAT=tiles" style="width: 256px; height: 256px; position: relative; opacity: 1; visibility: inherit;"></div><div style="overflow: hidden; position: absolute; z-index: 1; left: 68px; top: 384px; width: 256px; height: 256px;"><img id="SuperMapDiv146" class="smTileImage" src="http://127.0.0.1:8081/geoesb/proxy/49c7185fa4ee478390d2c8e16a68404b/886e60bb7e014f22a707de23e6f6505d?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=img&amp;STYLE=default&amp;TILEMATRIXSET=c&amp;TILEMATRIX=4&amp;TILEROW=3&amp;TILECOL=10&amp;FORMAT=tiles" style="width: 256px; height: 256px; position: relative; opacity: 1; visibility: inherit;"></div><div style="overflow: hidden; position: absolute; z-index: 1; left: 68px; top: 128px; width: 256px; height: 256px;"><img id="SuperMapDiv148" class="smTileImage" src="http://127.0.0.1:8081/geoesb/proxy/49c7185fa4ee478390d2c8e16a68404b/886e60bb7e014f22a707de23e6f6505d?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=img&amp;STYLE=default&amp;TILEMATRIXSET=c&amp;TILEMATRIX=4&amp;TILEROW=2&amp;TILECOL=10&amp;FORMAT=tiles" style="width: 256px; height: 256px; position: relative; opacity: 1; visibility: inherit;"></div><div style="overflow: hidden; position: absolute; z-index: 1; left: 580px; top: -128px; width: 256px; height: 256px;"><img id="SuperMapDiv152" class="smTileImage" src="http://127.0.0.1:8081/geoesb/proxy/49c7185fa4ee478390d2c8e16a68404b/886e60bb7e014f22a707de23e6f6505d?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=img&amp;STYLE=default&amp;TILEMATRIXSET=c&amp;TILEMATRIX=4&amp;TILEROW=1&amp;TILECOL=12&amp;FORMAT=tiles" style="width: 256px; height: 256px; position: relative; opacity: 1; visibility: inherit;"></div><div style="overflow: hidden; position: absolute; z-index: 1; left: 324px; top: -128px; width: 256px; height: 256px;"><img id="SuperMapDiv154" class="smTileImage" src="http://127.0.0.1:8081/geoesb/proxy/49c7185fa4ee478390d2c8e16a68404b/886e60bb7e014f22a707de23e6f6505d?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=img&amp;STYLE=default&amp;TILEMATRIXSET=c&amp;TILEMATRIX=4&amp;TILEROW=1&amp;TILECOL=11&amp;FORMAT=tiles" style="width: 256px; height: 256px; position: relative; opacity: 1; visibility: inherit;"></div><div style="overflow: hidden; position: absolute; z-index: 1; left: 580px; top: 640px; width: 256px; height: 256px;"><img id="SuperMapDiv156" class="smTileImage" src="http://127.0.0.1:8081/geoesb/proxy/49c7185fa4ee478390d2c8e16a68404b/886e60bb7e014f22a707de23e6f6505d?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=img&amp;STYLE=default&amp;TILEMATRIXSET=c&amp;TILEMATRIX=4&amp;TILEROW=4&amp;TILECOL=12&amp;FORMAT=tiles" style="width: 256px; height: 256px; position: relative; opacity: 1; visibility: inherit;"></div><div style="overflow: hidden; position: absolute; z-index: 1; left: 324px; top: 640px; width: 256px; height: 256px;"><img id="SuperMapDiv158" class="smTileImage" src="http://127.0.0.1:8081/geoesb/proxy/49c7185fa4ee478390d2c8e16a68404b/886e60bb7e014f22a707de23e6f6505d?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=img&amp;STYLE=default&amp;TILEMATRIXSET=c&amp;TILEMATRIX=4&amp;TILEROW=4&amp;TILECOL=11&amp;FORMAT=tiles" style="width: 256px; height: 256px; position: relative; opacity: 1; visibility: inherit;"></div><div style="overflow: hidden; position: absolute; z-index: 1; left: 68px; top: -128px; width: 256px; height: 256px;"><img id="SuperMapDiv164" class="smTileImage" src="http://127.0.0.1:8081/geoesb/proxy/49c7185fa4ee478390d2c8e16a68404b/886e60bb7e014f22a707de23e6f6505d?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=img&amp;STYLE=default&amp;TILEMATRIXSET=c&amp;TILEMATRIX=4&amp;TILEROW=1&amp;TILECOL=10&amp;FORMAT=tiles" style="width: 256px; height: 256px; position: relative; opacity: 1; visibility: inherit;"></div><div style="overflow: hidden; position: absolute; z-index: 1; left: 68px; top: 640px; width: 256px; height: 256px;"><img id="SuperMapDiv166" class="smTileImage" src="http://127.0.0.1:8081/geoesb/proxy/49c7185fa4ee478390d2c8e16a68404b/886e60bb7e014f22a707de23e6f6505d?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=img&amp;STYLE=default&amp;TILEMATRIXSET=c&amp;TILEMATRIX=4&amp;TILEROW=4&amp;TILECOL=10&amp;FORMAT=tiles" style="width: 256px; height: 256px; position: relative; opacity: 1; visibility: inherit;"></div><div style="overflow: hidden; position: absolute; z-index: 1; left: -188px; top: 128px; width: 256px; height: 256px;"><img id="SuperMapDiv172" class="smTileImage" src="http://127.0.0.1:8081/geoesb/proxy/49c7185fa4ee478390d2c8e16a68404b/886e60bb7e014f22a707de23e6f6505d?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=img&amp;STYLE=default&amp;TILEMATRIXSET=c&amp;TILEMATRIX=4&amp;TILEROW=2&amp;TILECOL=9&amp;FORMAT=tiles" style="width: 256px; height: 256px; position: relative; opacity: 1; visibility: inherit;"></div><div style="overflow: hidden; position: absolute; z-index: 1; left: -188px; top: 384px; width: 256px; height: 256px;"><img id="SuperMapDiv176" class="smTileImage" src="http://127.0.0.1:8081/geoesb/proxy/49c7185fa4ee478390d2c8e16a68404b/886e60bb7e014f22a707de23e6f6505d?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=img&amp;STYLE=default&amp;TILEMATRIXSET=c&amp;TILEMATRIX=4&amp;TILEROW=3&amp;TILECOL=9&amp;FORMAT=tiles" style="width: 256px; height: 256px; position: relative; opacity: 1; visibility: inherit;"></div><div style="overflow: hidden; position: absolute; z-index: 1; left: -188px; top: -128px; width: 256px; height: 256px;"><img id="SuperMapDiv180" class="smTileImage" src="http://127.0.0.1:8081/geoesb/proxy/49c7185fa4ee478390d2c8e16a68404b/886e60bb7e014f22a707de23e6f6505d?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=img&amp;STYLE=default&amp;TILEMATRIXSET=c&amp;TILEMATRIX=4&amp;TILEROW=1&amp;TILECOL=9&amp;FORMAT=tiles" style="width: 256px; height: 256px; position: relative; opacity: 1; visibility: inherit;"></div><div style="overflow: hidden; position: absolute; z-index: 1; left: -188px; top: 640px; width: 256px; height: 256px;"><img id="SuperMapDiv182" class="smTileImage" src="http://127.0.0.1:8081/geoesb/proxy/49c7185fa4ee478390d2c8e16a68404b/886e60bb7e014f22a707de23e6f6505d?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=img&amp;STYLE=default&amp;TILEMATRIXSET=c&amp;TILEMATRIX=4&amp;TILEROW=4&amp;TILECOL=9&amp;FORMAT=tiles" style="width: 256px; height: 256px; position: relative; opacity: 1; visibility: inherit;"></div></div></div></div><div id="SuperMap.Control.DrawFeature_11" class="smControlDrawFeature smControlNoSelect" unselectable="on" style="position: absolute; z-index: 1252;"></div><div id="SuperMap.Control.DrawFeature_23" class="smControlDrawFeature smControlNoSelect" unselectable="on" style="position: absolute; z-index: 1252;"></div><div id="SuperMap.Control.PanZoomBar_70" class="smControlPanZoomBar smControlNoSelect" unselectable="on" style="position: absolute; left: 10px; top: 30px; z-index: 1254;"><div id="SuperMap.Control.PanZoomBar_70" style="position: absolute; left: 12.5px; top: 12.5px; width: 63px; height: 62px;"><img id="SuperMap.Control.PanZoomBar_70_pan_innerImage" class="olAlphaImg" src="../../webframe/lib/supermap/iClient/forJavaScript/libs/../theme/images/zoom-maxextent-mini.png" style="position: absolute; display: block; width: 63px; height: 62px;"></div><div id="SuperMap.Control.PanZoomBar_70" style="left: 33.5px; top: 12.5px; position: absolute; width: 21px; height: 21px; cursor: pointer;"></div><div id="SuperMap.Control.PanZoomBar_70" style="left: 12.5px; top: 33.1667px; position: absolute; width: 21px; height: 21px; cursor: pointer;"></div><div id="SuperMap.Control.PanZoomBar_70" style="left: 54.5px; top: 33.1667px; position: absolute; width: 21px; height: 21px; cursor: pointer;"></div><div id="SuperMap.Control.PanZoomBar_70" style="left: 33.5px; top: 54px; position: absolute; width: 21px; height: 21px; cursor: pointer;"></div><div id="SuperMap.Control.PanZoomBar_70" style="position: absolute; left: 35.5px; top: 35px; width: 17px; height: 17px; cursor: pointer;"><img id="SuperMap.Control.PanZoomBar_70_zoommaxextent_innerImage" class="olAlphaImg" src="../../webframe/lib/supermap/iClient/forJavaScript/libs/../theme/images/zoom-maxextent-mini.png" style="position: absolute; display: block; width: 17px; height: 17px;"></div><div id="SuperMap.Control.PanZoomBar_70" style="position: absolute; left: 30.5px; top: 85px; width: 27px; height: 27px; cursor: pointer;"><img id="SuperMap.Control.PanZoomBar_70_zoomin_innerImage" class="olAlphaImg" src="../../webframe/lib/supermap/iClient/forJavaScript/libs/../theme/images/controlSkinBlue/zoom-plus-mini.png" style="position: absolute; display: block; width: 27px; height: 27px;"></div><div id="SuperMap.Control.PanZoomBar_70" style="position: absolute; left: 30.5px; top: 110px; width: 27px; height: 27px; cursor: pointer;"><img id="SuperMap.Control.PanZoomBar_70_zoomout_innerImage" class="olAlphaImg" src="../../webframe/lib/supermap/iClient/forJavaScript/libs/../theme/images/controlSkinBlue/zoom-minus-mini.png" style="position: absolute; display: block; width: 27px; height: 27px;"></div></div><div id="SuperMap.Control.MousePosition_87" class="smControlMousePosition smControlNoSelect" unselectable="on" style="position: absolute; z-index: 1255;">56.20690, 53.06340</div></div></div>
+			<div id="realspace-map" class="hide" style="position:absolute;top:27px;bottom:0px;left:0px;right:0px;"></div>
+			<iframe src="static/mapview/featuresdetail.html" id="infoWindow" name="infoWindow" style="position: absolute;top: 50px; display:none" frameborder="0" scrolling="auto" marginwidth="0" marginheight="0">
+			</iframe>
+		</div>
+		<div class="map-icons" style="position: absolute; height: 54px; top: 50px; right: 20px; z-index: 3000; width: 56px;" id="map-icons">
+
+</div>
+		<div class="history-slider-bar panel-border hide" style="display: none;">
+			<div class="history-historytitle">
+			历史地图
+			</div>
+			<div class="history-desc" style="z-index:3000"></div>
+			<div id="history-slider" class="history-slider" style="z-index:3000"></div>
+			<ul id="ruling" class="ruling"></ul>
+		</div>
+		
+	</div> -->
+
+
+</article>
+
+<!-- <script id="popup" type="text/template">
+
+    <ul class="contextMenu" style="cursor:pointer; background-image: none; background-attachment: scroll; background-repeat: repeat; background-position-x: 0%; background-position-y: 0%; background-size: auto; background-origin: padding-box; background-clip: border-box; background-color: rgb(255, 255, 255);">
+        <li class="li" id="pop1" ><a class="icons-font">以此为起点</a></li>
+        <li class="li" id="pop2" ><a class="icons-font">途经点</a></li>
+        <li class="li" id="pop3" ><a class="icons-font">障碍点</a></li>
+        <li class="li" id="pop4" ><a class="icons-font">以此为终点</a></li>
+		<li class="li" id="pop5" ><a class="icons-font">设为显示范围</a></li>
+    </ul>
+</script> -->
+<!-- <script id="popup1" type="text/template">
+    <ul class="contextMenu" style="height:23px;cursor:pointer; background-image: none; background-attachment: scroll; background-repeat: repeat; background-position-x: 0%; background-position-y: 0%; background-size: auto; background-origin: padding-box; background-clip: border-box; background-color: rgb(255, 255, 255);">
+        <li class="li" id="pop5" ><a class="icons-font">设为显示范围</a></li>
+    </ul>
+</script> -->
+
+<!-- <script type="text/javascript">
+	MapManage.MapViewHome.run();
+</script> -->
+<!-- <script id="map-icons-template" type="text/template">
+<%_.each(obj,function(data,i){%>
+	<%if(i==0){%>
+		<span class="boxshadow map-icons-div" index="<%=i%>" style="border:1px solid #CCC;background-color:white;padding:2px;width:50px;position:absolute;right:0px;display:inline-block;">
+				<div class="f-tac"><img src="<%=data.imgUrl%>" style="width:48px;height:46px;border:1px solid #CCC;"/></div>
+				<div class="map-icons-font fontbg f-tac transparent-05 f-white f-mb-15"><%=data.name%></div>
+		</span>
+	<%}else if(i==data.length-1){%>
+
+	<%}else{%>
+			<span class="boxshadow map-icons-div" index="<%=i%>" style="border:1px solid #CCC;background-color:white;padding:2px;width:50px;position:absolute;right:0px;z-index:-<%=i%>;display:inline-block;display:none;">
+				<div class="f-tac"><img src="<%=data.imgUrl%>" style="width:48px;height:46px;border:1px solid #CCC;"/></div>
+				<div class="map-icons-font fontbg f-tac transparent-05 f-white f-mb-15"><%=data.name%></div>
+			</span>
+	<%}%>
+<%});%>
+</script> -->
+
+<!-- <script id="realSpace-list-template" type="text/template">
+<%_.each(obj,function(data,i){%>
+	<a style="display:block;"><%=data.name%></a>
+<%});%>
+</script> -->
+<!-- <script id="catalogsformat-list-template" type="text/template">
+<%_.each(obj,function(data,i){%>
+	<a formattype="<%=data.formattype%>" style="display:block;"><%=data.name%></a>
+<%});%>
+</script> -->
+<!-- 
+<script id="res-list-template" type="text/template">
+<%_.each(obj,function(data,i){%>
+			<div class="accordion-group res_<%=data.resName%>" style="margin-top: 10px;" resName="<%=data.resName%>" index="<%=i%>" resID="<%=data.resID%>">
+				    <div class="accordion-heading" style="position:relative">
+						<a class="panel-control-bg collapse-right"></a>
+				      	<a class="accordion-toggle" data-toggle="collapse" data-parent="#panel-control" href="#collapse-<%=data.resName%>" style="color:#4c8bdc;text-decoration: none;"><%=data.resName%></a>
+						<a title="移除" class="panel-control-bg collapse-delete" href="javascript:void(0)" index="<%=i%>"></a>
+				    </div>
+				<%if(i==0){%>
+					<div id="collapse-<%=data.resName%>" class="accordion-body collapse in">
+				      <div class="accordion-inner" style="padding:5px 0px 5px 0px;">
+						<div>
+				       		<span class="f-db panel-control-bg f-csp overlay-hover service-overlay" style="margin-left:10px;float:left;" index="<%=i%>">
+				       			<span class="f-db" style="position:relative;text-align:center;top:47px;font-size:12px;">叠加</span>
+				       		</span>
+							<span class="f-db panel-control-bg f-csp query-icon service-query" style="margin-left:70px;" index="<%=i%>">
+				       			<span class="f-db" style="position:relative;text-align:center;top:47px;font-size:12px;">查询</span>
+				       		</span>
+						</div>
+						<div class="query-theme hide" style="border-top:1px solid #e5e5e5;width:95%;margin:0px auto;">
+							<div class="query-div" style="margin:0px auto;width:300px;">
+								<form class="form-horizontal" style="margin-bottom:0px;">
+                                    <div class="control-group query-group">
+                                        <label class="control-label" for="inputFilter" style="width:380px;font-size:12px;font-weight:bold;text-align:left">属性查询条件</label>
+                                        <div class="controls" style="margin-left:10px;float:left;min-width: 290px;padding-top:5px;display: table-cell;vertical-align: middle;">
+                                            <select class="inputField" style="font-size:13px;width:85px;height:22px;padding:0px;margin:0px;">
+                                            </select>
+                                            <select class="inputFilterCon" style="font-size:13px;width:90px;height:22px;padding:0px;margin:0px;">
+                                            </select>
+                                            <input type="text" class="inputFilter" placeholder="" style="width:40px;height:12px;font-size:13px;text-align:center;">
+                                            <input type="text" class="inputFilter1" placeholder="" style="width:40px;height:12px;font-size:13px;text-align:center;display:none">
+                                            <select class="inputFilterBoolean" style="font-size:13px;width:55px;background-color:#F5F5F5;display:none">
+                                                <option fieldname="1" selected="">是</option>
+                                                <option fieldname="0" selected="">否</option>
+                                            </select>
+                                            <img src="static/map/imgs/min.png" alt="删除" title="删除" class="delbtn" style="cursor:pointer;display:none"/>
+                                            <img src="static/map/imgs/add.png" alt="添加" title="添加" class="addbtn" style="cursor:pointer;"/>
+                                        </div>
+  									</div>
+									空间查询
+                          			<div id="spatialQuery" class="control-group">
+                                        <label class="control-label" for="spatialQuery"  style="width:380px;font-size:12px;font-weight:bold;text-align:left">空间查询条件</label>
+										<div class="controls" style="margin-left:10px;">
+											<img src="static/map/imgs/spatialQuery/rectangle.png" title="框选查询" id="rectquery" class="rectquery"  style="cursor:pointer;width:58px;height:58px;"/>
+                                            <img src="static/map/imgs/spatialQuery/polygon.png" alt="多边形查询" id="polygonquery" class="polygonquery"  style="cursor:pointer;width:58px;height:58px;"/>
+											<img src="static/map/imgs/spatialQuery/circle.png" alt="圆形查询" id="circlequery" class="circlequery" style="cursor:pointer;width:58px;height:58px;"/>
+                                        	<img src="static/map/imgs/spatialQuery/clear.png" alt="清除图层" id="SQClear" class="SQClear" style="cursor:pointer;width:58px;height:58px;"/>
+										</div>
+  									</div>
+                                    <div style="width:90%;border:0px;border-bottom:1px dashed #ccc;padding-top:10px">
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputResultFiled" style="width:180px;font-size:12px;font-weight:bold;text-align:left">结果字段</label>
+                                        <div class="controls" style="margin-left:45px">
+                                            <select class="inputResultFiled" style="font-size:13px;width:195px;margin-top:5px;background-color:#F5F5F5">
+											</select>
+                                         </div>
+  									</div>
+  									<div class="control-group">
+    									<div class="controls">
+      										<button type="submit" class="btn fields-search" style="width:120px;" index="<%=i%>">查询</button>
+    									</div>
+  									</div>		
+								</form>
+							</div>
+						</div>
+				      </div>
+				    </div>
+				<%}else{%> 
+					<div id="collapse-<%=data.resName%>" class="accordion-body collapse">
+				      <div class="accordion-inner" style="padding:5px 0px 5px 0px;">
+						<div>
+				       		<span class="f-db panel-control-bg f-csp overlay-hover service-overlay" style="margin-left:10px;float:left;" index="<%=i%>">
+				       			<span class="f-db" style="position:relative;text-align:center;top:47px;font-size:12px;">叠加</span>
+				       		</span>
+							<span class="f-db panel-control-bg f-csp query-icon service-query" style="margin-left:70px;" index="<%=i%>">
+				       			<span class="f-db" style="position:relative;text-align:center;top:47px;font-size:12px;">查询</span>
+				       		</span>
+						</div>
+						<div class="query-theme hide" style="border-top:1px solid #e5e5e5;width:95%;margin:0px auto;">
+							<div class="query-div" style="margin:0px auto;width:300px;">
+								<form class="form-horizontal" style="margin-bottom:0px;">
+                                    <div class="control-group query-group">
+                                        <label class="control-label" for="inputFilter" style="width:380px;font-size:16px;font-weight:bold;text-align:left">属性查询条件</label>
+                                        <div class="controls" style="margin-left:10px;float:left;min-width: 290px;padding-top:5px;display: table-cell;vertical-align: middle;">
+                                            <select class="inputField" style="font-size:13px;width:85px;height:22px;padding:0px;margin:0px;">
+                                            </select>
+                                            <select class="inputFilterCon" style="font-size:13px;width:90px;height:22px;padding:0px;margin:0px;">
+                                            </select>
+                                            <input type="text" class="inputFilter" placeholder="" style="width:40px;height:12px;font-size:13px;text-align:center;">
+                                            <input type="text" class="inputFilter1" placeholder="" style="width:40px;height:12px;font-size:13px;text-align:center;display:none">
+                                            <select class="inputFilterBoolean" style="font-size:13px;width:55px;background-color:#F5F5F5;display:none">
+                                                <option fieldname="1" selected="">是</option>
+                                                <option fieldname="0" selected="">否</option>
+                                            </select>
+                                            <img src="static/map/imgs/min.png" alt="删除" title="删除" class="delbtn" style="cursor:pointer;display:none"/>
+                                            <img src="static/map/imgs/add.png" alt="添加" title="添加" class="addbtn" style="cursor:pointer;"/>
+                                        </div>
+                                    </div>
+                          			空间查询
+                          			<div id="spatialQuery" class="control-group">
+                                        <label class="control-label" for="spatialQuery"  style="width:380px;font-size:12px;font-weight:bold;text-align:left">空间查询条件</label>
+                                        <div class="controls" style="margin-left:10px;">
+                                            <img src="static/map/imgs/spatialQuery/rectangle.png" title="框选查询" id="rectquery" class="rectquery"  style="cursor:pointer;width:58px;height:58px;"/>
+                                            <img src="static/map/imgs/spatialQuery/polygon.png" alt="多边形查询" id="polygonquery" class="polygonquery"  style="cursor:pointer;width:58px;height:58px;"/>
+                                            <img src="static/map/imgs/spatialQuery/circle.png" alt="圆形查询" id="circlequery" class="circlequery" style="cursor:pointer;width:58px;height:58px;"/>
+                                        	<img src="static/map/imgs/spatialQuery/clear.png" alt="清除图层" id="SQClear" class="SQClear" style="cursor:pointer;width:58px;height:58px;"/>
+										</div>
+  									</div>
+                                    <div style="width:90%;border:0px;border-bottom:1px dashed #ccc;padding-top:10px">
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputResultFiled" style="width:180px;font-size:16px;font-weight:bold;text-align:left">结果字段</label>
+                                        <div class="controls" style="margin-left:45px">
+                                            <select class="inputResultFiled" style="font-size:13px;width:195px;margin-top:5px;background-color:#F5F5F5">
+                                            </select>
+                                        </div>
+                                    </div>
+  									<div class="control-group">
+    									<div class="controls">
+      										<button type="submit" class="btn fields-search" style="width:120px;" index="<%=i%>">查询</button>
+    									</div>
+  									</div>		
+								</form>
+							</div>
+						</div>
+				      </div>
+				    </div>
+				<%}%>     
+			 </div>
+<%});%>
+</script>
+ -->
+
+<!-- <script id="data-info-template" type="text/template">
+<%_.each(obj,function(data,i){
+%>
+	<div class="data-info" smid="<%=data.SMID%>" index="<%=i%>" resID="<%=data.resID%>">
+		<div>
+			<span class="data-info-icon"><img src="img/maptool/marker/icon_<%=i+1%>.png" filePath="img/maptool/marker/"></img></span></span>
+			<span class="data-info-title"><span style="margin:0px 5px 0px 0px;"></span><span><%=data[data.showField]%></span></span>
+		</div>
+	</div>
+<%});%>
+</script>
+ -->
+ <!-- 
+<script id="pathGuideItemInfo" type="text/template">
+    <%_.each(obj,function(data,i){
+     var  pathName=data.pathName;
+     var  pathNameLength=pathName.length;
+     var  pathInfo=data.pathTextInfo;
+     var  eqNameLength=pathInfo.indexOf(pathName);
+     var  pathLength1=pathInfo.substring(0,eqNameLength);
+     var  pathLength2=pathInfo.substring(eqNameLength,eqNameLength+pathNameLength);
+     var  pathLength3=pathInfo.substring(eqNameLength+pathNameLength);
+
+    %>
+        <div style="height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden; line-height:2" ></div>
+        <li  class="li" pathId="<%=data.pathId%>" pathName="<%=data.pathName%>" pathWeight="<%=data.pathWeight%>" roadCoords="<%=data.roadCoords%>" top="<%=data.top%>" bottom="<%=data.bottom%>" left="<%=data.left%>" right="<%=data.right%>">
+
+            <%=i+1%>)  <%=pathLength1%><span style="font-size:13px;font-family:arial;font-weight:900 "><%=pathLength2%></span><%=pathLength3%>
+        </li>
+
+    <%});%>
+</script>
+ -->
+</div>
+        </div>
+    </div> 
+
+    <footer id="footer">版权所有 河北省第一测绘院</footer>
+</div>
+</body></html>
