@@ -9,28 +9,28 @@ import java.util.List;
  * Created by eclipse on 2017/1/9.
  */
 public interface IUserService {
-    public User getUserByLoginName(String loginName) ;
+    User getUserByLoginName(String loginName) ;
 
-    public User getUserByEmail(String email);
+    User getUserByEmail(String email);
 
-    public boolean isUserExits(User newUser) ;
+    boolean isUserExits(User newUser) ;
 
-    public boolean saveUser(User user);
+    boolean saveUser(User user);
 
-    public boolean deleteUserByloginName(String loginName) ;
+    boolean deleteUserByloginName(String loginName) ;
 
-    public boolean deleteUserByemail(String email);
+    boolean deleteUserByemail(String email);
 
-    public boolean verifyPasswordWithloginName(String loginName, String password);
+    boolean verifyPasswordWithloginName(String loginName, String password);
 
-    public boolean verifyPasswordWithEmail(String email, String password);
+    boolean verifyPasswordWithEmail(String email, String password);
 
-    public void initDB();
+    void initDB();
 
-    public boolean addUser(User user);
+    boolean addUser(User user);
 
-    public void clearDB();
+    void clearDB();
 
 
-    public List<PrivilegeIns> getPrivByUser(User user);
+    List<PrivilegeIns> getPrivByUser(User user);
 }

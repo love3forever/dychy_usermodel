@@ -110,4 +110,8 @@ public class PrivilegeIns {
 
     public PrivilegeIns() {
     }
+
+    public String getId() {
+        return id;
+    }
 }

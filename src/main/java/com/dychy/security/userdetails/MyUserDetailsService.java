@@ -2,7 +2,10 @@ package com.dychy.security.userdetails;
 
 import com.dychy.model.PrivilegeIns;
 import com.dychy.model.User;
+import com.dychy.repository.PriInsRepository;
+import com.dychy.repository.UserPrivInsRepository;
 import com.dychy.repository.UserRepository;
+import com.dychy.service.UserPrivRelService;
 import com.dychy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,10 +23,20 @@ public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
+
+    @Autowired
+    private PriInsRepository priInsRepository;
+
+    @Autowired
+    private UserPrivInsRepository userPrivInsRepository;
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user;
         UserService userService = new UserService(userRepository);
+
+        UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository);
+
         try {
             user = userService.getUserByLoginName(s);
         } catch (Exception e) {
@@ -33,7 +46,7 @@ public class MyUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("no user found");
         } else {
             try {
-                List<PrivilegeIns> privs = userService.getPrivByUser(user);
+                List<PrivilegeIns> privs = userPrivRelService.getPrivsByUserId(user.getId());
                 return new MyUserDetails(user, privs);
             } catch (Exception e) {
                 throw new UsernameNotFoundException("user role select fail");

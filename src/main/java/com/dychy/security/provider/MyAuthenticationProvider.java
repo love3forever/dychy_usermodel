@@ -1,5 +1,7 @@
 package com.dychy.security.provider;
 
+import com.dychy.repository.PriInsRepository;
+import com.dychy.repository.UserPrivInsRepository;
 import com.dychy.security.userdetails.MyUserDetails;
 import com.dychy.security.userdetails.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,7 @@ public class MyAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
     private MyUserDetailsService userService;
+
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
