@@ -4,6 +4,7 @@ import com.dychy.model.PrivilegeIns;
 import com.dychy.model.User;
 import com.dychy.repository.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -88,7 +89,11 @@ public class UserService implements IUserService {
 
     @Override
     public List<PrivilegeIns> getPrivByUser(User user) {
-        return null;
+        List<PrivilegeIns> privs = new ArrayList<PrivilegeIns>();
+        PrivilegeIns pri = new PrivilegeIns();
+        pri.setResId("admin");
+        privs.add(pri);
+        return privs;
     }
 
 

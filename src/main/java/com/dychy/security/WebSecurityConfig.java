@@ -4,6 +4,7 @@ import com.dychy.security.provider.MyAuthenticationProvider;
 import com.dychy.security.userdetails.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,6 +29,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
     }
 
+    @Autowired
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -38,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .formLogin()
             .loginPage("/login")
-            .loginProcessingUrl("/")
+            .defaultSuccessUrl("/")
             .permitAll()
             .and()
             .logout()

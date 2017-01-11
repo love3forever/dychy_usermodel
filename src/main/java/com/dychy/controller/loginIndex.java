@@ -4,6 +4,7 @@ import com.dychy.model.User;
 import com.dychy.repository.UserRepository;
 import com.dychy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,6 +20,7 @@ public class loginIndex {
 
 
     @RequestMapping("/")
+//    @PreAuthorize("hasAnyRole('admin', 'user')")
     public String index(ModelMap modelMap){
         UserService userService = new UserService(userRepository);
         String username = SecurityContextHolder.getContext().getAuthentication().getName();

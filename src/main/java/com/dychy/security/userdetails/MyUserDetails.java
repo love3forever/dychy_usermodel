@@ -27,7 +27,7 @@ public class MyUserDetails extends User implements UserDetails{
         }
         StringBuilder commaBuilder = new StringBuilder();
         for(PrivilegeIns pri : privs){
-            commaBuilder.append(pri.getRestypeId()).append(",");
+            commaBuilder.append(pri.getResId()).append(",");
         }
         String authorities = commaBuilder.substring(0,commaBuilder.length()-1);
         return AuthorityUtils.commaSeparatedStringToAuthorityList(authorities);
