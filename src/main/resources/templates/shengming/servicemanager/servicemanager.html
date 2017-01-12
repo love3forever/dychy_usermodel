@@ -1,0 +1,411 @@
+<html class="no-js"><head><link href="http://127.0.0.1:8080/webframe/lib/jquery/jquery-lhgdialog/skins/idialog.css" rel="stylesheet" id="lhgdialoglink"><script src="http://127.0.0.1:8080/servicemanager/static/servicemanage/authorization/js/auth-index.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/servicemanage/authorization/js/auth-mgr.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/servicemanage/authorization/js/dept-user-tree.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/servicemanage/authorization/js/dept-tree.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/servicemanage/authorization/js/dept-mgr.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/servicemanage/checkapp/js/checkapp-index.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/servicemanage/checkapp/js/checkapp-mgr.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/servicemanage/checkreg/js/checkreg-index.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/servicemanage/checkreg/js/checkreg-mgr.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/servicemanage/apply/js/apply-index.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/servicemanage/apply/js/apply-mgr.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/servicemanage/register/js/register-index.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/servicemanage/register/js/register-mgr.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/register/js/register-index.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/catalogtree/depttheme-tree.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/searching/js/search-index.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/searching/js/drop-simplelist.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/catalogtree/servicetype-tree.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/catalogtree/theme-tree.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/catalogtree/district-tree.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/catalogtree/dept-tree.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/servicemgr/js/servicemgr.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/public/js/paging.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/public/js/home-common.js"></script><script src="http://127.0.0.1:8080/webframe/biz/metadata/js/metadata-detail.js"></script><script src="http://127.0.0.1:8080/webframe/biz/serpreview/js/servicepreview.js"></script><script src="http://127.0.0.1:8080/webframe/biz/metadata/js/servicemgr.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/public/js/dyn-menu.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/public/js/modules.js"></script><script src="http://127.0.0.1:8080/webframe/biz/user/user-index.js"></script><script src="http://127.0.0.1:8080/webframe/biz/user/login-user.js"></script><script src="http://127.0.0.1:8080/webframe/biz/base/jquery.form.js"></script><script src="http://127.0.0.1:8080/webframe/biz/base/ajax-crud.js"></script><script src="http://127.0.0.1:8080/webframe/biz/base/common.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/public/js/app-config.js"></script><script src="http://127.0.0.1:8080/webframe/lib/multifile/jQuery.MultiFile.min.js"></script><script src="http://127.0.0.1:8080/webframe/lib/jquery/zclip/jquery.zclip.min.js"></script><script src="http://127.0.0.1:8080/webframe/lib/datepicker/WdatePicker.js"></script><script src="http://127.0.0.1:8080/webframe/lib/jquery/jquery-lhgdialog/lhgdialog.min.js?self=true&amp;skin=idialog"></script><script src="http://127.0.0.1:8080/webframe/lib/jquery/jquery-ztree/js/jquery.ztree.excheck-3.5.min.js"></script><script src="http://127.0.0.1:8080/webframe/lib/jquery/jquery-ztree/js/jquery.ztree.core-3.5.min.js"></script><script src="http://127.0.0.1:8080/webframe/lib/async/async.min.js"></script><script src="http://127.0.0.1:8080/webframe/lib/bootstrap/js/bootstrap.min.js"></script><script src="http://127.0.0.1:8080/webframe/lib/underscore/underscore.string.js"></script><script src="http://127.0.0.1:8080/webframe/lib/underscore/underscore.js"></script><script src="http://127.0.0.1:8080/webframe/lib/jquery/jquery-1.10.2.min.js"></script><script src="http://127.0.0.1:8080/servicemanager/static/public/js/include.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>服务管理系统</title>
+    <link rel="icon" href="favicon.ico" mce_href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../webframe/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../webframe/lib/bootstrap/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="../../webframe/lib/jquery/jquery-ztree/css/zTreeStyle/zTreeStyle.css">
+   	<link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/function.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/dyn-menu.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/resulttable.css">
+    <link rel="stylesheet" href="css/opa-icons.css">
+    <script type="text/javascript" src="../../geoesbmengine/jsapi/geoesbmengine.js"></script>
+    <!--[if lt IE 9]>
+    <script src="../webframe/lib/html5/html5shiv.js"></script>
+    <![endif]-->
+<link href="http://127.0.0.1:8080/webframe/lib/datepicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/servicemanager/css/searching.css">
+<link rel="stylesheet" type="text/css" href="/servicemanager/css/register.css">
+<link rel="stylesheet" type="text/css" href="/servicemanager/css/servicemanager.css">
+<link rel="stylesheet" type="text/css" href="/servicemanager/css/opa-icons.css">
+</head>
+<body class="home-ns"><div class="" style="left: 0px; top: 0px; visibility: hidden; position: absolute;"><table class="ui_border"><tbody><tr><td class="ui_lt"></td><td class="ui_t"></td><td class="ui_rt"></td></tr><tr><td class="ui_l"></td><td class="ui_c"><div class="ui_inner"><table class="ui_dialog"><tbody><tr><td colspan="2"><div class="ui_title_bar"><div class="ui_title" unselectable="on" style="cursor: move;"></div><div class="ui_title_buttons"><a class="ui_min" href="javascript:void(0);" title="最小化" style="display: none;"><b class="ui_min_b"></b></a><a class="ui_max" href="javascript:void(0);" title="最大化" style="display: none;"><b class="ui_max_b"></b></a><a class="ui_res" href="javascript:void(0);" title="还原"><b class="ui_res_b"></b><b class="ui_res_t"></b></a><a class="ui_close" href="javascript:void(0);" title="关闭(esc键)" style="display: inline-block;">×</a></div></div></td></tr><tr><td class="ui_icon"></td><td class="ui_main" style="width: auto; height: auto;"><div class="ui_content" style="padding: 10px;"></div></td></tr><tr><td colspan="2"><div class="ui_buttons"></div></td></tr></tbody></table></div></td><td class="ui_r"></td></tr><tr><td class="ui_lb"></td><td class="ui_b"></td><td class="ui_rb" style="cursor: auto;"></td></tr></tbody></table></div>
+<div class="wrapper">
+    <!--[if lt IE 7]>
+    <p class="chromeframe">您正在使用 <strong>过时</strong> 的浏览器。 请 <a href="http://browsehappy.com/">升级浏览器</a> 或者 <a
+            href="http://www.google.com/chromeframe/?redirect=true">启用 Google Chrome Frame</a> 以提升用户体验。</p>
+    <![endif]-->
+    <header id="header">
+    	<div class="caption-bg"></div>
+         
+       	<div class="index-login">
+        	<div class="left-index"></div>
+        	<div class="index-user">
+        		<div class="log-img admin-img"></div><span class="index-username"><a class="usercenter index-logout-color" target="_blank" href="http://127.0.0.1:8080/usercenter">超级管理员</a></span>
+        	</div>
+        	<div class="index-out">
+        		<div class="log-img logout-img"></div><div class="index-loginout"><a class="index-logout-color" href="http://127.0.0.1:8080/cas/logout?service=http%3A%2F%2F127.0.0.1%3A8080%2Fnav%3Fr%3D0.9790030723382785">注销</a><a class="index-logout-color" style="display:inline-blokc;margin-left:10px" href="http://127.0.0.1:8080/nav" target="_blank">首页</a></div>
+        	</div>
+        	<div class="right-index"></div>
+        </div>
+        <!-- 主菜单 -->
+        <nav id="main-menu" class="main-menu">
+            <ul>
+                <!-- <li mid="">
+                    <div class="menu-icon menu-0"></div>
+                    <div class="menu-text">首页</div>
+                </li> -->
+            
+                
+                <li mid="ff808081436bddc301436be9664d0001">
+                    <div class="menu-icon menu-1"></div>
+                    <div class="menu-text">服务检索</div>
+                </li>
+                
+                <li mid="ff808081436bddc301436beb4ad90002">
+                    <div class="menu-icon menu-2"></div>
+                    <div class="menu-text">服务注册</div>
+                </li>
+                
+                <li mid="e56180e0957d42f5a6b20c8263735709">
+                    <div class="menu-icon menu-3-hover"></div>
+                    <div class="menu-text">服务管理</div>
+                </li>
+                
+            </ul>
+            <script id="main-menu-template" type="text/template">
+                <%_.each(obj, function(data,i) {
+				var css_="";
+				if(data.css != null && data.css != "" ){
+					css=data.css;
+				}else{
+					css="menu-"+(i+1);
+				}
+				%>
+                <li mid="<%=data.pkid%>">
+                    <div class="menu-icon <%=css%>"></div>
+                    <div class="menu-text"><%=data.name%></div>
+                </li>
+                <%});%>
+            </script>
+        </nav>
+    </header>
+
+    <!-- 二级菜单 -->
+    <div id="sub-menu" class="sub-menu clearfix">
+		<div style="margin-left:22%;width:auto;height:auto;position:relative">
+        	<ul>
+            	
+            	<li targeturl="static/servicemanage/register/register.html" class="tabs-icon tabs-icon-first tabs-icon-s"><div class="tabTxt">注册的服务</div></li>
+            	
+            	<li targeturl="static/servicemanage/apply/apply.html" class="tabs-icon"><div class="tabTxt">申请的服务</div></li>
+            	
+            	<li targeturl="static/servicemanage/checkreg/checkreg.html" class="tabs-icon"><div class="tabTxt">审核注册的服务</div></li>
+            	
+            	<li targeturl="static/servicemanage/checkapp/checkapp.html" class="tabs-icon"><div class="tabTxt">审核申请的服务</div></li>
+            	
+            	<li targeturl="static/servicemanage/authorization/author.html" class="tabs-icon tabs-icon-last"><div class="tabTxt">服务授权</div></li>
+            	
+        	</ul>
+			<div class="tabs-icon-s-selected" style="left: 2px;"><div class="tabTxt">注册的服务</div>
+		</div>
+    </div></div>
+    <script id="sub-menu-template" type="text/template">
+		<div style="margin-left:22%;width:auto;height:auto;position:relative">
+        	<ul>
+            	<%_.each(obj, function(data,i) {%>
+            	<li targetUrl="<%=data.href%>" class="tabs-icon tabs-icon-s"><div class="tabTxt"><%=data.name%></div></li>
+            	<%});%>
+        	</ul>
+			<div class="tabs-icon-s-selected"><div class="tabTxt"></div></li>
+		</div>
+    </script>
+
+    <div id="main-container" class="main-container row-fluid" minheight="500" style="height: 620px;">
+        <div class="span12 height100" style="background: #FBF5F5;">
+            <div id="frame" class="row-fluid height100" style="height: 620px;"><meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script>
+$LAB.link(GeoESB.Sites.SiteHost.Servicemanager + "/css/servicemanager.css")
+</script>
+<style type="text/css">
+    #cfg-ul{
+        margin-top:3px;
+        padding-right:10px;
+        overflow-y: auto; overflow-x:hidden;
+        max-height: 94%;
+    }
+    .drop-simplelist{
+        padding-left:14px;
+    }
+    .selectedA {
+        font-weight: bold;
+        color: #cc6600;
+    }
+    .specialService{
+        min-height:240px;
+        border-top:solid 1px cornflowerblue;
+    }
+    #hor-nav .breadcrumb{
+        padding: 4px 15px;
+        margin:0;background-color: transparent;
+        font-size: 13px;
+    }
+    .breadcrumb .hide{
+        display: none;
+    }
+   #hor-nav .breadcrumb .divider{
+       color:#111;
+       cursor: default;
+    }
+    #right-aside .topindex{
+        text-align: right;
+        width:24px;
+        font-size:12px;
+        font-weight:bold;
+    }
+	.date{
+		text-overflow:ellipsis; 
+		white-space:nowrap;
+		overflow:hidden;
+	}
+	
+</style>
+<script>
+$LAB.link(GeoESB.Sites.SiteHost.Servicemanager + "/css/opa-icons.css")
+</script>
+<article id="middle-container" class="middle-container">
+    <div class="main-section" id="main-section">
+    <div class="right-ctx panel-border">
+        <!-- searching -->
+        <div id="search-container" class="search-container">
+            <table style="">
+                <tbody><tr>
+                    <td align="right" class="clearfix">
+                        <div class="search-icon f-fl"></div>
+                        <div class="search-title f-fl">服务查询</div>
+                    </td>
+                    <td align="left">
+                        <div style="">
+                            <div class="search-box-left"></div>
+                            <div class="search-box-mid">
+                                <input id="keyword" class="keyword" type="text" placeholder="请输入服务名称">
+                            </div>
+                            <div class="search-box-right"></div>
+                        </div>
+                    </td>
+                    <td align="left">
+                        <input id="btn-search" class="btn" type="button" value="查 询">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td align="left" colspan="2">
+                        <div class="clearfix prompt-info">以平台服务的名称作为关键字查询</div>
+                    </td>
+                </tr>
+            </tbody></table>
+            <div class="search-splitline"></div>
+        </div>
+        <div class="status-total">
+        	<div class="status-div">
+			<div class="status-name">启停状态：</div>
+			<ul id="status-st" class="status-ul regl-status">
+				<li class="select-status" status="">全部</li>
+				<li status="1">启动</li>
+				<li status="2">停止</li>
+			</ul>
+			<div class="status-name status-r">审核状态：</div>
+			<ul id="status-che" class="status-ul regr-status">
+				<li class="select-status" status="">全部</li>
+				<li status="1">审核通过</li>
+				<li status="2">审核未通过</li>
+				<li status="0">待审核</li>
+			</ul>
+		</div>
+		<div class="time-cfg date-div">注册时间：
+            <input id="reg-start" class="Wdate time-input" type="text">至
+            <input id="reg-end" class="Wdate time-input" type="text">
+        </div>
+        </div>
+        <!-- data table -->
+        <div class="data-content-border" style="width:97%;">
+            <div class="datatable-header-container">
+                <table id="datatable-header" class="datatable-header">
+                    <tbody>
+                    <tr class="row-odd">
+                    	<th width="35"></th>
+                        <th width="50">序号</th>
+                        <th>服务名称</th>
+                        <th>接口类型</th>
+                        <th>资源名称</th>
+                        <th>注册用户</th>
+                        <th>注册部门</th>
+                        <th width="160">注册时间</th>
+                        <th width="90">服务状态</th>
+                        <th width="110">审核状态</th>
+                        <th width="135">操作</th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="table-container" class="table-container">
+                <table id="data-table" class="data-table">
+                    
+                <tbody id="tbl-body">
+    
+</tbody></table>
+            </div>
+        </div>
+
+        <!-- paging bar -->
+     <!--    <div id="paging-bar" class="paging-bar">
+            <div class="paging-leftbg"></div>
+            <div class="paging-content">
+                <div class="paging-info clearfix">
+                    <div class="f-fl">
+                        共<span id="paging-count" class="paging-text">0</span>页&nbsp;&nbsp;
+                        总计<span id="record-count" class="paging-text">0</span>条记录 &nbsp;&nbsp;显示
+                    </div>
+                    <div class="dropup f-fl">
+                        <div class="select-box">
+                            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" style="text-decoration: none;">
+                                <div id="pagesize-selected" class="pagesize-options f-fl f-ml5">10</div>
+                            </a>
+                            <ul id="paging-pagesize-ul" class="dropdown-menu pagesize-options" role="menu" aria-labelledby="dropdownMenu">
+                                <li><a href="javascript:void(0)">10</a></li>
+                                <li><a href="javascript:void(0)">20</a></li>
+                                <li><a href="javascript:void(0)">50</a></li>
+                                <li><a href="javascript:void(0)">100</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="f-fl">
+                        条/页
+                    </div>
+                </div>
+                <div class="paging-navi">
+                    <div id="paging-first" class="paging paging-first"></div>
+                    <div id="paging-pre" class="paging paging-pre"></div>
+                    <p class="paging-text-p">&nbsp;转到&nbsp;
+                        <input id="paging-curent" type="text" class="paging-curent" value="1" onpropertychange="javascript:GeoESB.Check.inputIntOnly(this);" oninput="javascript:GeoESB.Check.inputIntOnly(this);">
+                        <a id="paging-turnto" href="javascript:void(0)">GO</a> &nbsp;&nbsp;
+                    </p>
+
+                    <div id="paging-next" class="paging paging-next"></div>
+                    <div id="paging-last" class="paging paging-last"></div>
+                </div>
+            </div>
+            <div class="paging-rightbg"></div>
+        </div> -->
+
+    </div>
+    </div>
+</article>
+<script id="register-template" type="text/template">
+    <%_.each(obj, function(data,i) {%>
+    <tr id="item-row<%=i%>" class="<%=(i%2==0?'row-even':'row-odd')%>" uuid="<%=data.id%>">
+		<td width="35"></td>
+        <td width="50"><%=++GeoESB.rowIdx%></td>
+        <td pro="name" title="<%=(data.alias)%>">
+            <div class="nowrap"><%=data.alias%></div>
+        </td>
+		<td pro="interfacetype" title="<%=(data.interfaceType.value)%>">
+            <div class="nowrap"><%=data.interfaceType.value%></div>
+        </td>
+		<td title="<%=(data.name)%>">
+            <div class="nowrap"><%=data.name%></div>
+        </td>
+		<td userId="<%=(data.registerUser.key)%>">
+            <div class="nowrap"><a class="user-info blackpointer"><%=data.registerUser.value%></a></div>
+        </td>
+		<td title="<%=(data.department.value)%>">
+            <div class="nowrap"><%=data.department.value%></div>
+        </td>
+		<td width="160" title="<%=(data.sequenceStart)%>">
+            <div class="nowrap"><%=data.sequenceStart%></div>
+        </td>
+		<td width="90" title="<%=(data.serviceState.chinesevalue)%>">
+            <div class="nowrap"><%=data.serviceState.chinesevalue%></div>
+        </td>
+		<td width="110" title="<%=(data.checkState.chinesevalue)%>">
+            <div class="nowrap"><%=data.checkState.chinesevalue%></div>
+        </td>
+        <td width="135">
+            <div id="row-opr<%=i%>">
+                <a href="javascript:void(0)" class="row-operator row-operator-metadata"
+                   title="元数据"></a>
+				<%if(data.serviceState.key == 1){%>
+                <a href="javascript:void(0)" target="_blank" class="row-operator row-operator-scan"
+                   title="预览"></a>
+                <%}%>
+				<%if(data.serviceState.key == 1){%>
+					<a href="javascript:void(0)" class="row-operator-servicemanger row-operator-stop"
+                   		title="停止"></a>
+				<%}else{%>
+					<a href="javascript:void(0)" class="row-operator-servicemanger row-operator-start"
+                   		title="启动"></a>
+				<%}%>
+                <a href="javascript:void(0)" class="row-operator row-operator-deleteapp"
+                   title="删除服务"></a>
+            </div>
+        </td>
+    </tr>
+    <%});%>
+</script>
+<script type="text/javascript">
+$LAB.script(GeoESB.Sites.SiteHost.Servicemanager+"/static/public/js/include.js").wait(function(){
+	GeoESB.ServiceManagerInclude.include(GeoESB.ServiceManagerInclude.Modules.Servicemanager_reg,function(){
+		ServiceManage.RegHome.run();
+	});
+});
+</script>
+
+</div>
+        </div>
+    </div>
+
+    <footer id="footer">版权所有©&nbsp;&nbsp; 河北省第一测绘院</footer>
+</div>
+<script src="../../webframe/biz/config/globe-config.js" type="text/javascript"></script>
+<script type="text/javascript">
+    // 调整布局大小
+    ajustLayoutSize();
+
+    function ajustLayoutSize() {
+
+        var submenu = document.getElementById("sub-menu");
+        var submenuHeight = submenu?submenu.offsetHeight:0;
+
+        var winHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        var header = document.getElementById("header");
+        var headerHeight = header ? header.offsetHeight : 0;
+
+        var footer = document.getElementById("footer");
+        footer.innerHTML = GeoESB.pageConfig.copyright;
+        //var footerHeight = footer ? footer.offsetHeight : 0;
+
+        var main = document.getElementById("main-container");
+        var mainMinHeight = parseInt(main.getAttribute("minHeight"));
+        var mainHeight = winHeight - headerHeight - submenuHeight ;
+        if (mainHeight < mainMinHeight) mainHeight = mainMinHeight;
+        main.style.height = mainHeight + "px";
+
+        var frame = document.getElementById("frame");
+        frame.style.height = mainHeight + "px";
+    }
+
+</script>
+
+<script src="../../webframe/lib/lab/lab.js" type="text/javascript"></script>
+<script type="text/javascript" src="../../webframe/lib/supermap/iClient/forJavaScript/libs/SuperMap.Include.js"></script><script type="text/javascript" src="../../webframe/lib/supermap/iClient/forJavaScript/libs/SuperMap-7.1-12105.js"></script>
+<link rel="stylesheet" href="../../webframe/lib/supermap/iClient/forJavaScript/libs/../theme/default/style.css">
+<link rel="stylesheet" href="../../webframe/lib/supermap/iClient/forJavaScript/libs/../theme/default/google.css">
+<script type="text/javascript" src="../../webframe/lib/supermap/iClient/forJavaScript/libs/Lang/zh-CN.js"></script>
+
+<script type="text/javascript" src="../../webframe/lib/supermap/iClient/for3D/libs/SuperMap.RealSpace.Include.js"></script><script type="text/javascript" src="../../webframe/lib/supermap/iClient/for3D/libs/lib_Ajax/MicrosoftAjax.js"></script>
+<script type="text/javascript" src="../../webframe/lib/supermap/iClient/for3D/libs/lib_Realspace/SuperMap.Web.Realspace.js"></script>
+
+<script type="text/javascript">
+$LAB.script(GeoESB.Sites.SiteHost.Servicemanager+"/static/public/js/include.js").wait(function(){
+	GeoESB.ServiceManagerInclude.include(null,function(){});
+});
+</script>
+
+<div id="ldg_lockmask" style="position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; overflow: hidden; z-index: 1987; display: none;"></div><div style="position: absolute; z-index: 100004; display: none; top: 300px; left: 577.1px;" lang="zh-cn"><iframe hidefocus="true" width="97" height="9" frameborder="0" border="0" scrolling="no" style="width: 186px; height: 198px;"></iframe></div></body></html>
