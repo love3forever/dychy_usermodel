@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -37,23 +38,13 @@ public class loginIndex {
 
     @RequestMapping("/")
     public String index(ModelMap modelMap){
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        if (username.equals("anonymousUser")) {
+        // 通用模板渲染
+        indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository);
+        HashMap<String,Object> map = template.getModelMap();
+        if (map == null)
             return "redirect:/login";
-        }
-        UserService userService = new UserService(userRepository);
-        User currentUser = userService.getUserByLoginName(username);
-        modelMap.addAttribute("user", currentUser);
-        UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository);
-        List<PrivilegeIns> privs = userPrivRelService.getPrivsByUserId(currentUser.getId());
-
-        List<String> urls = new ArrayList<String>();
-        for (PrivilegeIns priv:
-             privs) {
-            urls.add(priv.getResId());
-        }
-
-        modelMap.addAttribute("urls", urls);
+        modelMap.addAttribute("user", map.get("user"));
+        modelMap.addAttribute("urls", map.get("urls"));
 
         return "main";
     }
@@ -61,41 +52,11 @@ public class loginIndex {
     @RequestMapping("/home")
     public String home(ModelMap modelMap) {
         modelMap.addAttribute("user", new User());
-        return "200";
+        return "redirect:/";
     }
 
     @RequestMapping("/addprivs")
     public String add(ModelMap modelMap) {
-//        // 给用户和权限进行初始化设置
-//        UserService userService = new UserService(userRepository);
-//        PrivilegeInsService privilegeInsService = new PrivilegeInsService(priInsRepository);
-//
-//        UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository);
-//
-//        User u = userService.getUserByLoginName("root");
-//
-//        String[] privs = new String[]{
-//                "root", "home", "dis", "dep", "res", "pri", "map"
-//        };
-//
-//        for (String s:
-//             privs) {
-//            System.out.println("---------create PrivilegeIns---------");
-//            PrivilegeIns privilegeIns = new PrivilegeIns();
-//            privilegeIns.setResId(s);
-//            privilegeInsService.savePrivs(privilegeIns);
-//            System.out.println("---------privilegeIns---------"+"[id]:"+privilegeIns.getId());
-//
-//            System.out.println("---------create UserPriRel---------");
-//            UserPriRel userPriRel = new UserPriRel();
-//            userPriRel.setPriInsId(privilegeIns.getId());
-//            userPriRel.setUserId(u.getId());
-//            userPriRel.setCreatedTime(new Date());
-//            userPrivRelService.saveUserPrivsRel(userPriRel);
-//            System.out.println("---------UserPriRel---------"+"[id]:"+userPriRel.getId());
-//
-//        }
-
         return "redirect:/login";
     }
 }

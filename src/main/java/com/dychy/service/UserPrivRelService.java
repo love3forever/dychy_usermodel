@@ -38,6 +38,7 @@ public class UserPrivRelService implements IUserPrivInsService {
     @Override
     public boolean saveUserPrivsRel(UserPriRel userPriRel) {
         userPrivInsRepository.save(userPriRel);
+        System.out.println("UserPriRel:["+userPriRel.getId()+"] has been created");
         return true;
     }
 
@@ -49,6 +50,13 @@ public class UserPrivRelService implements IUserPrivInsService {
     @Override
     public boolean isUserHasPrivs(String userid, String privid) {
 //        return userPrivInsRepository.findByuserIdAndpriInsId(userid, privid) != null;
+        List<PrivilegeIns> privs = getPrivsByUserId(userid);
+        for (PrivilegeIns pri:
+             privs) {
+            if (pri.getResId().equals(privid)) {
+                return true;
+            }
+        }
         return false;
     }
 }
