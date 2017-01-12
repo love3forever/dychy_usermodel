@@ -1,0 +1,205 @@
+.home-ns .row-fluid .exSpanNavi{
+    width: 16.6333333333333%;
+    *width: 17.157801418439714%;
+}
+.home-ns .row-fluid .exSpanCtx{
+    width: 66.53333333333333%;
+    *width: 65.05105716312057%;
+}
+
+/* 左侧选择树 */
+.left-title{
+    height:20px;
+    color:#444;
+    background-color:#f6f6f6;
+    -webkit-border-top-left-radius:6px;
+    -webkit-border-top-right-radius:6px;
+    -moz-border-top-left-radius:6px;
+    -moz-border-top-right-radius:6px;
+    border-top-left-radius:6px;
+    border-top-right-radius:6px;
+    padding:4px 0 0 5px;
+    border-bottom:1px solid #dddddd;
+    background:-moz-linear-gradient(top,#fafafa,#f8f8f8);
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#fafafa), to(#f8f8f8));
+    background:-o-linear-gradient(top, #fafafa, #f8f8f8);
+    background: -ms-linear-gradient(top,#fafafa, #f8f8f8);
+    background: linear-gradient(top,#fafafa, #f8f8f8);
+    cursor: default;
+    FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#fafafa,endColorStr=#f8f8f8);
+}
+
+.left-panel .nav-list li{
+    line-height:18px;
+}
+.drop-simplelist .nav-list li{
+    line-height:18px;
+    min-width: 30px;
+    float:left;
+}
+.left-panel .nav-list>li>a {
+    padding: 2px 5px;
+    font-size: 12px;
+}
+.left-panel .nav-list>li>a.cfg-title{
+    color:#555;
+    font-size:12px;
+    font-weight: bold;
+    padding: 2px 10px;
+}
+
+.drop-simplelist .nav-list>li>a{
+    margin-right: -5px;
+    margin-left: -5px;
+}
+.drop-simplelist .nav > li > a:hover,
+.drop-simplelist .nav > li > a:focus {
+    text-decoration: none;
+    background-color: transparent;
+    padding: 2px 5px;
+}
+.left-panel .cfg-title i{
+    padding-right:2px;
+}
+
+.icons-2{
+    background-image: url(../img/icons-2.png);
+}
+.icon-folder-open2 {
+    width: 16px;
+    height: 16px;
+    background-position:-20px 0;
+}
+.icon-folder-close2 {
+    width: 16px;
+    height: 16px;
+    background-position:-1px 0;
+}
+
+.icon-chevron-right2 {
+    width: 12px;
+    height: 10px;
+    background-position:-34px -16px;
+}
+.nav-list li a .mgr0{
+    margin-right:0;
+}
+
+.icon-chevron-down2 {
+    width: 12px;
+    height: 10px;
+    background-position:-66px -15px;
+}
+
+
+.home-ns .ztree{
+    padding:5px 0 3px 5px;
+}
+/*目录导航*/
+#cfg-ul{
+    margin-top:3px;
+    padding-right:10px;
+    overflow-y: auto; overflow-x:hidden;
+    max-height: 94%;
+}
+.drop-simplelist{
+    padding-left:14px;
+}
+.selectedA {
+    font-weight: bold;
+    color: #cc6600;
+}
+.specialService{
+    min-height:240px;
+    border-top:solid 1px cornflowerblue;
+}
+#hor-nav .breadcrumb{
+    padding: 4px 15px;
+    margin:0;background-color: transparent;
+    font-size: 13px;
+}
+.breadcrumb .hide{
+    display: none;
+}
+#hor-nav .breadcrumb .divider{
+    color:#111;
+    cursor: default;
+}
+#right-aside .topindex{
+    text-align: right;
+    width:24px;
+    font-size:12px;
+    font-weight:bold;
+}
+.date{
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+}
+.cfg-item{
+    position: relative;
+}
+.cfg-ul{
+    margin: 0 0 6px 10px;
+}
+.cfg-ul li{
+    position: relative;
+    float: left;
+    height:16px;
+    line-height: 16px;
+    padding:0 4px 2px 4px;
+}
+.item-text{
+    position:relative;
+    z-index: 1;
+    cursor: pointer;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    border:solid 1px #b6cbee;
+}
+.item-text:hover{
+    padding:0;
+    background-color: #eee0bc;
+}
+.item-text .item{
+    padding-left:6px;
+}
+.item-sel{
+    display: none;
+}
+.item-close, .item-drop{
+    position: relative;
+    left:0; top:2px;
+    width: 18px;
+    height: 18px;
+    font-size: 16px;
+    color:#f1f1f1;
+}
+.item-text:hover  .item-close{
+    position: relative;
+    color: #c63d38;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.item-text:hover .item-drop{
+    position: relative;
+    font-size: 10px;
+    color: #c63d38;
+    font-weight: bold;
+    cursor: pointer;
+}
+.f-fw140{
+    width: 120px;
+}
+.search-container .Wdate{
+    width: 140px;;
+    padding: 1px 4px;
+    margin:0;
+}
+#cfg-dist,#cfg-dept,#cfg-theme{
+    position: relative;
+    z-index: 10;
+}

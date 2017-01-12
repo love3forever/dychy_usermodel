@@ -49,8 +49,8 @@
             </div>
             <div class="panel-body">
                 <ul class="nav nav-tabs" role="tablist" id="myTab">
-                    <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">部门信息</a></li>
-                    <li role="presentation"><a href="#profile" role="tab" data-toggle="tab">新增部门</a></li>
+                    <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">部门成员</a></li>
+                    <li role="presentation"><a href="#profile" role="tab" data-toggle="tab">新增成员</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -73,9 +73,47 @@
                             </tr>
                             </tbody>
                         </table>
+                        <h1 th:if="${#lists.isEmpty(depusers)}">该部门当前没有用户</h1>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="profile">
+                        <table  style="width: 100%">
+                            <tr>
+                                <td style="width:30%">
+                                    <div class="list-group" style="height:400px; overflow:auto;" th:if="${not #lists.isEmpty(avaUsers)}">
+                                        <a href="#" class="list-group-item active">
+                                            用户列表
+                                        </a>
+                                        <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                                        <a href="#" class="list-group-item">Morbi leo risus</a>
+                                        <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                                        <a href="#" class="list-group-item">Vestibulum at eros</a>
+                                        <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                                        <a href="#" class="list-group-item">Morbi leo risus</a>
+                                        <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                                        <a href="#" class="list-group-item">Vestibulum at eros</a>
+                                        <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                                        <a href="#" class="list-group-item">Morbi leo risus</a>
+                                        <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                                        <a href="#" class="list-group-item">Vestibulum at eros</a>
+                                    </div>
+                                    <h1 th:if="${#lists.isEmpty(avaUsers)}">当前没有空余用户</h1>
+                                </td>
+                                <td>
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item active">
+                                            用户列表
+                                        </a>
+                                        <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                                        <a href="#" class="list-group-item">Morbi leo risus</a>
+                                        <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                                        <a href="#" class="list-group-item">Vestibulum at eros</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>    
+                        <div class="actions">
 
+                        </div>
                     </div>
                 </div>
             </div>

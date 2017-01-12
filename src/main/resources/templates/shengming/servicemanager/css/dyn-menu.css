@@ -1,0 +1,190 @@
+/****** 主菜单 ******/
+.home-ns .main-menu {
+    position: relative;
+    top:40px;
+    right:30px;
+    float: right;
+    font-size: 14px;
+    color:white;
+    font-weight:600;
+}
+
+.home-ns .main-menu li {
+    position: relative;
+    float: left;
+    height: 102px;
+    display: block;
+    margin: 0 10px 0 10px;
+    cursor: pointer;
+}
+.main-menu ul{
+    padding:0;
+    margin:0;
+}
+
+.main-menu .menu-icon {
+    position: relative;
+    width:36px;
+    left: 0;
+    top:1px;
+    height: 36px;
+    z-index: 2;
+    margin:auto;
+}
+.main-menu .menu-0 {
+    background-position: 0 -15px;
+}
+.main-menu .menu-0-hover {
+    background-position: 0 -98px;
+}
+.main-menu .menu-1 {
+    background-image:url(../img/menu/servicesearch.png)
+}
+.main-menu .menu-1-hover {
+    background-image:url(../img/menu/servicesearch-hover.png)
+}
+.main-menu .menu-2 {
+   background-image:url(../img/menu/serviceregist.png)
+}
+.main-menu .menu-2-hover {
+   background-image:url(../img/menu/serviceregist-hover.png)
+}
+.main-menu .menu-3 {
+    background-image:url(../img/menu/servicemanager.png)
+}
+.main-menu .menu-3-hover {
+    background-image:url(../img/menu/servicemanager-hover.png)
+}
+.main-menu .menu-4 {
+    background-position: -320px -15px;
+}
+.main-menu .menu-4-hover {
+    background-position: -320px -97px;
+}
+
+.main-menu .menu-text {
+     position: relative;
+     left: 0;
+     text-align: center;
+     font-size: 1em;
+     z-index: 3;
+ }
+
+.main-menu a:link, #mainmenu a:visited {
+    color: #3366CC;
+    text-decoration: none;
+}
+
+.main-menu a:hover {
+    text-decoration: none;
+}
+
+.main-menu a:active {
+}
+
+.main-menu .selected-menu {
+    color: red;
+}
+
+/****** 二级菜单 ******/
+.home-ns .sub-menu{
+    position: relative;
+    left: 0; top:0;
+    height:28px; width: 100%;
+    background: none;
+    box-shadow: 1px 0 0 0 rgba(255,255,255,0.25) inset,0 1px 0 0 rgba(255,255,255,0.3) inset,0 -1px 0 0 rgba(255,255,255,0.2) inset,-1px 0 0 0 rgba(255,255,255,0.25) inset;
+    -moz-box-shadow: 1px 0 0 0 rgba(255,255,255,0.25) inset,0 1px 0 0 rgba(255,255,255,0.3) inset,0 -1px 0 0 rgba(255,255,255,0.2) inset,-1px 0 0 0 rgba(255,255,255,0.25) inset;
+    -webkit-box-shadow: 1px 0 0 0 rgba(255,255,255,0.25) inset,0 1px 0 0 rgba(255,255,255,0.3) inset,0 -1px 0 0 rgba(255,255,255,0.2) inset,-1px 0 0 0 rgba(255,255,255,0.25) inset;
+    border-bottom: 2px solid #275e91;
+    z-index: 102;
+}
+
+.sub-menu ul {
+    margin: 0 0 0 2px;
+    padding: 0;
+}
+
+.sub-menu li {
+    float: left;
+    font-size: 14px;
+    text-align: center;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.sub-menu .tabs-small {
+    position: relative;
+    top: 10px;
+    width: 140px;
+    height: 26px;
+    line-height: 28px;
+    font-size: 12px;
+    font-weight: normal;
+    background-image: url(../../img/menu/buttons.png)
+}
+
+.tabs-icon {
+	width: 124px;
+	height: 28px;
+	line-height: 28px;
+	background: url(../img/menu/center1.png);
+	background-repeat: repeat-x;
+	background-position: 0 1px;
+	color: #000
+}
+
+.tabs-icon-s {
+	background: url(../img/menu/buttons.png) -5px -7px no-repeat,
+		url(../img/menu/buttons.png) -100px -76px no-repeat !important;
+	color: #fff
+}
+
+.sub-menu .tabs-icon-s:nth-child(1) {
+	background: url(../img/menu/buttons.png) -5px -7px no-repeat,
+		url(../img/menu/buttons.png) 0 -76px no-repeat !important;
+	color: #fff;
+}
+
+.sub-menu .tabs-icon-s:last-child {
+	background: url(../img/menu/buttons.png) -5px -7px no-repeat,
+		url(../img/menu/buttons.png) -260px -76px no-repeat !important;
+	color: #fff;
+}
+.sub-menu .tabs-icon-s-selected{
+	background: url(../img/menu/buttons.png) -5px -7px no-repeat !important;
+	color: #fff;
+	line-height:28px;
+	height:28px;
+	width:124px;
+	top:0px;
+	left:2px;
+	position:absolute;
+	text-align:center;
+}
+/* 二级菜单中的第一个按钮*/
+.sub-menu .tabs-icon:nth-child(1) {
+	background: url(../img/menu/buttons.png) 0 -76px no-repeat
+}
+.sub-menu .tabs-icon-first {
+	background: url(../img/menu/buttons.png) 0 -76px no-repeat
+}
+/******************/
+
+/*二级菜单中的最后一个按钮*/
+.sub-menu .tabs-icon:last-child {
+	background: url(../img/menu/buttons.png) -260px -76px no-repeat
+}
+.sub-menu .tabs-icon-last {
+	background: url(../img/menu/buttons.png) -260px -76px no-repeat
+}
+/******************/
+.sub-menu .tabs-icon .tabTxt{
+	padding-top:2px;
+}
+.tabs-icon-s-onlyone {
+	background:url(../img/menu/buttons.png) -5px -7px no-repeat !important;
+	color: #fff;
+	width: 124px;
+	height: 28px;
+	line-height: 28px;
+}
