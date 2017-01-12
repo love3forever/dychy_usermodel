@@ -162,5 +162,9 @@ public class Department {
         this.orderIndex = orderIndex;
         this.iconID = iconID;
     }
+
+    public String getId() {
+        return id;
+    }
 }
 

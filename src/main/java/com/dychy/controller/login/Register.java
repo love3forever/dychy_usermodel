@@ -42,7 +42,7 @@ public class Register {
         user.setUserNum(uuid.toString());
         userService.saveUser(user);
         model.addAttribute("username",user.getUsername());
-        return "index";
+        return "disindex";
     }
 
 }

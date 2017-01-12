@@ -26,9 +26,10 @@ public class PrivilegeInsService implements IPrivilegeInsService {
 
     @Override
     public boolean savePrivs(PrivilegeIns privilegeIns) {
-        if (isPrivsExits(privilegeIns))
-            return false;
+//        if (isPrivsExits(privilegeIns))
+//            return false;
         this.repository.save(privilegeIns);
+        System.out.println("PrivilegeIns:["+privilegeIns.getId()+"] has created");
         return true;
     }
 
