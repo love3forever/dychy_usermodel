@@ -39,13 +39,13 @@
     </div>
     <div class="row" id="pageheader">
         <div class="page-header">
-            <h1>部门管理模块<small>科研开发室</small></h1>
+            <h1>部门管理模块<small>部门信息</small></h1>
         </div>
     </div>
     <div class="row" id="grouppanel">
         <div class="panel panel-default">
             <div class="panel-heading">
-                所属分组
+                成员管理
             </div>
             <div class="panel-body">
                 <ul class="nav nav-tabs" role="tablist" id="myTab">
@@ -55,45 +55,27 @@
 
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="home">
-                        <table class="table" th:if="${not #lists.isEmpty(allDep)}">
+                        <table class="table" th:if="${not #lists.isEmpty(depusers)}">
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>部门名称</th>
-                                <th>部门领导</th>
+                                <th>用户名</th>
+                                <th>用户昵称</th>
                                 <th>创建时间</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="dep,stat:${allDep}">
+                            <tr th:each="depuser,stat:${depusers}">
                                 <td th:text="${stat.count}"></td>
-                                <td><a th:text="${dep.departmentName}" th:href="@{'/dep/'+${dep.departmentName}}"></a></td>
-                                <td th:text="${dep.departmentLeader}"></td>
-                                <td th:text="${#dates.format(dep.effectiveTime, 'yyyy-MM-dd')}"></td>
+                                <td th:text="${depuser.username}"></td>
+                                <td th:text="${depuser.nickname}"></td>
+                                <td th:text="${#dates.format(depuser.createdTime, 'yyyy-MM-dd')}"></td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="profile">
-                        <form method="POST" th:action="@{/newdep}" th:object="${department}">
-                            <div class="form-group">
-                                <label for="departmentName">部门名称</label>
-                                <input type="text" th:field="*{departmentName}" class="form-control" id="departmentName" placeholder="部门名称"></input>
-                            </div>
-                            <div class="form-group">
-                                <label for="departmentShortName">部门名称缩写</label>
-                                <input type="text" th:field="*{departmentShortName}" class="form-control" id="departmentShortName" placeholder="部门名称缩写"></input>
-                            </div>
-                            <div class="form-group">
-                                <label for="departmentLeader">部门领导</label>
-                                <input type="text" th:field="*{departmentLeader}" class="form-control" id="departmentLeader" placeholder="部门领导"></input>
-                            </div>
-                            <div class="form-group">
-                                <label for="departmentDes">部门描述信息</label>
-                                <input type="text" th:field="*{departmentDes}" class="form-control" id="departmentDes" placeholder="部门描述信息"></input>
-                            </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
-                        </form>
+
                     </div>
                 </div>
             </div>

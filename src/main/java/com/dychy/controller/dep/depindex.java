@@ -5,12 +5,10 @@ import com.dychy.model.Department;
 import com.dychy.model.PrivilegeIns;
 import com.dychy.model.User;
 import com.dychy.model.UserPriRel;
-import com.dychy.repository.DepartmentRepository;
-import com.dychy.repository.PriInsRepository;
-import com.dychy.repository.UserPrivInsRepository;
-import com.dychy.repository.UserRepository;
+import com.dychy.repository.*;
 import com.dychy.service.DepartmentService;
 import com.dychy.service.PrivilegeInsService;
+import com.dychy.service.UserDepRelService;
 import com.dychy.service.UserPrivRelService;
 import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +40,9 @@ public class depindex {
     @Autowired
     private UserPrivInsRepository userPrivInsRepository;
 
+    @Autowired
+    private UserDepRelRepository userDepRelRepository;
+
     @RequestMapping("/dep")
     @PreAuthorize("hasAnyAuthority('root','dep')")
     public String priIndex(ModelMap modelMap) {
@@ -57,7 +58,7 @@ public class depindex {
         DepartmentService departmentService = new DepartmentService(departmentRepository);
         List<Department> allDepartment = departmentRepository.findAll();
         modelMap.addAttribute("allDep", allDepartment);
-        return "depIndex";
+        return "dep/depIndex";
     }
 
 
@@ -119,7 +120,10 @@ public class depindex {
         if (department != null) {
             UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository);
             if (userPrivRelService.isUserHasPrivs(user.getId(), department.getId())) {
-                return "200";
+                UserDepRelService userDepRelService = new UserDepRelService(userDepRelRepository, userRepository, departmentRepository);
+                List<User> depUsers = userDepRelService.getUsersBydepId(department.getId());
+                modelMap.addAttribute("depusers", depUsers);
+                return "dep/depinfo";
             }
             else
                 return "403";
