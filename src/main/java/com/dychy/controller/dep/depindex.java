@@ -112,7 +112,6 @@ public class depindex {
         modelMap.addAttribute("urls", map.get("urls"));
 
         // 判断当前用户是否有访问权限
-
         User user = (User) map.get("user");
         DepartmentService departmentService = new DepartmentService(departmentRepository);
         Department department = departmentService.getDepartmentByname(depname);
@@ -123,6 +122,7 @@ public class depindex {
                 UserDepRelService userDepRelService = new UserDepRelService(userDepRelRepository, userRepository, departmentRepository);
                 List<User> depUsers = userDepRelService.getUsersBydepId(department.getId());
                 modelMap.addAttribute("depusers", depUsers);
+                modelMap.addAttribute("avaUsers", new ArrayList<User>());
                 return "dep/depinfo";
             }
             else
