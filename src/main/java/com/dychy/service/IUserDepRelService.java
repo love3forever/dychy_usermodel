@@ -15,4 +15,6 @@ public interface IUserDepRelService {
 
     boolean addUserToDepartment(String usrid, String depId);
 
+    List<User> getUsersWithoutDep();
+
 }

@@ -59,4 +59,20 @@ public class UserDepRelService implements IUserDepRelService {
         System.out.println("UserDeptRel:["+userdepRel.getId()+"] has been created");
         return true;
     }
+
+    @Override
+    public List<User> getUsersWithoutDep() {
+        List<User> allUsers = userRepository.findAll();
+        List<User> userWithoutDep = new ArrayList<User>();
+        List<UserDeptRel> userDeptRels = userDepRelRepository.findAll();
+        for (UserDeptRel udr:
+             userDeptRels) {
+            User u = userRepository.findByid(udr.getUserId());
+            allUsers.remove(u);
+        }
+        User u = userRepository.findByusername("root");
+        allUsers.remove(u);
+        userWithoutDep = allUsers;
+        return userWithoutDep;
+    }
 }

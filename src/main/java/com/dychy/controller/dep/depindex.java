@@ -11,12 +11,12 @@ import com.dychy.service.PrivilegeInsService;
 import com.dychy.service.UserDepRelService;
 import com.dychy.service.UserPrivRelService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -45,7 +45,7 @@ public class depindex {
     public String priIndex(ModelMap modelMap) {
         indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository);
         Department department = new Department();
-        HashMap<String,Object> map = template.getModelMap();
+        HashMap<String, Object> map = template.getModelMap();
         if (map == null)
             return "redirect:/login";
         modelMap.addAttribute("user", map.get("user"));
@@ -59,12 +59,12 @@ public class depindex {
     }
 
 
-    @RequestMapping(value = "/newdep",method = RequestMethod.POST)
+    @RequestMapping(value = "/newdep", method = RequestMethod.POST)
     @PreAuthorize("hasAnyAuthority('root','dep')")
     public String addDepartment(ModelMap modelMap, Department department) {
         // 通用模板渲染
         indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository);
-        HashMap<String,Object> map = template.getModelMap();
+        HashMap<String, Object> map = template.getModelMap();
         if (map == null)
             return "redirect:/login";
         modelMap.addAttribute("user", map.get("user"));
@@ -102,7 +102,7 @@ public class depindex {
     public String depInfo(@PathVariable String depname, ModelMap modelMap) {
         // 通用模板渲染
         indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository);
-        HashMap<String,Object> map = template.getModelMap();
+        HashMap<String, Object> map = template.getModelMap();
         if (map == null)
             return "redirect:/login";
         modelMap.addAttribute("user", map.get("user"));
@@ -119,12 +119,31 @@ public class depindex {
                 UserDepRelService userDepRelService = new UserDepRelService(userDepRelRepository, userRepository, departmentRepository);
                 List<User> depUsers = userDepRelService.getUsersBydepId(department.getId());
                 modelMap.addAttribute("depusers", depUsers);
-                modelMap.addAttribute("avaUsers", new ArrayList<User>());
+                modelMap.addAttribute("depname", department);
+                // 查找当前没有部门归属的用户
+                List<User> userWithoutDep = userDepRelService.getUsersWithoutDep();
+                modelMap.addAttribute("avaUsers", userWithoutDep);
                 return "dep/depinfo";
-            }
-            else
+            } else
                 return "403";
         }
         return "403";
     }
+
+
+    @RequestMapping(value = "/dep/{depname}", method = RequestMethod.POST)
+    @PreAuthorize("hasAnyAuthority('root','dep')")
+    public String addUser2Dep(@PathVariable String depname, @RequestBody String[] addusers) {
+        System.out.println(depname);
+        String depid = departmentRepository.findBydepartmentName(depname).getId();
+        UserDepRelService userDepRelService = new UserDepRelService(userDepRelRepository, userRepository, departmentRepository);
+        for (String s:
+             addusers) {
+            System.out.println(s);
+            String userid = userRepository.findByusername(s).getId();
+            userDepRelService.addUserToDepartment(userid, depid);
+        }
+        return "redirect:/dep/"+depname;
+    }
 }
+

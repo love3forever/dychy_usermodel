@@ -4,6 +4,7 @@ import com.dychy.security.provider.MyAuthenticationProvider;
 import com.dychy.security.userdetails.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,7 +20,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configurable
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)//允许进入页面方法前检验
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements ApplicationContextAware {
 
     @Autowired
     private MyAuthenticationProvider provider;
@@ -52,12 +53,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .logout()
             .permitAll()
             .logoutUrl("/logout")
-            .logoutSuccessUrl("/login") ;
+            .logoutSuccessUrl("/login");
+
+        http.csrf().disable();
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(provider);
     }
-
 }
