@@ -13,5 +13,7 @@ public interface UserPrivInsRepository extends MongoRepository<UserPriRel,String
 
     List<UserPriRel> findBypriInsId(String priInsId);
 
+    List<UserPriRel> findBydepId(String depId);
+
 //    UserPriRel findByuserIdAndpriInsId(String userid, String priInsId);
 }

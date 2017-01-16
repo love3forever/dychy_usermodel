@@ -43,7 +43,7 @@ public class depindex {
     @RequestMapping("/dep")
     @PreAuthorize("hasAnyAuthority('root','dep')")
     public String priIndex(ModelMap modelMap) {
-        indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository);
+        indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository,userDepRelRepository);
         Department department = new Department();
         HashMap<String, Object> map = template.getModelMap();
         if (map == null)
@@ -63,7 +63,7 @@ public class depindex {
     @PreAuthorize("hasAnyAuthority('root','dep')")
     public String addDepartment(ModelMap modelMap, Department department) {
         // 通用模板渲染
-        indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository);
+        indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository,userDepRelRepository);
         HashMap<String, Object> map = template.getModelMap();
         if (map == null)
             return "redirect:/login";
@@ -90,7 +90,7 @@ public class depindex {
         userPriRel.setUserId(user.getId());
         userPriRel.setPriInsId(privilegeIns.getId());
         userPriRel.setCreatedTime(new Date());
-        UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository);
+        UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository,userDepRelRepository);
         userPrivRelService.saveUserPrivsRel(userPriRel);
 
         return "redirect:/dep";
@@ -101,7 +101,7 @@ public class depindex {
     @PreAuthorize("hasAnyAuthority('root','dep')")
     public String depInfo(@PathVariable String depname, ModelMap modelMap) {
         // 通用模板渲染
-        indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository);
+        indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository,userDepRelRepository);
         HashMap<String, Object> map = template.getModelMap();
         if (map == null)
             return "redirect:/login";
@@ -114,7 +114,7 @@ public class depindex {
         Department department = departmentService.getDepartmentByname(depname);
         System.out.println(depname);
         if (department != null) {
-            UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository);
+            UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository,userDepRelRepository);
             if (userPrivRelService.isUserHasPrivs(user.getId(), department.getId())) {
                 UserDepRelService userDepRelService = new UserDepRelService(userDepRelRepository, userRepository, departmentRepository);
                 List<User> depUsers = userDepRelService.getUsersBydepId(department.getId());
@@ -141,7 +141,9 @@ public class depindex {
              addusers) {
             System.out.println(s);
             String userid = userRepository.findByusername(s).getId();
-            userDepRelService.addUserToDepartment(userid, depid);
+            if(userDepRelService.addUserToDepartment(userid, depid)){
+
+            }
         }
         return "redirect:/dep/"+depname;
     }

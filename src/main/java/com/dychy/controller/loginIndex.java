@@ -4,6 +4,7 @@ import com.dychy.model.PrivilegeIns;
 import com.dychy.model.User;
 import com.dychy.model.UserPriRel;
 import com.dychy.repository.PriInsRepository;
+import com.dychy.repository.UserDepRelRepository;
 import com.dychy.repository.UserPrivInsRepository;
 import com.dychy.repository.UserRepository;
 import com.dychy.service.PrivilegeInsService;
@@ -35,11 +36,14 @@ public class loginIndex {
     @Autowired
     private UserPrivInsRepository userPrivInsRepository;
 
+    @Autowired
+    private UserDepRelRepository userDepRelRepository;
+
 
     @RequestMapping("/")
     public String index(ModelMap modelMap){
         // 通用模板渲染
-        indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository);
+        indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository,userDepRelRepository);
         HashMap<String,Object> map = template.getModelMap();
         if (map == null)
             return "redirect:/login";

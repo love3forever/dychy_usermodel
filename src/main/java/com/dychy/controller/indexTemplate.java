@@ -3,6 +3,7 @@ package com.dychy.controller;
 import com.dychy.model.PrivilegeIns;
 import com.dychy.model.User;
 import com.dychy.repository.PriInsRepository;
+import com.dychy.repository.UserDepRelRepository;
 import com.dychy.repository.UserPrivInsRepository;
 import com.dychy.repository.UserRepository;
 import com.dychy.service.UserPrivRelService;
@@ -25,11 +26,15 @@ public class indexTemplate {
 
     private UserPrivInsRepository userPrivInsRepository;
 
-    public indexTemplate(UserRepository userRepository, PriInsRepository priInsRepository, UserPrivInsRepository userPrivInsRepository) {
+    private UserDepRelRepository userDepRelRepository;
+
+    public indexTemplate(UserRepository userRepository, PriInsRepository priInsRepository, UserPrivInsRepository userPrivInsRepository, UserDepRelRepository userDepRelRepository) {
         this.userRepository = userRepository;
         this.priInsRepository = priInsRepository;
         this.userPrivInsRepository = userPrivInsRepository;
+        this.userDepRelRepository = userDepRelRepository;
     }
+
 
     public HashMap<String, Object> getModelMap() {
         HashMap<String, Object> indexMap = new HashMap<String, Object>();
@@ -45,7 +50,7 @@ public class indexTemplate {
         UserService userService = new UserService(userRepository);
         User currentUser = userService.getUserByLoginName(username);
         indexMap.put("user", currentUser);
-        UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository);
+        UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository,userDepRelRepository);
         List<PrivilegeIns> privs = userPrivRelService.getPrivsByUserId(currentUser.getId());
 
         List<String> urls = new ArrayList<String>();

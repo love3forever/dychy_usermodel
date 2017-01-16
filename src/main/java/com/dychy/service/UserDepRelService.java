@@ -63,7 +63,7 @@ public class UserDepRelService implements IUserDepRelService {
     @Override
     public List<User> getUsersWithoutDep() {
         List<User> allUsers = userRepository.findAll();
-        List<User> userWithoutDep = new ArrayList<User>();
+        List<User> userWithoutDep;
         List<UserDeptRel> userDeptRels = userDepRelRepository.findAll();
         for (UserDeptRel udr:
              userDeptRels) {

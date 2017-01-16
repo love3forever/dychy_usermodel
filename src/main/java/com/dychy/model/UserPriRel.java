@@ -30,6 +30,19 @@ public class UserPriRel {
     // 角色id
     private String roleId;
 
+    public UserPriRel(String userId, String priInsId, String appId, String desc, Date createdTime, String roleId, String depId) {
+        this.userId = userId;
+        this.priInsId = priInsId;
+        this.appId = appId;
+        this.desc = desc;
+        this.createdTime = createdTime;
+        this.roleId = roleId;
+        this.depId = depId;
+    }
+
+    // 部门id
+    private String depId;
+
     public UserPriRel(String userId, String priInsId, String appId, String desc, Date createdTime, String roleId) {
         this.userId = userId;
         this.priInsId = priInsId;

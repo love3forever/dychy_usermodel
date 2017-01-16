@@ -1,8 +1,10 @@
 package com.dychy.service;
 
+import com.dychy.model.Department;
 import com.dychy.model.PrivilegeIns;
 import com.dychy.model.UserPriRel;
 import com.dychy.repository.PriInsRepository;
+import com.dychy.repository.UserDepRelRepository;
 import com.dychy.repository.UserPrivInsRepository;
 import com.dychy.repository.UserRepository;
 
@@ -19,19 +21,34 @@ public class UserPrivRelService implements IUserPrivInsService {
 
     private UserPrivInsRepository userPrivInsRepository;
 
-    public UserPrivRelService(UserRepository userRepository, PriInsRepository priInsRepository, UserPrivInsRepository userPrivInsRepository) {
+    private UserDepRelRepository userDepRelRepository;
+
+    public UserPrivRelService(UserRepository userRepository, PriInsRepository priInsRepository, UserPrivInsRepository userPrivInsRepository, UserDepRelRepository userDepRelRepository) {
         this.userRepository = userRepository;
         this.priInsRepository = priInsRepository;
         this.userPrivInsRepository = userPrivInsRepository;
+        this.userDepRelRepository = userDepRelRepository;
     }
 
     @Override
     public List<PrivilegeIns> getPrivsByUserId(String userid) {
+        // 用户权限包括自身权限和归属部门附带权限
+        // 获取用户自身权限
         List<PrivilegeIns> privilegeInses = new ArrayList<PrivilegeIns>();
         List<UserPriRel> userPriRels = userPrivInsRepository.findByuserId(userid);
         for (UserPriRel u : userPriRels) {
             privilegeInses.add(priInsRepository.findByid(u.getPriInsId()));
         }
+
+        // 获取部门附带权限
+        if (userDepRelRepository.findByuserId(userid) != null) {
+            String depId = userDepRelRepository.findByuserId(userid).getDeptId();
+            List<UserPriRel> depPriRels = userPrivInsRepository.findBydepId(depId);
+            for (UserPriRel u : depPriRels) {
+                privilegeInses.add(priInsRepository.findByid(u.getPriInsId()));
+            }
+        }
+
         return privilegeInses;
     }
 
