@@ -40,6 +40,14 @@ public class UserPriRel {
         this.depId = depId;
     }
 
+    public String getDepId() {
+        return depId;
+    }
+
+    public void setDepId(String depId) {
+        this.depId = depId;
+    }
+
     // 部门id
     private String depId;
 
