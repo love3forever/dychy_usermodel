@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.ModelMap;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,6 +33,11 @@ public class indexTemplate {
 
     public HashMap<String, Object> getModelMap() {
         HashMap<String, Object> indexMap = new HashMap<String, Object>();
+        String[] firstPage = new String[]{
+            "home", "dis", "dep", "res", "pri", "map"
+        };
+        List<String> page = new ArrayList<String>();
+        Collections.addAll(page, firstPage);
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         if (username.equals("anonymousUser")) {
             return null;
@@ -45,10 +51,13 @@ public class indexTemplate {
         List<String> urls = new ArrayList<String>();
         for (PrivilegeIns priv:
                 privs) {
-            urls.add(priv.getResId());
+            if (page.contains(priv.getResId())) {
+                urls.add(priv.getResId());
+            }
         }
         indexMap.put("urls", urls);
 
         return indexMap;
     }
+
 }
