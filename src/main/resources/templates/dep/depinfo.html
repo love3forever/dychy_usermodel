@@ -120,10 +120,20 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script>
-        function addUser(event) {
+        function addUser(event)
+        {
             // 通过点击获取当前的uid，从而将用户信息添加到新增用户列表
             uid = event.target.getAttribute('uid');
             username = event.target.innerHTML;
+           var buttonArr= $("#newUser").children();
+            for(var m = buttonArr.length - 1;m>=0;m--)
+            {
+               if (buttonArr[m].innerHTML== username)
+               {
+                  return false;
+               }
+            }
+
             $('#newUser').append('<button type="button" class="newuserBtn btn btn-primary">'+username+'</button>');
         }
 
