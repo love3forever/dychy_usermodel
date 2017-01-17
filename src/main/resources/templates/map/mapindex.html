@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" ></meta>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="/static/css/main.css"></link>
+    <link rel="stylesheet" href="/static/css/map.css"></link>
+    <!--<title>-->
+    <!--<img src="../static/images/banner.jpg" width="128" height="128"/>-->
+    <!--</title>-->
+</head>
+<body onLoad="onLoad()">
+<div class="container-fluid">
+    <div class="row">
+        <div class="container-fluid" id="title">
+            <div class="navbar navbar-inverse navbar-fixed-top" id="navheader">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a href="#" class="navbar-brand">
+                            <img src="./static/img/title.jpg" style="height:25px" alt="Brand"></img>
+
+                        </a>
+                    </div>
+                    <div class="navbar-collapse collapse" role="navigation">
+                        <ul class="nav navbar-nav">
+                            <li th:each="url,stat:${urls}"><a th:text="${url}" th:href="@{'/'+${url}}"></a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">用户
+                                    <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a th:text="|当前登录用户: ${user.username}|" href="#"></a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="./logout">登出</a></li>
+                                    <li><a href="#">设置</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" id="mapDiv">
+        
+    </div>
+</div>
+</body>
+<footer>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!--天地图api-->
+    <script type="text/javascript" src="http://api.tianditu.com/api?v=4.0"></script>
+    <script>
+        var map;
+        var zoom = 12;
+        function onLoad() {
+            map = new T.Map('mapDiv', {
+                projection: 'EPSG:4326'
+  
+            });
+            map.centerAndZoom(new T.LngLat(114.54747,38.04317), zoom);
+
+            var scale = new T.Control.Scale();
+            map.addControl(scale);
+        }
+    </script>
+
+
+</footer>
+</html>
