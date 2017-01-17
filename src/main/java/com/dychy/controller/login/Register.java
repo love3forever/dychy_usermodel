@@ -7,10 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -35,8 +39,17 @@ public class Register {
 
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String postRegiste(ModelMap model,User user) {
+    public String postRegiste(ModelMap model, @Valid User user, BindingResult result) {
         UserService userService = new UserService(userRepository);
+//        model.addAttribute("user",user);
+        if(result.hasErrors()){
+            List<ObjectError> list = result.getAllErrors();
+            for(ObjectError  error:list){
+                System.out.println(error.getCode()+"---"+error.getArguments()+"---"+error.getDefaultMessage());
+            }
+
+            return "register";
+        }
         user.setCreatedTime(new Date());
         UUID uuid = UUID.randomUUID();
         user.setUserNum(uuid.toString());

@@ -11,40 +11,55 @@
 				<div class="page-header">
 					<h1>用户管理 <small>用户注册</small></h1>
 				</div>
-				<form method="POST" th:action="@{/register}" th:object="${user}">
+				
+				<form data-toggle="validator" role="form" method="POST" th:action="@{/register}" th:object="${user}">
+					<!-- <div class="alert alert-warning" th:text="${#vars['flash.message']}">
+					    <button type="button" class="close" data-dismiss="alert">&times;</button>
+					</div> -->
 					<div class="form-group">
-						<label for="username">用户名</label>
-						<input type="text" th:field="*{username}" class="form-control" id="username" placeholder="用户名"></input>
+					    <label for="inputName" class="control-label">用户名</label>
+					    <input type="text" th:field="*{username}" minlength="2" maxlength="20"  class="form-control" id="inputName" ></input>
+					    <div class="help-block with-errors"></div>
+				  	</div>
+					<div class="form-group">
+						<label for="inputEmail" class="control-label">Email</label>
+						<input type="email"  th:field="*{userEmail}" class="form-control" id="inputEmail" data-error="Bruh, that email address is invalid" ></input>
+						<div class="help-block with-errors"></div>
+					</div>
+					<div class="form-group has-feedback">
+						<label for="inputTwitter" class="control-label">用户昵称</label>
+						<input type="text" th:field="*{nickname}"  pattern="^[_A-z0-9]{1,}$" maxlength="15" class="form-control" id="inputTwitter" ></input>
+					    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+					    <div class="help-block with-errors"></div>
 					</div>
 					<div class="form-group">
-						<label for="email">邮箱</label>
-						<input type="email" th:field="*{userEmail}" class="form-control" id="email" placeholder="邮箱"></input>
+						<label for="inputPassword" class="control-label">密码</label>
+						<div class="form-inline row">
+							<div class="form-group col-sm-6">
+								<input type="password"  th:field="*{password}" data-minlength="6" class="form-control" id="inputPassword" ></input>
+								<div class="help-block">Minimum of 6 characters</div>
+								</div>
+							<div class="form-group col-sm-6">
+								<input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" placeholder="密码确认"></input>
+								<div class="help-block with-errors"></div>
+							</div>
+						</div>
 					</div>
 					<div class="form-group">
-						<label for="userName">昵称</label>
-						<input type="text" th:field="*{nickname}" class="form-control" id="userName" placeholder="昵称"></input>
-					</div>
-					<div class="form-group">
-						<label for="password">密码</label>
-						<input type="password" th:field="*{password}" class="form-control" id="password" placeholder="密码"></input>
-					</div>
-					<div class="form-group">
-						<label for="confirmpassword">确认密码</label>
-						<input type="password"  class="form-control" id="confirmpassword" placeholder="确认密码"></input>
-					</div>
-						<div class="form-group">
 						<label for="userAddress">地址</label>
-						<input type="text"  class="form-control" id="userAddress" placeholder="地址"></input>
+						<input type="text"  class="form-control" id="userAddress" placeholder="地址" ></input>
 					</div>
 					<div class="form-group">
 						<label for="userPhone">电话</label>
-						<input type="text"  class="form-control" id="userPhone" placeholder="电话"></input>
+						<input type="text"  class="form-control" id="userPhone" placeholder="电话" ></input>
 					</div>
 					<div class="form-group">
 						<label for="desc">简介</label>
-						<input type="text" class="form-control" id="desc" placeholder="简介"></input>
+						<input type="text" class="form-control" id="desc" placeholder="简介" ></input>
 					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
 				</form>
 			</div>
 		</div>
@@ -54,5 +69,7 @@
 		<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 		<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js" ></script>
 	</footer>
 </html>

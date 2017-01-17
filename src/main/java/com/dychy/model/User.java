@@ -1,7 +1,10 @@
 package com.dychy.model;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
@@ -28,18 +31,23 @@ public class User {
     }
 
     // 登录名
+    @NotEmpty(message="用户名不能为空")
+    @Size(min=2, max=20, message="用户名长度只能在2-20之间")
     private String username;
 
     // 密码
+    @Size(min=6, max=20, message="密码长度只能在6-20之间")
     private String password;
 
     // 用户名
+    @NotEmpty(message="用户昵称不能为空")
     private String nickname;
 
     // 用户编号
     private String userNum;
 
     // email地址
+    @Email(message = "请输入正确的邮箱地址")
     private String userEmail;
 
     // 地址
