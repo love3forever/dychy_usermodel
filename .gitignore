@@ -31,6 +31,5 @@ src/main/resources/templates/static/img/
 src/main/java/com/dychy/dao/
 src/main/java/com/dychy/security/token/
 
-
 /dychy_usermodel.iml
 /dychy.iml
