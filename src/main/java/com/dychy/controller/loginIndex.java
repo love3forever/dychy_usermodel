@@ -61,6 +61,37 @@ public class loginIndex {
 
     @RequestMapping("/addprivs")
     public String add(ModelMap modelMap) {
+        UserService userService = new UserService(userRepository);
+        PrivilegeInsService privilegeInsService = new PrivilegeInsService(priInsRepository);
+
+        UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository);
+
+        User u = userService.getUserByLoginName("root");
+
+        String[] privs = new String[]{
+                "root", "home", "dis", "dep", "res", "pri", "map"
+        };
+
+        for (String s:
+             privs) {
+            System.out.println("---------create PrivilegeIns---------");
+            PrivilegeIns privilegeIns = new PrivilegeIns();
+            privilegeIns.setResId(s);
+            privilegeInsService.savePrivs(privilegeIns);
+            System.out.println("---------privilegeIns---------"+"[id]:"+privilegeIns.getId());
+
+            System.out.println("---------create UserPriRel---------");
+            UserPriRel userPriRel = new UserPriRel();
+            userPriRel.setPriInsId(privilegeIns.getId());
+            userPriRel.setUserId(u.getId());
+            userPriRel.setCreatedTime(new Date());
+            userPrivRelService.saveUserPrivsRel(userPriRel);
+            System.out.println("---------UserPriRel---------"+"[id]:"+userPriRel.getId());
+
+        }
+
+
+
         return "redirect:/login";
     }
 }

@@ -1,0 +1,178 @@
+@CHARSET "UTF-8";
+/* 服务注册 */
+.rmain-container{
+    width:85%;
+    height: 99%;
+    margin:0px auto 0px auto;
+    FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,
+		startColorStr=#f9f9f9, endColorStr=#F7F1F1);
+	background: -moz-linear-gradient(top, #f9f9f9, #F7F1F1);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#f9f9f9),
+		to(#F7F1F1));
+	background: -o-linear-gradient(top, #f9f9f9, #F7F1F1);
+	background: -ms-linear-gradient(top, #f9f9f9, #F7F1F1);
+	background: linear-gradient(top, #f9f9f9, #ddd)
+}
+.home-ns .right-ctx-nobg{
+  	position: relative;
+	left: 0;
+	top: 8px;
+	height: 98%;
+	min-height:300px;
+	margin: 0;
+	overflow-y: hidden;
+	font-size: 12px;
+}
+.step-box {
+    position: relative;
+    top: 0;
+    width: 740px;
+    padding: 0;
+    margin: 0 auto;
+    border: solid 0 #d0eeff
+}
+
+.introInfo {
+    position: relative;
+    padding: 20px 0 5px 75px;
+    text-indent: 20px;
+    background: url(../img/register.png) no-repeat;
+    font-size: 15px;
+    color: #2c2fd0;
+    letter-spacing: 1px;
+    font-family: "微软雅黑";
+    line-height: 25px;
+    margin-bottom: 0;
+    cursor: default;
+}
+
+.step .step-info {
+    padding: 5px 0 5px 0;
+    font-size: 14px;
+}
+
+.step .success-info{
+    padding: 30px 0 20px 50px;
+    font-size: 16px;
+    font-weight: bold;
+    color: darkgreen;
+}
+.success-layer{
+    font-size: 14px;
+    color:#333;
+    line-height: 30px;
+    letter-spacing: 1px;
+    padding: 0 0 10px 50px;
+    text-indent:30px;
+}
+
+.step .textbox {
+    position: relative;
+    padding: 3px 5px;
+    cursor: pointer;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: solid 1px #b6cbee;
+    z-index: 1;
+}
+
+.step .textbox:hover {
+    background-color: #fff;
+}
+
+.step .bigbox {
+    width: 300px;
+}
+.step .midbox{
+    width: 206px;
+}
+
+.step .textbox a {
+    text-decoration: none;
+}
+
+.step .controls {
+    position: relative;
+}
+
+.steps .panel-pos {
+    top: 26px;
+    left: 1px;
+}
+
+.layers-ul {
+    max-height: 400px;
+}
+
+.layers-ul li {
+    float:left;
+    padding: 2px 8px 2px 0;
+    margin:4px 6px 4px 4px;
+    cursor: pointer;
+
+}
+.layers-ul li .layer-item{
+    width:120px;
+}
+
+.layer-item .layer-name{
+    color: #06942D;
+}
+
+.layers-ul li:hover {
+    background-color: #fffcd3;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.step .divider {
+    height: 1px;
+    margin: 5px 2px;
+    overflow: hidden;
+    background-color: #e5e5e5;
+    border-bottom: 1px dashed #ccc;
+}
+.step .f-mt3{
+    margin-top: 3px;
+}
+
+.nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus {
+    cursor: default;
+    background-color: #fcfcfc;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+.plainlink, .plainlink:hover{
+    color: #444;
+    text-decoration: none;
+}
+
+.steps .nec{
+    color: #ff7410;
+}
+.steps .step h4{
+    margin:4px 0 0 0;
+    font-size:16px;
+    font-family: "华文中宋";
+    font-weight:normal;
+    color: #014B92;
+    cursor: default;
+    line-height:25px;
+}
+.steps h4 .h4icon{
+    margin-top:4px;
+    margin-right:6px;
+}
+#submit-ctx{
+    width: 400px;
+    margin: 0 auto 20px;
+}
+.step .controls .promptErrorinfo{
+    clear:both;
+    padding-right:11px;
+}
+.promptinfo{
+	text-indent:12px;
+}
