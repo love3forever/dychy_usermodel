@@ -7,6 +7,39 @@
     <!--<title>-->
         <!--<img src="../static/images/banner.jpg" width="128" height="128"/>-->
     <!--</title>-->
+<script>
+       function checkform(form)
+       {
+          var reg = /^\s*|\s*$/g;
+          var departmentName= form.departmentName;
+          var departmentShortName= form.departmentShortName;
+          var departmentLeader = form.departmentLeader;
+          if (departmentName.value.replace(reg,"")=="")
+          {
+               alert ("部门名字不能为空！");
+               departmentName.focus();
+               return false;
+          }
+          else if (departmentShortName.value.replace(reg,"")=="")
+          {
+               alert ("部门缩写不能为空！");
+               departmentShortName.focus();
+               return false;
+          }
+          else if (departmentLeader.value.replace(reg,"")=="")
+          {
+               alert ("部门领导不能为空！");
+               departmentLeader.focus();
+               return false;
+          }
+          else
+          {
+            return true;
+          }
+
+
+       }
+</script>
 </head>
 <body>
 <div class="container-fluid">
@@ -79,7 +112,7 @@
                         </table>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="profile">
-                        <form method="POST" th:action="@{/newdep}" th:object="${department}">
+                        <form method="POST" th:action="@{/newdep}" th:object="${department}" onsubmit="return checkform(this)">
                             <div class="form-group">
                                 <label for="departmentName">部门名称</label>
                                 <input type="text" th:field="*{departmentName}" class="form-control" id="departmentName" placeholder="部门名称"></input>
@@ -96,7 +129,7 @@
                                 <label for="departmentDes">部门描述信息</label>
                                 <input type="text" th:field="*{departmentDes}" class="form-control" id="departmentDes" placeholder="部门描述信息"></input>
                             </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <p style=" margin:0 auto; text-align:center;"><input id="submit" class="submit" name="submit" type="submit"/></p>
                         </form>
                     </div>
                 </div>
