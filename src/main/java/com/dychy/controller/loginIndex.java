@@ -64,7 +64,7 @@ public class loginIndex {
         UserService userService = new UserService(userRepository);
         PrivilegeInsService privilegeInsService = new PrivilegeInsService(priInsRepository);
 
-        UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository);
+        UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository,userDepRelRepository);
 
         User u = userService.getUserByLoginName("root");
 

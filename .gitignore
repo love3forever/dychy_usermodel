@@ -28,8 +28,7 @@ src/main/resources/templates/static/img/
 /.idea/**
 .idea/**
 
-/src/main/resources/templates/shengming/login/*
 src/main/java/com/dychy/dao/
 src/main/java/com/dychy/security/token/
-/src/main/resources/templates/shengming/map/*
+
 
