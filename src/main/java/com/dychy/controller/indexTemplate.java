@@ -32,7 +32,7 @@ public class indexTemplate {
     public HashMap<String, Object> getModelMap() {
         HashMap<String, Object> indexMap = new HashMap<String, Object>();
         String[] firstPage = new String[]{
-            "home", "dis", "dep", "resource", "pri", "map"
+            "home", "dis", "dep", "res", "pri", "map"
         };
         List<String> page = new ArrayList<String>();
         Collections.addAll(page, firstPage);

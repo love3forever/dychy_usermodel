@@ -23,8 +23,8 @@ public class resIndex {
     private UserService userService;
 
 
-    @RequestMapping("/resource")
-    @PreAuthorize("hasAnyAuthority('root','resource')")
+    @RequestMapping("/res")
+    @PreAuthorize("hasAnyAuthority('root','res')")
     public String priIndex(ModelMap modelMap) {
         // 通用模板渲染
         indexTemplate template = new indexTemplate(userPrivRelService,userService);
@@ -34,6 +34,6 @@ public class resIndex {
         modelMap.addAttribute("user", map.get("user"));
         modelMap.addAttribute("urls", map.get("urls"));
 
-        return "resource/resIndex";
+        return "res/resIndex";
     }
 }

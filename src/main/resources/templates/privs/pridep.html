@@ -49,11 +49,11 @@
             </div>
             <div class="panel-body">
                 <table  style="width: 100%">
-                    <tr>
+                    <tr valign="top">
                         <td style="width:30%">
                             <div class="list-group" style="height:400px; overflow:auto;" th:if="${not #lists.isEmpty(allPrivs)}">
                                 <a href="#" class="list-group-item active">
-                                    权限列表
+                                    部门权限列表
                                 </a>
                                 <a href="#" th:each="priv,stat:${allPrivs}" th:text="${priv.decInfo}" th:attr="uid=${priv.resId}" onclick="addPriv(event)" class="adduser-item list-group-item"></a>
                             </div>
@@ -63,18 +63,24 @@
                                 </button>
                             </div>
                         </td>
-                        <td style="position:absolute">
-                            <div  class="list-group">
+                        <td style="width:30%">
+
+                            <p style="color:blue" >
+                                新增部门权限列表
+                            </p>
+                            <div  id = "newUser">
+
+                            </div>
+                        </td>
+                        <td style="width:40%">
+                            <div  class="list-group" id ="Existed-privilege">
                                 <a href="#" class="list-group-item active">
-                                    部门权限
+                                    部门已有权限列表
                                 </a> 
-                                <div class="list-group" style="height:400px; overflow:auto;" th:if="${not #lists.isEmpty(depPrivs)}">
-                                    <a href="#" class="list-group-item active">
-                                        权限列表
-                                    </a>
-                                    <a href="#" th:each="priv,stat:${depPrivs}" th:text="${priv.decInfo}" th:attr="uid=${priv.id}" class="adduser-item list-group-item"></a>
+
+                                <div class="list-group"  id ="ExistedPri" style="height:400px; overflow:auto;" th:if="${not #lists.isEmpty(depPrivs)}">
+                                    <a href="#" th:each="priv,stat:${depPrivs}" th:text="${priv.decInfo}" th:attr="uid=${priv.resId}" class="adduser-item list-group-item"></a>
                                 </div>
-                                <div id="newUser"></div>                            
                             </div>
                         </td>
                     </tr>
@@ -96,12 +102,21 @@
 
             resId = event.target.innerHTML;
             var buttonArr= $("#newUser").children();
+            var ExistedArr=$("#ExistedPri").children();
             for(var m = buttonArr.length - 1;m>=0;m--)
             {
                if (buttonArr[m].innerHTML== resId)
                {
                   return false;
                }
+            }
+
+            for(var m = ExistedArr.length - 1;m>=0;m--)
+            {
+               if (ExistedArr[m].innerHTML== resId)
+               {
+                 return false;
+              }
             }
             $('#newUser').append('<button type="button" class="newuserBtn btn btn-primary">'+resId+'</button>');
             $('#newUser').children().last().attr("id",uid);
