@@ -7,6 +7,9 @@ import com.dychy.repository.PriInsRepository;
 import com.dychy.repository.UserDepRelRepository;
 import com.dychy.repository.UserPrivInsRepository;
 import com.dychy.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,21 +17,26 @@ import java.util.List;
 /**
  * Created by eclipse on 2017/1/11.
  */
+@Component
 public class UserPrivRelService implements IUserPrivInsService {
+    @Autowired
     private UserRepository userRepository;
 
+    @Autowired
     private PriInsRepository priInsRepository;
 
+    @Autowired
     private UserPrivInsRepository userPrivInsRepository;
 
+    @Autowired
     private UserDepRelRepository userDepRelRepository;
 
-    public UserPrivRelService(UserRepository userRepository, PriInsRepository priInsRepository, UserPrivInsRepository userPrivInsRepository, UserDepRelRepository userDepRelRepository) {
-        this.userRepository = userRepository;
-        this.priInsRepository = priInsRepository;
-        this.userPrivInsRepository = userPrivInsRepository;
-        this.userDepRelRepository = userDepRelRepository;
-    }
+//    public UserPrivRelService(UserRepository userRepository, PriInsRepository priInsRepository, UserPrivInsRepository userPrivInsRepository, UserDepRelRepository userDepRelRepository) {
+//        this.userRepository = userRepository;
+//        this.priInsRepository = priInsRepository;
+//        this.userPrivInsRepository = userPrivInsRepository;
+//        this.userDepRelRepository = userDepRelRepository;
+//    }
 
     @Override
     public List<PrivilegeIns> getPrivsByUserId(String userid) {

@@ -20,21 +20,14 @@ import java.util.List;
  * Created by eclipse on 2017/1/12.
  */
 public class indexTemplate {
-    private UserRepository userRepository;
+    private UserPrivRelService userPrivRelService;
 
-    private PriInsRepository priInsRepository;
+    private UserService userService;
 
-    private UserPrivInsRepository userPrivInsRepository;
-
-    private UserDepRelRepository userDepRelRepository;
-
-    public indexTemplate(UserRepository userRepository, PriInsRepository priInsRepository, UserPrivInsRepository userPrivInsRepository, UserDepRelRepository userDepRelRepository) {
-        this.userRepository = userRepository;
-        this.priInsRepository = priInsRepository;
-        this.userPrivInsRepository = userPrivInsRepository;
-        this.userDepRelRepository = userDepRelRepository;
+    public indexTemplate(UserPrivRelService userPrivRelService, UserService userService) {
+        this.userPrivRelService = userPrivRelService;
+        this.userService = userService;
     }
-
 
     public HashMap<String, Object> getModelMap() {
         HashMap<String, Object> indexMap = new HashMap<String, Object>();
@@ -47,10 +40,8 @@ public class indexTemplate {
         if (username.equals("anonymousUser")) {
             return null;
         }
-        UserService userService = new UserService(userRepository);
         User currentUser = userService.getUserByLoginName(username);
         indexMap.put("user", currentUser);
-        UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository,userDepRelRepository);
         List<PrivilegeIns> privs = userPrivRelService.getPrivsByUserId(currentUser.getId());
 
         List<String> urls = new ArrayList<String>();

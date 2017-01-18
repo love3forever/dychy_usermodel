@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class Login {
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
@@ -28,7 +28,6 @@ public class Login {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String loginUser(User user) {
-        UserService userService = new UserService(userRepository);
         if (userService.verifyPasswordWithloginName(user.getUsername(), user.getPassword())) {
             System.out.println(user.toString());
         }

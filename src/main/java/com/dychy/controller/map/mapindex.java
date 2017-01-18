@@ -5,6 +5,8 @@ import com.dychy.repository.PriInsRepository;
 import com.dychy.repository.UserDepRelRepository;
 import com.dychy.repository.UserPrivInsRepository;
 import com.dychy.repository.UserRepository;
+import com.dychy.service.UserPrivRelService;
+import com.dychy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -30,11 +32,17 @@ public class mapindex {
     @Autowired
     private UserDepRelRepository userDepRelRepository;
 
+    @Autowired
+    private UserPrivRelService userPrivRelService;
+
+    @Autowired
+    private UserService userService;
+
     @PreAuthorize("hasAnyAuthority('root','map')")
     @RequestMapping("/map")
     public String mapIndex(ModelMap modelMap) {
         // 通用模板渲染
-        indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository,userDepRelRepository);
+        indexTemplate template = new indexTemplate(userPrivRelService,userService);
         HashMap<String,Object> map = template.getModelMap();
         if (map == null)
             return "redirect:/login";

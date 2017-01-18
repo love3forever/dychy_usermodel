@@ -1,10 +1,14 @@
 package com.dychy.service;
 
 import com.dychy.model.PrivilegeIns;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by eclipse on 2017/1/11.
  */
+@Service
 public interface IPrivilegeInsService {
     PrivilegeIns getPrivByresId(String resid);
     PrivilegeIns getPrivByorId(String orid);
@@ -16,4 +20,6 @@ public interface IPrivilegeInsService {
     boolean deltePrivsByorId(String orid);
 
     boolean isPrivsExits(PrivilegeIns privilegeIns);
+
+    List<PrivilegeIns> getAllPrivs();
 }

@@ -28,22 +28,18 @@ import java.util.List;
 @Controller
 public class loginIndex {
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
-    private PriInsRepository priInsRepository;
+    private PrivilegeInsService privilegeInsService;
 
     @Autowired
-    private UserPrivInsRepository userPrivInsRepository;
-
-    @Autowired
-    private UserDepRelRepository userDepRelRepository;
-
+    private UserPrivRelService userPrivRelService;
 
     @RequestMapping("/")
     public String index(ModelMap modelMap){
         // 通用模板渲染
-        indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository,userDepRelRepository);
+        indexTemplate template = new indexTemplate(userPrivRelService,userService);
         HashMap<String,Object> map = template.getModelMap();
         if (map == null)
             return "redirect:/login";
@@ -61,11 +57,6 @@ public class loginIndex {
 
     @RequestMapping("/addprivs")
     public String add(ModelMap modelMap) {
-        UserService userService = new UserService(userRepository);
-        PrivilegeInsService privilegeInsService = new PrivilegeInsService(priInsRepository);
-
-        UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository,userDepRelRepository);
-
         User u = userService.getUserByLoginName("root");
 
         String[] privs = new String[]{

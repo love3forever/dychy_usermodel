@@ -23,7 +23,7 @@ import java.util.UUID;
 @Controller
 public class Register {
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @RequestMapping(value = "/register",method = RequestMethod.GET)
     public String getRegistePage(ModelMap model){
@@ -40,7 +40,6 @@ public class Register {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String postRegiste(ModelMap model, @Valid User user, BindingResult result) {
-        UserService userService = new UserService(userRepository);
 //        model.addAttribute("user",user);
         if(result.hasErrors()){
             List<ObjectError> list = result.getAllErrors();

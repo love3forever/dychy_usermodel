@@ -6,6 +6,9 @@ import com.dychy.model.UserDeptRel;
 import com.dychy.repository.DepartmentRepository;
 import com.dychy.repository.UserDepRelRepository;
 import com.dychy.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,16 +16,20 @@ import java.util.List;
 /**
  * Created by eclipse on 2017/1/12.
  */
+@Component
 public class UserDepRelService implements IUserDepRelService {
+    @Autowired
     private UserDepRelRepository userDepRelRepository;
+    @Autowired
     private UserRepository userRepository;
+    @Autowired
     private DepartmentRepository depRepository;
 
-    public UserDepRelService(UserDepRelRepository userDepRelRepository, UserRepository userRepository, DepartmentRepository depRepository) {
-        this.userDepRelRepository = userDepRelRepository;
-        this.userRepository = userRepository;
-        this.depRepository = depRepository;
-    }
+//    public UserDepRelService(UserDepRelRepository userDepRelRepository, UserRepository userRepository, DepartmentRepository depRepository) {
+//        this.userDepRelRepository = userDepRelRepository;
+//        this.userRepository = userRepository;
+//        this.depRepository = depRepository;
+//    }
 
     @Override
     public List<User> getUsersBydepId(String depId) {

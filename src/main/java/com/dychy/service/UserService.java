@@ -3,6 +3,11 @@ package com.dychy.service;
 import com.dychy.model.PrivilegeIns;
 import com.dychy.model.User;
 import com.dychy.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +15,14 @@ import java.util.List;
 /**
  * Created by eclipse on 2017/1/9.
  */
+@Component
 public class UserService implements IUserService {
+    @Autowired
     private UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+//    public UserService(UserRepository userRepository) {
+//        this.userRepository = userRepository;
+//    }
 
     public User getUserByLoginName(String loginName) {
         return userRepository.findByusername(loginName);
@@ -24,6 +31,11 @@ public class UserService implements IUserService {
     @Override
     public User getUserByEmail(String email) {
         return userRepository.findByuserEmail(email);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
     public boolean isUserExits(User newUser) {
@@ -86,15 +98,5 @@ public class UserService implements IUserService {
         userRepository.deleteAll();
         System.out.println("Clear db");
     }
-
-    @Override
-    public List<PrivilegeIns> getPrivByUser(User user) {
-        List<PrivilegeIns> privs = new ArrayList<PrivilegeIns>();
-        PrivilegeIns pri = new PrivilegeIns();
-        pri.setResId("admin");
-        privs.add(pri);
-        return privs;
-    }
-
 
 }

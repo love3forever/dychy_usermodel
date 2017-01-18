@@ -6,13 +6,12 @@ import com.dychy.model.PrivilegeIns;
 import com.dychy.model.User;
 import com.dychy.model.UserPriRel;
 import com.dychy.repository.*;
-import com.dychy.service.DepPrivRelService;
-import com.dychy.service.UserDepRelService;
-import com.dychy.service.UserPrivRelService;
+import com.dychy.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.context.Lifecycle;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.web.PortResolverImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,26 +29,28 @@ import java.util.List;
 @Controller
 public class priindex {
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
-    private PriInsRepository priInsRepository;
+    private DepartmentService departmentService;
 
     @Autowired
-    private UserPrivInsRepository userPrivInsRepository;
+    private UserPrivRelService userPrivRelService;
 
     @Autowired
-    private UserDepRelRepository userDepRelRepository;
-
+    private DepPrivRelService depPrivRelService;
 
     @Autowired
-    private DepartmentRepository departmentRepository;
+    private PrivilegeInsService privilegeInsService;
+
+
+
 
     @RequestMapping("/pri")
     @PreAuthorize("hasAnyAuthority('root','pri')")
     public String priIndex(ModelMap modelMap) {
         // 通用模板渲染
-        indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository,userDepRelRepository);
+        indexTemplate template = new indexTemplate(userPrivRelService,userService);
         HashMap<String,Object> map = template.getModelMap();
         if (map == null)
             return "redirect:/login";
@@ -60,8 +61,8 @@ public class priindex {
         List<User> allUsers = new ArrayList<User>();
         List<Department> departments = new ArrayList<Department>();
 
-        allUsers = userRepository.findAll();
-        departments = departmentRepository.findAll();
+        allUsers = userService.getAllUsers();
+        departments = departmentService.getAllDepartment();
 
         modelMap.addAttribute("allusers", allUsers);
         modelMap.addAttribute("alldeps", departments);
@@ -74,7 +75,7 @@ public class priindex {
     @PreAuthorize("hasAnyAuthority('root','pri')")
     public String grantPri2Dep(@PathVariable String depname, ModelMap modelMap) {
         // 通用模板渲染
-        indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository,userDepRelRepository);
+        indexTemplate template = new indexTemplate(userPrivRelService,userService);
         HashMap<String,Object> map = template.getModelMap();
         if (map == null)
             return "redirect:/login";
@@ -83,15 +84,15 @@ public class priindex {
 
         // 获取部门已有权限和所有权限列表
         if (depname != null) {
-            Department department = departmentRepository.findBydepartmentName(depname);
+            Department department = departmentService.getDepartmentByname(depname);
 
             if (department != null) {
                 modelMap.addAttribute("depname", department);
-                DepPrivRelService depPrivRelService = new DepPrivRelService(userPrivInsRepository,priInsRepository);
+
                 List<PrivilegeIns> depPrivs = depPrivRelService.getPrivsByDepartmentId(department.getId());
                 modelMap.addAttribute("depPrivs", depPrivs);
 
-                List<PrivilegeIns> allPrivs = priInsRepository.findAll();
+                List<PrivilegeIns> allPrivs = privilegeInsService.getAllPrivs();
                 modelMap.addAttribute("allPrivs", allPrivs);
             }
         }
@@ -103,12 +104,11 @@ public class priindex {
     @PreAuthorize("hasAnyAuthority('root','pri')")
     public String addPrivs2Dep(@PathVariable String depname, @RequestBody String[] addprivs) {
         System.out.println(depname);
-        String depid = departmentRepository.findBydepartmentName(depname).getId();
-        UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository, userDepRelRepository);
+        String depid = departmentService.getDepartmentByname(depname).getId();
 
         for (String s:
              addprivs) {
-            PrivilegeIns pri = priInsRepository.findByresId(s);
+            PrivilegeIns pri = privilegeInsService.getPrivByresId(s);
             UserPriRel depPriRel = new UserPriRel();
             depPriRel.setDepId(depid);
             depPriRel.setPriInsId(pri.getId());
@@ -122,7 +122,7 @@ public class priindex {
     @PreAuthorize("hasAnyAuthority('root','pri')")
     public String grantPri2User(@PathVariable String username,ModelMap modelMap) {
         // 通用模板渲染
-        indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository,userDepRelRepository);
+        indexTemplate template = new indexTemplate(userPrivRelService,userService);
         HashMap<String,Object> map = template.getModelMap();
         if (map == null)
             return "redirect:/login";
@@ -131,13 +131,13 @@ public class priindex {
 
         // 获取用户已有权限和所有权限列表
         if (username != null) {
-            User userpriv = userRepository.findByusername(username);
+            User userpriv = userService.getUserByLoginName(username);
 
             if (userpriv != null) {
                 modelMap.addAttribute("username", userpriv);
-                UserPrivRelService userPrivService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository, userDepRelRepository);
-                List<PrivilegeIns> userPrivs = userPrivService.getPrivsByUserId(userpriv.getId());
-                List<PrivilegeIns> allPrivs = priInsRepository.findAll();
+
+                List<PrivilegeIns> userPrivs = userPrivRelService.getPrivsByUserId(userpriv.getId());
+                List<PrivilegeIns> allPrivs = privilegeInsService.getAllPrivs();
                 modelMap.addAttribute("userPrivs", userPrivs);
                 modelMap.addAttribute("allPrivs", allPrivs);
             }
@@ -151,12 +151,11 @@ public class priindex {
     @PreAuthorize("hasAnyAuthority('root','pri')")
     public String addPrivs2User(@PathVariable String username, @RequestBody String[] addprivs) {
         System.out.println(username);
-        String userid = userRepository.findByusername(username).getId();
-        UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository, userDepRelRepository);
+        String userid = userService.getUserByLoginName(username).getId();
 
         for (String s:
                 addprivs) {
-            PrivilegeIns pri = priInsRepository.findByresId(s);
+            PrivilegeIns pri = privilegeInsService.getPrivByresId(s);
             UserPriRel depPriRel = new UserPriRel();
             depPriRel.setUserId(userid);
             depPriRel.setPriInsId(pri.getId());

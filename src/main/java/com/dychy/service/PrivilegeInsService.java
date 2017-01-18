@@ -3,16 +3,23 @@ package com.dychy.service;
 import com.dychy.model.PrivilegeIns;
 import com.dychy.repository.PriInsRepository;
 import org.omg.CORBA.PRIVATE_MEMBER;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by eclipse on 2017/1/11.
  */
+@Component
 public class PrivilegeInsService implements IPrivilegeInsService {
+    @Autowired
     private PriInsRepository repository;
 
-    public PrivilegeInsService(PriInsRepository repository) {
-        this.repository = repository;
-    }
+//    public PrivilegeInsService(PriInsRepository repository) {
+//        this.repository = repository;
+//    }
 
     @Override
     public PrivilegeIns getPrivByresId(String resid) {
@@ -54,5 +61,10 @@ public class PrivilegeInsService implements IPrivilegeInsService {
     @Override
     public boolean isPrivsExits(PrivilegeIns privilegeIns) {
         return getPrivByorId(privilegeIns.getOrId()) != null || getPrivByresId(privilegeIns.getResId()) != null;
+    }
+
+    @Override
+    public List<PrivilegeIns> getAllPrivs() {
+        return repository.findAll();
     }
 }

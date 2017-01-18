@@ -22,25 +22,14 @@ import java.util.List;
 @Service("MyUserDetailsImpl")
 public class MyUserDetailsService implements UserDetailsService {
     @Autowired
-    private UserRepository userRepository;
-
-
-    @Autowired
-    private PriInsRepository priInsRepository;
+    private UserService userService;
 
     @Autowired
-    private UserPrivInsRepository userPrivInsRepository;
-
-    @Autowired
-    private UserDepRelRepository userDepRelRepository;
+    private UserPrivRelService userPrivRelService;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user;
-        UserService userService = new UserService(userRepository);
-
-        UserPrivRelService userPrivRelService = new UserPrivRelService(userRepository, priInsRepository, userPrivInsRepository,userDepRelRepository);
-
         try {
             user = userService.getUserByLoginName(s);
         } catch (Exception e) {
