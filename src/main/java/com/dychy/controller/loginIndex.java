@@ -60,7 +60,7 @@ public class loginIndex {
         User u = userService.getUserByLoginName("root");
 
         String[] privs = new String[]{
-                "root", "home", "dis", "dep", "res", "pri", "map"
+                "root", "home", "dis", "dep", "resource", "pri", "map"
         };
 
         String[] desc = new String[]{

@@ -13,7 +13,7 @@
                 <div class="container">
                     <div class="navbar-header">
                         <a href="#" class="navbar-brand">
-                            <img src="./static/img/title.jpg" style="height:25px" alt="Brand"></img>
+                            <img th:src="@{'/static/img/title.jpg'}" style="height:25px" alt="Brand"></img>
                         </a>
                     </div>
                     <div class="navbar-collapse collapse" role="navigation">
@@ -55,24 +55,21 @@
                                 <a href="#" class="list-group-item active">
                                     权限列表
                                 </a>
-                                <a href="#" th:each="priv,stat:${allPrivs}" th:text="${priv.resId}" th:attr="uid=${priv.id}" onclick="addPriv(event)" class="adduser-item list-group-item"></a>
+                                <a href="#" th:each="priv,stat:${allPrivs}" th:text="${priv.decInfo}" th:attr="uid=${priv.resId}" onclick="addPriv(event)" class="adduser-item list-group-item"></a>
                             </div>
                             <div>
                                 <button type="button" th:attr="name=${username.username}"  id="addButton" onclick="pushPriv()" class="btn btn-primary" >
-                                    添加用户
+                                    授予权限
                                 </button>
                             </div>
                         </td>
                         <td style="position:absolute">
                             <div  class="list-group">
-                                <a href="#" class="list-group-item active">
-                                    部门权限
-                                </a>
                                 <div class="list-group" style="height:400px; overflow:auto;" th:if="${not #lists.isEmpty(userPrivs)}">
                                     <a href="#" class="list-group-item active">
-                                        权限列表
+                                        已有权限列表
                                     </a>
-                                    <a href="#" th:each="priv,stat:${userPrivs}" th:text="${priv.resId}" th:attr="uid=${priv.id}" class="adduser-item list-group-item"></a>
+                                    <a href="#" th:each="priv,stat:${userPrivs}" th:text="${priv.decInfo}" th:attr="uid=${priv.id}" class="adduser-item list-group-item"></a>
                                 </div>
                                 <div id="newUser"></div>
                             </div>
@@ -94,7 +91,7 @@
             // 通过点击获取当前的uid，从而将用户信息添加到新增用户列表
             uid = event.target.getAttribute('uid');
             resId = event.target.innerHTML;
-           var buttonArr= $("#newUser").children();
+            var buttonArr= $("#newUser").children();
             for(var m = buttonArr.length - 1;m>=0;m--)
             {
                if (buttonArr[m].innerHTML== resId)
@@ -103,6 +100,7 @@
                }
             }
             $('#newUser').append('<button type="button" class="newuserBtn btn btn-primary">'+resId+'</button>');
+            $('#newUser').children().last().attr("id",uid);
         }
 
         function pushPriv(){
@@ -113,8 +111,8 @@
 
             var newusers = $('#newUser').children();
             for (var i = newusers.length - 1; i >= 0; i--) {
-                alert(newusers[i].innerHTML);
-                addusers.push(newusers[i].innerHTML);
+                alert(newusers[i].getAttribute("id"));
+                addusers.push(newusers[i].getAttribute("id"));
             }
 
             $.ajax({

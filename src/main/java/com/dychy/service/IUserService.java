@@ -35,4 +35,6 @@ public interface IUserService {
     boolean addUser(User user);
 
     void clearDB();
+
+    void upDateLastlogin(String username);
 }

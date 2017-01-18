@@ -1,10 +1,6 @@
 package com.dychy.controller.map;
 
 import com.dychy.controller.indexTemplate;
-import com.dychy.repository.PriInsRepository;
-import com.dychy.repository.UserDepRelRepository;
-import com.dychy.repository.UserPrivInsRepository;
-import com.dychy.repository.UserRepository;
 import com.dychy.service.UserPrivRelService;
 import com.dychy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,18 +16,6 @@ import java.util.HashMap;
  */
 @Controller
 public class mapindex {
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private PriInsRepository priInsRepository;
-
-    @Autowired
-    private UserPrivInsRepository userPrivInsRepository;
-
-    @Autowired
-    private UserDepRelRepository userDepRelRepository;
-
     @Autowired
     private UserPrivRelService userPrivRelService;
 

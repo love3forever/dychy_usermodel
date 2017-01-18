@@ -46,4 +46,8 @@ public class MyUserDetailsService implements UserDetailsService {
             }
         }
     }
+
+    public void updateLogininfo(String username) {
+        userService.upDateLastlogin(username);
+    }
 }

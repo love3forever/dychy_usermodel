@@ -6,10 +6,14 @@ import com.dychy.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,9 +24,9 @@ public class UserService implements IUserService {
     @Autowired
     private UserRepository userRepository;
 
-//    public UserService(UserRepository userRepository) {
-//        this.userRepository = userRepository;
-//    }
+    @Autowired
+    MongoTemplate mongoTemplate;
+
 
     public User getUserByLoginName(String loginName) {
         return userRepository.findByusername(loginName);
@@ -97,6 +101,12 @@ public class UserService implements IUserService {
     public void clearDB() {
         userRepository.deleteAll();
         System.out.println("Clear db");
+    }
+
+    @Override
+    public void upDateLastlogin(String username) {
+        User target = userRepository.findByusername(username);
+        mongoTemplate.upsert(new Query(Criteria.where("username").is(username)), new Update().set("lastLoginTime", new Date()).set("loginTimes",target.getLoginTimes()+1), User.class);
     }
 
 }

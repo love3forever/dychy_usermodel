@@ -39,7 +39,7 @@ public class MyAuthenticationProvider implements AuthenticationProvider {
         if (!password.equals(user.getPassword())) {
             throw new BadCredentialsException("Wrong password.");
         }
-
+        userService.updateLogininfo(user.getUsername());
         Collection<? extends GrantedAuthority> authorities = user.getAuthorities();
         return new UsernamePasswordAuthenticationToken(user, password, authorities);
     }

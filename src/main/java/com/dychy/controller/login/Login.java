@@ -30,6 +30,7 @@ public class Login {
     public String loginUser(User user) {
         if (userService.verifyPasswordWithloginName(user.getUsername(), user.getPassword())) {
             System.out.println(user.toString());
+            userService.upDateLastlogin(user.getUsername());
         }
         else{
             System.out.println("abc");

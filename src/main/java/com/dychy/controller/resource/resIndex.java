@@ -1,15 +1,15 @@
 package com.dychy.controller.resource;
 
 import com.dychy.controller.indexTemplate;
-import com.dychy.repository.PriInsRepository;
-import com.dychy.repository.UserPrivInsRepository;
-import com.dychy.repository.UserRepository;
+import com.dychy.service.UserPrivRelService;
+import com.dychy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.HashMap;
 
 /**
  * Created by eclipse on 2017/1/12.
@@ -17,22 +17,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class resIndex {
     @Autowired
-    private UserRepository userRepository;
+    private UserPrivRelService userPrivRelService;
 
     @Autowired
-    private PriInsRepository priInsRepository;
+    private UserService userService;
 
-    @Autowired
-    private UserPrivInsRepository userPrivInsRepository;
 
-    @RequestMapping("/res")
-    @PreAuthorize("hasAnyAuthority('root','res')")
+    @RequestMapping("/resource")
+    @PreAuthorize("hasAnyAuthority('root','resource')")
     public String priIndex(ModelMap modelMap) {
-//        indexTemplate template = new indexTemplate(userRepository, priInsRepository, userPrivInsRepository);
-//        modelMap = template.getModelMap();
-//        if (modelMap == null) {
-//            return "redirect:/login";
-//        }
-        return "resIndex";
+        // 通用模板渲染
+        indexTemplate template = new indexTemplate(userPrivRelService,userService);
+        HashMap<String,Object> map = template.getModelMap();
+        if (map == null)
+            return "redirect:/login";
+        modelMap.addAttribute("user", map.get("user"));
+        modelMap.addAttribute("urls", map.get("urls"));
+
+        return "resource/resIndex";
     }
 }
