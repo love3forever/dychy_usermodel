@@ -55,7 +55,7 @@ public class loginIndex {
         return "redirect:/";
     }
 
-    @RequestMapping("/addprivs")
+    @RequestMapping("/initdb")
     public String add(ModelMap modelMap) {
         User u = userService.getUserByLoginName("root");
 
@@ -63,11 +63,17 @@ public class loginIndex {
                 "root", "home", "dis", "dep", "res", "pri", "map"
         };
 
-        for (String s:
-             privs) {
+        String[] desc = new String[]{
+                "管理员", "首页", "讨论组", "部门管理", "资源管理", "权限管理", "地图管理"
+        };
+
+
+        for (int i = 0; i < privs.length; i++) {
             System.out.println("---------create PrivilegeIns---------");
             PrivilegeIns privilegeIns = new PrivilegeIns();
-            privilegeIns.setResId(s);
+            privilegeIns.setResId(privs[i]);
+            privilegeIns.setDecInfo(desc[i]);
+            privilegeIns.setCreatedTime(new Date());
             privilegeInsService.savePrivs(privilegeIns);
             System.out.println("---------privilegeIns---------"+"[id]:"+privilegeIns.getId());
 
@@ -78,10 +84,7 @@ public class loginIndex {
             userPriRel.setCreatedTime(new Date());
             userPrivRelService.saveUserPrivsRel(userPriRel);
             System.out.println("---------UserPriRel---------"+"[id]:"+userPriRel.getId());
-
         }
-
-
 
         return "redirect:/login";
     }

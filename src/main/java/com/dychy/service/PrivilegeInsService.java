@@ -4,6 +4,7 @@ import com.dychy.model.PrivilegeIns;
 import com.dychy.repository.PriInsRepository;
 import org.omg.CORBA.PRIVATE_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +18,8 @@ public class PrivilegeInsService implements IPrivilegeInsService {
     @Autowired
     private PriInsRepository repository;
 
-//    public PrivilegeInsService(PriInsRepository repository) {
-//        this.repository = repository;
-//    }
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     @Override
     public PrivilegeIns getPrivByresId(String resid) {

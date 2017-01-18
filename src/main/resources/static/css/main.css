@@ -12,6 +12,10 @@
 	float: left;
 }
 
+.indexpanel {
+	margin: 5px;
+}
+
 #navheader {
 	margin-bottom: 0px;
 }

@@ -93,6 +93,8 @@ public class depindex {
         // 完成deparment创建之后，增加对应的权限实例
         PrivilegeIns privilegeIns = new PrivilegeIns();
         privilegeIns.setResId(department.getId());
+        privilegeIns.setCreatedTime(new Date());
+        privilegeIns.setDecInfo(department.getDepartmentName());
         privilegeInsService.savePrivs(privilegeIns);
 
         // 权限实例增加之后，对root用户增加该权限实例的关联

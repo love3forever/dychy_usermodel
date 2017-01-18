@@ -22,10 +22,6 @@ public class DepPrivRelService implements IDepPrivRelService {
     @Autowired
     private PriInsRepository priRepostoty;
 
-//    public DepPrivRelService(UserPrivInsRepository userPrivInsRepository, PriInsRepository priRepostoty) {
-//        this.userPrivInsRepository = userPrivInsRepository;
-//        this.priRepostoty = priRepostoty;
-//    }
 
     @Override
     public List<PrivilegeIns> getPrivsByDepartmentId(String depId) {

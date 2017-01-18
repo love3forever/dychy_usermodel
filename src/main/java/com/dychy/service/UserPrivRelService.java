@@ -7,11 +7,20 @@ import com.dychy.repository.PriInsRepository;
 import com.dychy.repository.UserDepRelRepository;
 import com.dychy.repository.UserPrivInsRepository;
 import com.dychy.repository.UserRepository;
+import com.mongodb.BasicDBList;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.BasicQuery;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -31,31 +40,35 @@ public class UserPrivRelService implements IUserPrivInsService {
     @Autowired
     private UserDepRelRepository userDepRelRepository;
 
-//    public UserPrivRelService(UserRepository userRepository, PriInsRepository priInsRepository, UserPrivInsRepository userPrivInsRepository, UserDepRelRepository userDepRelRepository) {
-//        this.userRepository = userRepository;
-//        this.priInsRepository = priInsRepository;
-//        this.userPrivInsRepository = userPrivInsRepository;
-//        this.userDepRelRepository = userDepRelRepository;
-//    }
+
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     @Override
     public List<PrivilegeIns> getPrivsByUserId(String userid) {
         // 用户权限包括自身权限和归属部门附带权限
         // 获取用户自身权限
         List<PrivilegeIns> privilegeInses = new ArrayList<PrivilegeIns>();
-        List<UserPriRel> userPriRels = userPrivInsRepository.findByuserId(userid);
-        for (UserPriRel u : userPriRels) {
+        BasicDBList basicDBList=new BasicDBList();
+        basicDBList.add(new BasicDBObject("userId",userid));
+        List<UserPriRel> userPriRels = new ArrayList<UserPriRel>();
+        // 获取部门附带权限
+        String depId;
+        if (userDepRelRepository.findByuserId(userid) != null) {
+            depId = userDepRelRepository.findByuserId(userid).getDeptId();
+            basicDBList.add(new BasicDBObject("depId",depId));
+        }
+        DBObject obj = new BasicDBObject();
+        obj.put("$or", basicDBList);
+        Query query=new BasicQuery(obj);
+        userPriRels = mongoTemplate.find(query, UserPriRel.class);
+
+        for (UserPriRel u:
+             userPriRels) {
             privilegeInses.add(priInsRepository.findByid(u.getPriInsId()));
         }
 
-        // 获取部门附带权限
-        if (userDepRelRepository.findByuserId(userid) != null) {
-            String depId = userDepRelRepository.findByuserId(userid).getDeptId();
-            List<UserPriRel> depPriRels = userPrivInsRepository.findBydepId(depId);
-            for (UserPriRel u : depPriRels) {
-                privilegeInses.add(priInsRepository.findByid(u.getPriInsId()));
-            }
-        }
+        Collections.sort(privilegeInses);
 
         return privilegeInses;
     }
@@ -74,7 +87,6 @@ public class UserPrivRelService implements IUserPrivInsService {
 
     @Override
     public boolean isUserHasPrivs(String userid, String privid) {
-//        return userPrivInsRepository.findByuserIdAndpriInsId(userid, privid) != null;
         List<PrivilegeIns> privs = getPrivsByUserId(userid);
         for (PrivilegeIns pri:
              privs) {

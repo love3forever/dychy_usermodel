@@ -12,4 +12,9 @@ public class errors {
     public String forbidden() {
         return "403";
     }
+
+    @RequestMapping("/404")
+    public String notfound() {
+        return "404";
+    }
 }

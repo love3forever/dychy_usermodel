@@ -18,7 +18,7 @@
                     </div>
                     <div class="navbar-collapse collapse" role="navigation">
                         <ul class="nav navbar-nav">
-                            <li th:each="url,stat:${urls}"><a th:text="${url}" th:href="@{'/'+${url}}"></a></li>
+                            <li th:each="url,stat:${urls}"><a th:text="${url.decInfo}" th:href="@{'/'+${url.resId}}"></a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">

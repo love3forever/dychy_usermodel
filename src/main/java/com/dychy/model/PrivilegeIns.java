@@ -1,11 +1,14 @@
 package com.dychy.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
+
+import java.util.Date;
 
 /**
  * Created by eclipse on 2017/1/9.
  */
-public class PrivilegeIns {
+public class PrivilegeIns implements Comparable<PrivilegeIns> {
     @Id
     private String id;
 
@@ -74,6 +77,7 @@ public class PrivilegeIns {
     }
 
     // 资源id
+    @NotEmpty(message="资源id不能为空")
     private String resId;
 
     // 资源类型id
@@ -95,7 +99,13 @@ public class PrivilegeIns {
     private int forPaobj;
 
     // 描述信息
+    @NotEmpty(message="描述信息不能为空")
     private String decInfo;
+
+
+    // 创建时间
+    @NotEmpty(message="创建时间不能为空")
+    private Date createdTime;
 
     public PrivilegeIns(String resId, String restypeId, String orId, int forSystem, int forAny, int forObject, int forPaobj, String decInfo) {
         this.resId = resId;
@@ -113,5 +123,18 @@ public class PrivilegeIns {
 
     public String getId() {
         return id;
+    }
+
+    public Date getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    @Override
+    public int compareTo(PrivilegeIns o) {
+        return getCreatedTime().compareTo(o.getCreatedTime());
     }
 }

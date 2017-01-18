@@ -37,18 +37,18 @@ public class indexTemplate {
         List<String> page = new ArrayList<String>();
         Collections.addAll(page, firstPage);
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        if (username.equals("anonymousUser")) {
+        if (username==null||username.equals("anonymousUser")) {
             return null;
         }
         User currentUser = userService.getUserByLoginName(username);
         indexMap.put("user", currentUser);
         List<PrivilegeIns> privs = userPrivRelService.getPrivsByUserId(currentUser.getId());
 
-        List<String> urls = new ArrayList<String>();
+        List<PrivilegeIns> urls = new ArrayList<PrivilegeIns>();
         for (PrivilegeIns priv:
                 privs) {
             if (page.contains(priv.getResId())) {
-                urls.add(priv.getResId());
+                urls.add(priv);
             }
         }
         indexMap.put("urls", urls);

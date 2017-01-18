@@ -18,7 +18,7 @@
 					</div>
 					<div class="navbar-collapse collapse" role="navigation">
 						<ul class="nav navbar-nav">
-							<li th:each="url,stat:${urls}"><a th:text="${url}" th:href="@{'/'+${url}}"></a></li>
+							<li th:each="url,stat:${urls}"><a th:text="${url.decInfo}" th:href="@{'/'+${url.resId}}"></a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown">
@@ -39,23 +39,68 @@
 	</div>
 	<div class="row" id="pageheader">
 		<div class="page-header">
-			<h1>用户管理模块<small>科研开发室</small></h1>
+			<h1>首页</h1>
 		</div>
-	</div>
-	<div class="row" id="grouppanel">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				所属分组
-			</div>
-			<div class="panel-body">
-
-		    </div>
-			<div>
-
-			</div>
-
+		<div class="container-fluid">
+			<table  style="width: 100%">
+	            <tr>
+	                <td style="width:50%">
+						<div class="indexpanel panel panel-default">
+							<div class="panel-heading">
+								<a th:href="@{'/dis'}">讨论组</a>
+							</div>
+							<div class="panel-body">
+								<p>用于各部门内的问题讨论和交流</p>
+							</div>
+						</div>
+	                </td>
+	                <td style="position:absolute width:50%">
+	                    <div class="indexpanel panel panel-default">
+	                    	<div class="panel-heading">
+	                    		<a th:href="@{'/dep'}">部门管理</a>
+	                    	</div>
+	                    	<div class="panel-body">
+	                    		<p>用以管理部门内成员或是新建部门</p>
+	                    	</div>
+	                    </div>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td style="width:50%">
+	                   <div class="indexpanel panel panel-default">
+	                   	<div class="panel-heading">
+	                   		<a th:href="@{'/res'}">资源管理</a>
+	                   	</div>
+	                   	<div class="panel-body">
+	                   		<p>用于管理系统资源</p>
+	                   	</div>
+	                   </div>
+	                </td>
+	                <td style="position:absolute width:50%">
+	                    <div class="indexpanel panel panel-default">
+	                    	<div class="panel-heading">
+	                    		<a th:href="@{'/pri'}">权限管理</a>
+	                    	</div>
+	                    	<div class="panel-body">
+	                    		<p>管理部门和用户的权限</p>
+	                    	</div>
+	                    </div>
+	                </td>
+	            </tr>
+	             <tr>
+	                <td style="width:50%">
+	                   <div class="indexpanel panel panel-default">
+	                   	<div class="panel-heading">
+	                   		<a th:href="@{'/map'}">地图管理</a>
+	                   	</div>
+	                   	<div class="panel-body">
+	                   		<p>浏览天地图</p>
+	                   	</div>
+	                   </div>
+	                </td>
+	            </tr>
+            </table>  
 		</div>
-
 	</div>
 </div>
 </body>
