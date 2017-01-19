@@ -64,12 +64,13 @@
                             </div>
                         </td>
                         <td style="width:30%">
+                            <div  class="list-group">
+                                <a href="#" class="list-group-item active">
+                                    新增部门权限列表
+                                </a>
+                                <div id="newUser">
 
-                            <p style="color:blue" >
-                                新增部门权限列表
-                            </p>
-                            <div  id = "newUser">
-
+                                </div>
                             </div>
                         </td>
                         <td style="width:40%">
@@ -118,9 +119,15 @@
                  return false;
               }
             }
-            $('#newUser').append('<button type="button" class="newuserBtn btn btn-primary">'+resId+'</button>');
+            $('#newUser').append('<button type="button" class="newuserBtn btn btn-info">'+resId+'</button>');
             $('#newUser').children().last().attr("id",uid);
         }
+
+        $('#newUser').children().on('click', function(event) {
+            /* Act on the event */
+            alert("on");
+            event.target.remove();
+        });
 
         function pushPriv(){
             var button = $('#addButton');
@@ -130,7 +137,6 @@
             
             var newusers = $('#newUser').children();
             for (var i = newusers.length - 1; i >= 0; i--) {
-                alert(newusers[i].innerHTML);
                 addusers.push(newusers[i].getAttribute("id"));
             }
 

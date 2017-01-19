@@ -112,21 +112,20 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="profile">
                         <form method="POST" th:action="@{/newdep}" th:object="${department}" onsubmit="return checkform(this)">
-                            <div class="form-group">
                                 <label for="departmentName">部门名称</label>
-                                <input type="text" th:field="*{departmentName}" class="form-control" id="departmentName" placeholder="部门名称"></input>
+                                <input type="text" th:field="*{departmentName}" class="form-control" id="departmentName" ></input>
                             </div>
                             <div class="form-group">
                                 <label for="departmentShortName">部门名称缩写</label>
-                                <input type="text" th:field="*{departmentShortName}" class="form-control" id="departmentShortName" placeholder="部门名称缩写"></input>
+                                <input type="text" th:field="*{departmentShortName}" class="form-control" id="departmentShortName"></input>
                             </div>
                             <div class="form-group">
                                 <label for="departmentLeader">部门领导</label>
-                                <input type="text" th:field="*{departmentLeader}" class="form-control" id="departmentLeader" placeholder="部门领导"></input>
+                                <input type="text" th:field="*{departmentLeader}" class="form-control" id="departmentLeader" ></input>
                             </div>
                             <div class="form-group">
                                 <label for="departmentDes">部门描述信息</label>
-                                <input type="text" th:field="*{departmentDes}" class="form-control" id="departmentDes" placeholder="部门描述信息"></input>
+                                <input type="text" th:field="*{departmentDes}" class="form-control" id="departmentDes"></input>
                             </div>
                             <p style=" margin:0 auto; text-align:center;"><input id="submit" class="submit" name="submit" type="submit"/></p>
                         </form>
