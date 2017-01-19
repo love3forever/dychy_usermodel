@@ -64,12 +64,13 @@
                             </div>
                         </td>
                         <td style="width:30%">
+                            <div  class="list-group">
+                                <a href="#" class="list-group-item active">
+                                    新增权限列表
+                                </a>
+                                <div  id = "newUser">
 
-                            <p style="color:red" >
-                                新增权限列表
-                            </p>
-                            <div  id = "newUser">
-
+                                </div>
                             </div>
                         </td>
                         <td style="width:40%">
@@ -120,7 +121,7 @@
                  return false;
               }
             }
-            $('#newUser').append('<button type="button" class="newuserBtn btn btn-primary">'+resId+'</button>');
+            $('#newUser').append('<button type="button" class="newuserBtn btn btn-info">'+resId+'</button>');
             $('#newUser').children().last().attr("id",uid);
         }
 
