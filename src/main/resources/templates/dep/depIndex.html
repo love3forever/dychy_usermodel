@@ -112,7 +112,6 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="profile">
                         <form method="POST" th:action="@{/newdep}" th:object="${department}" onsubmit="return checkform(this)">
-                            <div class="form-group">
                                 <label for="departmentName">部门名称</label>
                                 <input type="text" th:field="*{departmentName}" class="form-control" id="departmentName" ></input>
                             </div>
