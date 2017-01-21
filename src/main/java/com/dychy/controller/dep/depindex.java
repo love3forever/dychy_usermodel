@@ -23,22 +23,6 @@ import java.util.*;
 @Controller
 public class depindex {
     @Autowired
-    private DepartmentRepository departmentRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private PriInsRepository priInsRepository;
-
-    @Autowired
-    private UserPrivInsRepository userPrivInsRepository;
-
-    @Autowired
-    private UserDepRelRepository userDepRelRepository;
-
-
-    @Autowired
     private UserService userService;
 
     @Autowired
@@ -66,7 +50,7 @@ public class depindex {
         modelMap.addAttribute("urls", map.get("urls"));
         modelMap.addAttribute("department", department);
 
-        List<Department> allDepartment = departmentRepository.findAll();
+        List<Department> allDepartment = departmentService.getAllDepartment();
         modelMap.addAttribute("allDep", allDepartment);
         return "dep/depIndex";
     }
@@ -147,12 +131,12 @@ public class depindex {
     @PreAuthorize("hasAnyAuthority('root','dep')")
     public String addUser2Dep(@PathVariable String depname, @RequestBody String[] addusers) {
         System.out.println(depname);
-        String depid = departmentRepository.findBydepartmentName(depname).getId();
+        String depid = departmentService.getDepartmentByname(depname).getId();
 
         for (String s:
              addusers) {
             System.out.println(s);
-            String userid = userRepository.findByusername(s).getId();
+            String userid = userService.getUserByLoginName(s).getId();
             if(userDepRelService.addUserToDepartment(userid, depid)){
 
             }
