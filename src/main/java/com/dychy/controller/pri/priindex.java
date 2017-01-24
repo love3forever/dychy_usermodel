@@ -5,7 +5,7 @@ import com.dychy.model.Department;
 import com.dychy.model.PrivilegeIns;
 import com.dychy.model.User;
 import com.dychy.model.UserPriRel;
-import com.dychy.service.*;
+import com.dychy.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;

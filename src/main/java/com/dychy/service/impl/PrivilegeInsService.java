@@ -1,12 +1,11 @@
-package com.dychy.service;
+package com.dychy.service.impl;
 
 import com.dychy.model.PrivilegeIns;
 import com.dychy.repository.PriInsRepository;
-import org.omg.CORBA.PRIVATE_MEMBER;
+import com.dychy.service.dao.IPrivilegeInsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

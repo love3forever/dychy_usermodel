@@ -30,8 +30,9 @@
 
 #register-group {
 	margin-top: 10px;
-	margin-left: 10px;
+	margin-left: auto;
 	margin-bottom: 10px;
+	margin-right:auto;
 }
 
 #register-group input {
@@ -46,8 +47,9 @@
 
 #login-group {
 	margin-top: 10px;
-	margin-left: 10px;
+	margin-left: auto;
 	margin-bottom: 10px;
+	margin-right:auto;
 }
 
 #login-group input {
@@ -94,4 +96,9 @@ div.popover.left {
 
 div.row.message {
 	margin-top: 3px;
+}
+
+
+.row {
+    text-align:center;
 }

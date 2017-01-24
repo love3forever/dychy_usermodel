@@ -1,18 +1,15 @@
-package com.dychy.service;
+package com.dychy.service.impl;
 
-import com.dychy.model.PrivilegeIns;
 import com.dychy.model.User;
 import com.dychy.repository.UserRepository;
+import com.dychy.service.dao.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

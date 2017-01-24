@@ -1,23 +1,20 @@
-package com.dychy.service;
+package com.dychy.service.impl;
 
-import com.dychy.model.Department;
 import com.dychy.model.PrivilegeIns;
 import com.dychy.model.UserPriRel;
 import com.dychy.repository.PriInsRepository;
 import com.dychy.repository.UserDepRelRepository;
 import com.dychy.repository.UserPrivInsRepository;
 import com.dychy.repository.UserRepository;
+import com.dychy.service.dao.IUserPrivInsService;
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.BasicQuery;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,8 +1,8 @@
 package com.dychy.controller.resource;
 
 import com.dychy.controller.indexTemplate;
-import com.dychy.service.UserPrivRelService;
-import com.dychy.service.UserService;
+import com.dychy.service.impl.UserPrivRelService;
+import com.dychy.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;

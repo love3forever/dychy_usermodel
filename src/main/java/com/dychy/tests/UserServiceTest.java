@@ -1,15 +1,11 @@
 package com.dychy.tests;
 
-import com.dychy.model.User;
 import com.dychy.repository.UserRepository;
-import com.dychy.service.UserService;
+import com.dychy.service.impl.UserService;
 import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static junit.framework.TestCase.assertTrue;
 

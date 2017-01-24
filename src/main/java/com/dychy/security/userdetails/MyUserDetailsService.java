@@ -2,12 +2,8 @@ package com.dychy.security.userdetails;
 
 import com.dychy.model.PrivilegeIns;
 import com.dychy.model.User;
-import com.dychy.repository.PriInsRepository;
-import com.dychy.repository.UserDepRelRepository;
-import com.dychy.repository.UserPrivInsRepository;
-import com.dychy.repository.UserRepository;
-import com.dychy.service.UserPrivRelService;
-import com.dychy.service.UserService;
+import com.dychy.service.impl.UserPrivRelService;
+import com.dychy.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

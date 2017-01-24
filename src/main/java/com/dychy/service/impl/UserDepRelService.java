@@ -1,4 +1,4 @@
-package com.dychy.service;
+package com.dychy.service.impl;
 
 import com.dychy.model.Department;
 import com.dychy.model.User;
@@ -6,9 +6,9 @@ import com.dychy.model.UserDeptRel;
 import com.dychy.repository.DepartmentRepository;
 import com.dychy.repository.UserDepRelRepository;
 import com.dychy.repository.UserRepository;
+import com.dychy.service.dao.IUserDepRelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;

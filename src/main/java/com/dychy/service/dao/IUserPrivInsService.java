@@ -1,4 +1,4 @@
-package com.dychy.service;
+package com.dychy.service.dao;
 
 import com.dychy.model.PrivilegeIns;
 import com.dychy.model.UserPriRel;

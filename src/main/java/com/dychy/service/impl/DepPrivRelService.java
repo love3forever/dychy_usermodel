@@ -1,12 +1,12 @@
-package com.dychy.service;
+package com.dychy.service.impl;
 
 import com.dychy.model.PrivilegeIns;
 import com.dychy.model.UserPriRel;
 import com.dychy.repository.PriInsRepository;
 import com.dychy.repository.UserPrivInsRepository;
+import com.dychy.service.dao.IDepPrivRelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;

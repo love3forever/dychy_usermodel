@@ -1,8 +1,7 @@
 package com.dychy.controller.login;
 
 import com.dychy.model.User;
-import com.dychy.repository.UserRepository;
-import com.dychy.service.UserService;
+import com.dychy.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
