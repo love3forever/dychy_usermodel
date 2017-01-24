@@ -28,7 +28,6 @@ public class DepartmentService{
         return departmentRepository.findByid(id);
     }
 
-
     public Department getDepartmentByname(String departmentName) {
         return departmentRepository.findBydepartmentName(departmentName);
     }
