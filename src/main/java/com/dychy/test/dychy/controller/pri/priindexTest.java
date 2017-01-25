@@ -1,25 +1,24 @@
-package test.com.dychy.service.impl; 
+package com.dychy.test.dychy.controller.pri;
 
 import org.junit.Test; 
 import org.junit.Before; 
 import org.junit.After; 
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 /** 
-* DepartmentService Tester. 
+* priindex Tester. 
 * 
 * @author eclipsesv 
-* @since <pre>Jan 24, 2017</pre> 
+* @since <pre>Jan 25, 2017</pre> 
 * @version 1.0 
 */ 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @WebAppConfiguration
-public class DepartmentServiceTest { 
+public class priindexTest { 
 
     @Before
     public void before() throws Exception { 
@@ -31,61 +30,51 @@ public class DepartmentServiceTest {
     
         /** 
     * 
-    * Method: getDepartmentByid(String id) 
+    * Method: priIndex(ModelMap modelMap) 
     * 
     */ 
     @Test
-    public void testGetDepartmentByid() throws Exception { 
+    public void testPriIndex() throws Exception { 
     //TODO: Test goes here... 
     } 
     
         /** 
     * 
-    * Method: getDepartmentByname(String departmentName) 
+    * Method: grantPri2Dep(@PathVariable String depname, ModelMap modelMap) 
     * 
     */ 
     @Test
-    public void testGetDepartmentByname() throws Exception { 
+    public void testGrantPri2Dep() throws Exception { 
     //TODO: Test goes here... 
     } 
     
         /** 
     * 
-    * Method: getDepartmentByleader(String departmentLeader) 
+    * Method: addPrivs2Dep(@PathVariable String depname, @RequestBody String[] addprivs) 
     * 
     */ 
     @Test
-    public void testGetDepartmentByleader() throws Exception { 
+    public void testAddPrivs2Dep() throws Exception { 
     //TODO: Test goes here... 
     } 
     
         /** 
     * 
-    * Method: getDepartmentByParentId(String departmentParentID) 
+    * Method: grantPri2User(@PathVariable String username, ModelMap modelMap) 
     * 
     */ 
     @Test
-    public void testGetDepartmentByParentId() throws Exception { 
+    public void testGrantPri2User() throws Exception { 
     //TODO: Test goes here... 
     } 
     
         /** 
     * 
-    * Method: saveDepartment(Department department) 
+    * Method: addPrivs2User(@PathVariable String username, @RequestBody String[] addprivs) 
     * 
     */ 
     @Test
-    public void testSaveDepartment() throws Exception { 
-    //TODO: Test goes here... 
-    } 
-    
-        /** 
-    * 
-    * Method: getAllDepartment() 
-    * 
-    */ 
-    @Test
-    public void testGetAllDepartment() throws Exception { 
+    public void testAddPrivs2User() throws Exception { 
     //TODO: Test goes here... 
     } 
     

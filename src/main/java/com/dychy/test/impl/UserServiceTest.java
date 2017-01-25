@@ -1,10 +1,9 @@
-package test.com.dychy.service.impl; 
+package com.dychy.test.impl;
 
 import org.junit.Test; 
 import org.junit.Before; 
 import org.junit.After; 
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -13,7 +12,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 * UserService Tester. 
 * 
 * @author eclipsesv 
-* @since <pre>Jan 24, 2017</pre> 
+* @since <pre>Jan 25, 2017</pre> 
 * @version 1.0 
 */ 
 @RunWith(SpringJUnit4ClassRunner.class)

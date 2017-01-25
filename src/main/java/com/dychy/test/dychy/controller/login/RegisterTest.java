@@ -1,25 +1,24 @@
-package test.com.dychy.service.impl; 
+package com.dychy.test.dychy.controller.login;
 
 import org.junit.Test; 
 import org.junit.Before; 
 import org.junit.After; 
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 /** 
-* DepPrivRelService Tester. 
+* Register Tester. 
 * 
 * @author eclipsesv 
-* @since <pre>Jan 24, 2017</pre> 
+* @since <pre>Jan 25, 2017</pre> 
 * @version 1.0 
 */ 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @WebAppConfiguration
-public class DepPrivRelServiceTest { 
+public class RegisterTest { 
 
     @Before
     public void before() throws Exception { 
@@ -31,21 +30,21 @@ public class DepPrivRelServiceTest {
     
         /** 
     * 
-    * Method: getPrivsByDepartmentId(String depId) 
+    * Method: getRegistePage(ModelMap model) 
     * 
     */ 
     @Test
-    public void testGetPrivsByDepartmentId() throws Exception { 
+    public void testGetRegistePage() throws Exception { 
     //TODO: Test goes here... 
     } 
     
         /** 
     * 
-    * Method: savePrivsWithDep(String depId, String resId) 
+    * Method: postRegiste(ModelMap model, @Valid User user, BindingResult result) 
     * 
     */ 
     @Test
-    public void testSavePrivsWithDep() throws Exception { 
+    public void testPostRegiste() throws Exception { 
     //TODO: Test goes here... 
     } 
     

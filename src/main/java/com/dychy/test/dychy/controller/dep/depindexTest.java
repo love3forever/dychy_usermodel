@@ -1,25 +1,24 @@
-package test.com.dychy.service.impl; 
+package com.dychy.test.dychy.controller.dep;
 
 import org.junit.Test; 
 import org.junit.Before; 
 import org.junit.After; 
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 /** 
-* UserPrivRelService Tester. 
+* depindex Tester. 
 * 
 * @author eclipsesv 
-* @since <pre>Jan 24, 2017</pre> 
+* @since <pre>Jan 25, 2017</pre> 
 * @version 1.0 
 */ 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @WebAppConfiguration
-public class UserPrivRelServiceTest { 
+public class depindexTest { 
 
     @Before
     public void before() throws Exception { 
@@ -31,41 +30,41 @@ public class UserPrivRelServiceTest {
     
         /** 
     * 
-    * Method: getPrivsByUserId(String userid) 
+    * Method: priIndex(ModelMap modelMap) 
     * 
     */ 
     @Test
-    public void testGetPrivsByUserId() throws Exception { 
+    public void testPriIndex() throws Exception { 
     //TODO: Test goes here... 
     } 
     
         /** 
     * 
-    * Method: saveUserPrivsRel(UserPriRel userPriRel) 
+    * Method: addDepartment(ModelMap modelMap, Department department) 
     * 
     */ 
     @Test
-    public void testSaveUserPrivsRel() throws Exception { 
+    public void testAddDepartment() throws Exception { 
     //TODO: Test goes here... 
     } 
     
         /** 
     * 
-    * Method: deleteUserPrivsRelWithUserid(String userid) 
+    * Method: depInfo(@PathVariable String depname, ModelMap modelMap) 
     * 
     */ 
     @Test
-    public void testDeleteUserPrivsRelWithUserid() throws Exception { 
+    public void testDepInfo() throws Exception { 
     //TODO: Test goes here... 
     } 
     
         /** 
     * 
-    * Method: isUserHasPrivs(String userid, String privid) 
+    * Method: addUser2Dep(@PathVariable String depname, @RequestBody String[] addusers) 
     * 
     */ 
     @Test
-    public void testIsUserHasPrivs() throws Exception { 
+    public void testAddUser2Dep() throws Exception { 
     //TODO: Test goes here... 
     } 
     

@@ -1,25 +1,24 @@
-package test.com.dychy.service.impl; 
+package com.dychy.test.impl;
 
 import org.junit.Test; 
 import org.junit.Before; 
 import org.junit.After; 
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 /** 
-* PrivilegeInsService Tester. 
+* DepartmentService Tester. 
 * 
 * @author eclipsesv 
-* @since <pre>Jan 24, 2017</pre> 
+* @since <pre>Jan 25, 2017</pre> 
 * @version 1.0 
 */ 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @WebAppConfiguration
-public class PrivilegeInsServiceTest { 
+public class DepartmentServiceTest { 
 
     @Before
     public void before() throws Exception { 
@@ -31,71 +30,61 @@ public class PrivilegeInsServiceTest {
     
         /** 
     * 
-    * Method: getPrivByresId(String resid) 
+    * Method: getDepartmentByid(String id) 
     * 
     */ 
     @Test
-    public void testGetPrivByresId() throws Exception { 
+    public void testGetDepartmentByid() throws Exception { 
     //TODO: Test goes here... 
     } 
     
         /** 
     * 
-    * Method: getPrivByorId(String orid) 
+    * Method: getDepartmentByname(String departmentName) 
     * 
     */ 
     @Test
-    public void testGetPrivByorId() throws Exception { 
+    public void testGetDepartmentByname() throws Exception { 
     //TODO: Test goes here... 
     } 
     
         /** 
     * 
-    * Method: savePrivs(PrivilegeIns privilegeIns) 
+    * Method: getDepartmentByleader(String departmentLeader) 
     * 
     */ 
     @Test
-    public void testSavePrivs() throws Exception { 
+    public void testGetDepartmentByleader() throws Exception { 
     //TODO: Test goes here... 
     } 
     
         /** 
     * 
-    * Method: deletePrivsByresId(String resid) 
+    * Method: getDepartmentByParentId(String departmentParentID) 
     * 
     */ 
     @Test
-    public void testDeletePrivsByresId() throws Exception { 
+    public void testGetDepartmentByParentId() throws Exception { 
     //TODO: Test goes here... 
     } 
     
         /** 
     * 
-    * Method: deltePrivsByorId(String orid) 
+    * Method: saveDepartment(Department department) 
     * 
     */ 
     @Test
-    public void testDeltePrivsByorId() throws Exception { 
+    public void testSaveDepartment() throws Exception { 
     //TODO: Test goes here... 
     } 
     
         /** 
     * 
-    * Method: isPrivsExits(PrivilegeIns privilegeIns) 
+    * Method: getAllDepartment() 
     * 
     */ 
     @Test
-    public void testIsPrivsExits() throws Exception { 
-    //TODO: Test goes here... 
-    } 
-    
-        /** 
-    * 
-    * Method: getAllPrivs() 
-    * 
-    */ 
-    @Test
-    public void testGetAllPrivs() throws Exception { 
+    public void testGetAllDepartment() throws Exception { 
     //TODO: Test goes here... 
     } 
     
