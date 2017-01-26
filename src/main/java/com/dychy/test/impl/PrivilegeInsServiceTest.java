@@ -35,7 +35,7 @@ public class PrivilegeInsServiceTest {
     */ 
     @Test
     public void testGetPrivByresId() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
     } 
     
         /** 
@@ -45,7 +45,7 @@ public class PrivilegeInsServiceTest {
     */ 
     @Test
     public void testGetPrivByorId() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
     } 
     
         /** 
@@ -55,7 +55,7 @@ public class PrivilegeInsServiceTest {
     */ 
     @Test
     public void testSavePrivs() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
     } 
     
         /** 
@@ -65,7 +65,7 @@ public class PrivilegeInsServiceTest {
     */ 
     @Test
     public void testDeletePrivsByresId() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
     } 
     
         /** 
@@ -75,7 +75,7 @@ public class PrivilegeInsServiceTest {
     */ 
     @Test
     public void testDeltePrivsByorId() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
     } 
     
         /** 
@@ -85,7 +85,7 @@ public class PrivilegeInsServiceTest {
     */ 
     @Test
     public void testIsPrivsExits() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
     } 
     
         /** 
@@ -95,7 +95,7 @@ public class PrivilegeInsServiceTest {
     */ 
     @Test
     public void testGetAllPrivs() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
     } 
     
         

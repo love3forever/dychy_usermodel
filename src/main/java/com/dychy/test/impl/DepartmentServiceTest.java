@@ -1,12 +1,18 @@
 package com.dychy.test.impl;
 
-import org.junit.Test; 
+import com.dychy.model.Department;
+import com.dychy.service.impl.DepartmentService;
+import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After; 
 import org.junit.runner.RunWith;
+import org.omg.CORBA.PRIVATE_MEMBER;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+
+import java.util.Date;
 
 /** 
 * DepartmentService Tester. 
@@ -18,14 +24,21 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @WebAppConfiguration
-public class DepartmentServiceTest { 
+public class DepartmentServiceTest {
+    @Autowired
+    private DepartmentService departmentService;
 
     @Before
-    public void before() throws Exception { 
-    } 
+    public void before() throws Exception {
+        Department department = new Department();
+        department.setDepartmentName("luoning");
+        department.setEffectiveTime(new Date());
+    }
+
     
     @After
-    public void after() throws Exception { 
+    public void after() throws Exception {
+
     } 
     
         /** 
@@ -35,7 +48,7 @@ public class DepartmentServiceTest {
     */ 
     @Test
     public void testGetDepartmentByid() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
     } 
     
         /** 
@@ -45,7 +58,7 @@ public class DepartmentServiceTest {
     */ 
     @Test
     public void testGetDepartmentByname() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
     } 
     
         /** 

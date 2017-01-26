@@ -35,7 +35,7 @@ public class DepPrivRelServiceTest {
     */ 
     @Test
     public void testGetPrivsByDepartmentId() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
     } 
     
         /** 
@@ -45,7 +45,7 @@ public class DepPrivRelServiceTest {
     */ 
     @Test
     public void testSavePrivsWithDep() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
     } 
     
         

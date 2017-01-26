@@ -1,12 +1,22 @@
 package com.dychy.test.impl;
 
-import org.junit.Test; 
+import com.dychy.model.User;
+import com.dychy.service.impl.UserService;
+import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After; 
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertTrue;
 
 /** 
 * UserService Tester. 
@@ -18,14 +28,25 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @WebAppConfiguration
-public class UserServiceTest { 
+public class UserServiceTest {
+
+    @Autowired
+    private UserService userService;
 
     @Before
-    public void before() throws Exception { 
+    public void before() throws Exception {
+        User user = new User();
+        user.setUsername("wangyao");
+        user.setUserEmail("wangyao@163.com");
+        user.setPassword("abc@123");
+        user.setNickname("wy");
+        user.setCreatedTime(new Date());
+        userService.saveUser(user);
     } 
     
     @After
-    public void after() throws Exception { 
+    public void after() throws Exception {
+        userService.deleteUserByloginName("wangyao");
     } 
     
         /** 
@@ -34,8 +55,10 @@ public class UserServiceTest {
     * 
     */ 
     @Test
-    public void testGetUserByLoginName() throws Exception { 
-    //TODO: Test goes here... 
+    public void testGetUserByLoginName() throws Exception {
+        //TODO: Test goes here...
+        User u = userService.getUserByLoginName("wangyao");
+        assertTrue(u.getUsername().equals("wangyao"));
     } 
     
         /** 
@@ -45,7 +68,9 @@ public class UserServiceTest {
     */ 
     @Test
     public void testGetUserByEmail() throws Exception { 
-    //TODO: Test goes here... 
+    //TODO: Test goes here...
+        User u = userService.getUserByEmail("wangyao@163.com");
+        assertTrue(u.getUsername().equals("wangyao"));
     } 
     
         /** 
@@ -55,7 +80,15 @@ public class UserServiceTest {
     */ 
     @Test
     public void testGetAllUsers() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
+        List<User> users = new ArrayList<User>();
+        users = userService.getAllUsers();
+        for (User u :
+                users) {
+            if (u.getUsername().equals("wangyao")) {
+                assertTrue(true);
+            }
+        }
     } 
     
         /** 
@@ -65,7 +98,10 @@ public class UserServiceTest {
     */ 
     @Test
     public void testIsUserExits() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
+        User u = new User();
+        u.setUsername("wangyao");
+        assertTrue(userService.isUserExits(u));
     } 
     
         /** 
@@ -75,7 +111,10 @@ public class UserServiceTest {
     */ 
     @Test
     public void testSaveUser() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
+        User u = new User();
+        u.setUsername("wangyao");
+        assertTrue(userService.saveUser(u)==false);
     } 
     
         /** 
@@ -85,7 +124,8 @@ public class UserServiceTest {
     */ 
     @Test
     public void testDeleteUserByloginName() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
+
     } 
     
         /** 
@@ -95,7 +135,7 @@ public class UserServiceTest {
     */ 
     @Test
     public void testDeleteUserByemail() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
     } 
     
         /** 
@@ -105,7 +145,8 @@ public class UserServiceTest {
     */ 
     @Test
     public void testVerifyPasswordWithloginName() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
+        assertTrue(userService.verifyPasswordWithloginName("wangyao","abc@123"));
     } 
     
         /** 
@@ -115,7 +156,8 @@ public class UserServiceTest {
     */ 
     @Test
     public void testVerifyPasswordWithEmail() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
+        assertTrue(userService.verifyPasswordWithEmail("wangyao@163.com","abc@123"));
     } 
     
         /** 
@@ -125,7 +167,7 @@ public class UserServiceTest {
     */ 
     @Test
     public void testInitDB() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
     } 
     
         /** 
@@ -135,7 +177,10 @@ public class UserServiceTest {
     */ 
     @Test
     public void testAddUser() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
+        User u = new User();
+        u.setUsername("wangyao");
+        assertFalse(userService.addUser(u));
     } 
     
         /** 
@@ -145,7 +190,7 @@ public class UserServiceTest {
     */ 
     @Test
     public void testClearDB() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
     } 
     
         /** 
@@ -155,7 +200,7 @@ public class UserServiceTest {
     */ 
     @Test
     public void testUpDateLastlogin() throws Exception { 
-    //TODO: Test goes here... 
+        //TODO: Test goes here...
     } 
     
         
