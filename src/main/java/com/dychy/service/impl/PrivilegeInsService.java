@@ -66,4 +66,9 @@ public class PrivilegeInsService implements IPrivilegeInsService {
     public List<PrivilegeIns> getAllPrivs() {
         return repository.findAll();
     }
+
+    @Override
+    public List<PrivilegeIns> getPrivsByuserid(String userid) {
+        return null;
+    }
 }

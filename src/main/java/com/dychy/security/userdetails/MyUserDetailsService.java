@@ -1,7 +1,9 @@
 package com.dychy.security.userdetails;
 
 import com.dychy.model.PrivilegeIns;
+import com.dychy.model.Resource;
 import com.dychy.model.User;
+import com.dychy.service.impl.ResourceService;
 import com.dychy.service.impl.UserPrivRelService;
 import com.dychy.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     private UserPrivRelService userPrivRelService;
 
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user;
@@ -35,8 +38,8 @@ public class MyUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("no user found");
         } else {
             try {
-                List<PrivilegeIns> privs = userPrivRelService.getPrivsByUserId(user.getId());
-                return new MyUserDetails(user, privs);
+                List<Resource> res = userPrivRelService.getResourceByuserid(user.getId());
+                return new MyUserDetails(user, res);
             } catch (Exception e) {
                 throw new UsernameNotFoundException("user role select fail");
             }

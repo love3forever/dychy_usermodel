@@ -22,4 +22,6 @@ public interface IPrivilegeInsService {
     boolean isPrivsExits(PrivilegeIns privilegeIns);
 
     List<PrivilegeIns> getAllPrivs();
+
+    List<PrivilegeIns> getPrivsByuserid(String userid);
 }

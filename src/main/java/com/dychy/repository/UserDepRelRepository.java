@@ -14,5 +14,4 @@ import java.util.List;
 public interface UserDepRelRepository extends MongoRepository<UserDeptRel,String> {
     List<UserDeptRel> findBydeptId(String deptId);
     UserDeptRel findByuserId(String userId);
-
 }

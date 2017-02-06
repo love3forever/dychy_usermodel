@@ -42,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements A
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-            .antMatchers("/addprivs","/logout","/register","/static/**").permitAll()
+            .antMatchers("/addprivs","/initdb","/logout","/register","/static/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .formLogin()

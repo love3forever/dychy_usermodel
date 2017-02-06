@@ -1,6 +1,7 @@
 package com.dychy.service.dao;
 
 import com.dychy.model.PrivilegeIns;
+import com.dychy.model.Resource;
 import com.dychy.model.UserPriRel;
 import org.springframework.stereotype.Service;
 
@@ -19,4 +20,5 @@ public interface IUserPrivInsService {
 
     boolean isUserHasPrivs(String userid, String privid);
 
+    List<Resource> getResourceByuserid(String id);
 }

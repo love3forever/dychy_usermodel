@@ -1,9 +1,11 @@
 package com.dychy.controller;
 
 import com.dychy.model.PrivilegeIns;
+import com.dychy.model.Resource;
 import com.dychy.model.User;
 import com.dychy.service.impl.UserPrivRelService;
 import com.dychy.service.impl.UserService;
+import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.ArrayList;
@@ -37,13 +39,13 @@ public class indexTemplate {
         }
         User currentUser = userService.getUserByLoginName(username);
         indexMap.put("user", currentUser);
-        List<PrivilegeIns> privs = userPrivRelService.getPrivsByUserId(currentUser.getId());
+        List<Resource> res = userPrivRelService.getResourceByuserid(currentUser.getId());
 
-        List<PrivilegeIns> urls = new ArrayList<PrivilegeIns>();
-        for (PrivilegeIns priv:
-                privs) {
-            if (page.contains(priv.getResId())) {
-                urls.add(priv);
+        List<Resource> urls = new ArrayList<Resource>();
+        for (Resource r:
+                res) {
+            if (r.getResType() == 0 && page.contains(r.getResURL())) {
+                urls.add(r);
             }
         }
         indexMap.put("urls", urls);

@@ -1,6 +1,7 @@
 package com.dychy.service.impl;
 
 import com.dychy.model.PrivilegeIns;
+import com.dychy.model.Resource;
 import com.dychy.model.UserPriRel;
 import com.dychy.repository.PriInsRepository;
 import com.dychy.repository.UserDepRelRepository;
@@ -37,6 +38,8 @@ public class UserPrivRelService implements IUserPrivInsService {
     @Autowired
     private UserDepRelRepository userDepRelRepository;
 
+    @Autowired
+    private ResourceService resourceService;
 
     @Autowired
     private MongoTemplate mongoTemplate;
@@ -93,4 +96,18 @@ public class UserPrivRelService implements IUserPrivInsService {
         }
         return false;
     }
+
+    @Override
+    public List<Resource> getResourceByuserid(String id) {
+        List<PrivilegeIns> privs = priInsRepository.findByuserid(id);
+        Collections.sort(privs);
+        List<Resource> resource = new ArrayList<Resource>();
+        for (PrivilegeIns p:
+             privs) {
+            resource.add(resourceService.getResbyid(p.getResId()));
+        }
+
+        return resource;
+    }
+
 }

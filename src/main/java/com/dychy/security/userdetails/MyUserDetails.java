@@ -1,6 +1,7 @@
 package com.dychy.security.userdetails;
 
 import com.dychy.model.PrivilegeIns;
+import com.dychy.model.Resource;
 import com.dychy.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -13,21 +14,21 @@ import java.util.List;
  * Created by eclipse on 2017/1/10.
  */
 public class MyUserDetails extends User implements UserDetails{
-    private List<PrivilegeIns> privs;
+    private List<Resource> resources;
 
-    public MyUserDetails(User user, List<PrivilegeIns> privs) {
+    public MyUserDetails(User user, List<Resource> resources) {
         super(user);
-        this.privs = privs;
+        this.resources = resources;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(privs == null || privs.size() <1){
+        if(resources == null || resources.size() <1){
             return AuthorityUtils.commaSeparatedStringToAuthorityList("");
         }
         StringBuilder commaBuilder = new StringBuilder();
-        for(PrivilegeIns pri : privs){
-            commaBuilder.append(pri.getResId()).append(",");
+        for(Resource r : resources){
+            commaBuilder.append(r.getResURL()).append(",");
         }
         String authorities = commaBuilder.substring(0,commaBuilder.length()-1);
         return AuthorityUtils.commaSeparatedStringToAuthorityList(authorities);

@@ -1,9 +1,11 @@
 package com.dychy.controller;
 
 import com.dychy.model.PrivilegeIns;
+import com.dychy.model.Resource;
 import com.dychy.model.User;
 import com.dychy.model.UserPriRel;
 import com.dychy.service.impl.PrivilegeInsService;
+import com.dychy.service.impl.ResourceService;
 import com.dychy.service.impl.UserPrivRelService;
 import com.dychy.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class loginIndex {
     @Autowired
     private UserPrivRelService userPrivRelService;
 
+    @Autowired
+    private ResourceService resourceService;
+
     @RequestMapping("/")
     public String index(ModelMap modelMap){
         // 通用模板渲染
@@ -49,7 +54,16 @@ public class loginIndex {
 
     @RequestMapping("/initdb")
     public String add(ModelMap modelMap) {
-        User u = userService.getUserByLoginName("root");
+        User root = new User();
+        root.setUsername("root");
+        root.setNickname("管理员");
+        root.setPassword("abc@123");
+        root.setUserEmail("eclipse_sv@163.com");
+        root.setCreatedTime(new Date());
+
+        userService.saveUser(root);
+        System.out.println("-----User:-----" + root.getUsername() + " has saved!");
+
 
         String[] privs = new String[]{
                 "root", "home", "dis", "dep", "resource", "pri", "map"
@@ -61,21 +75,30 @@ public class loginIndex {
 
 
         for (int i = 0; i < privs.length; i++) {
-            System.out.println("---------create PrivilegeIns---------");
-            PrivilegeIns privilegeIns = new PrivilegeIns();
-            privilegeIns.setResId(privs[i]);
-            privilegeIns.setDecInfo(desc[i]);
-            privilegeIns.setCreatedTime(new Date());
-            privilegeInsService.savePrivs(privilegeIns);
-            System.out.println("---------privilegeIns---------"+"[id]:"+privilegeIns.getId());
+            System.out.println("---------creating Resource---------");
+            Resource res = new Resource();
+            res.setOwnerId(root.getId());
+            res.setCreatedTime(new Date());
+            res.setResURL(privs[i]);
+            res.setResType(0);
+            res.setResDesc(desc[i]);
 
-            System.out.println("---------create UserPriRel---------");
-            UserPriRel userPriRel = new UserPriRel();
-            userPriRel.setPriInsId(privilegeIns.getId());
-            userPriRel.setUserId(u.getId());
-            userPriRel.setCreatedTime(new Date());
-            userPrivRelService.saveUserPrivsRel(userPriRel);
-            System.out.println("---------UserPriRel---------"+"[id]:"+userPriRel.getId());
+            resourceService.saveRes(res);
+            System.out.println("---------saved Resource---------");
+
+            System.out.println("---------creating privilege---------");
+            PrivilegeIns privilegeIns = new PrivilegeIns();
+            privilegeIns.setUserid(root.getId());
+            privilegeIns.setResId(res.getId());
+            privilegeIns.setCreatedTime(new Date());
+            privilegeIns.setResType(res.getResType());
+            privilegeIns.setDecInfo(res.getResDesc());
+            privilegeIns.setCanExcute(true);
+            privilegeIns.setCanRead(true);
+            privilegeIns.setCanWrite(true);
+
+            privilegeInsService.savePrivs(privilegeIns);
+            System.out.println("---------saved privilege---------");
         }
 
         return "redirect:/login";

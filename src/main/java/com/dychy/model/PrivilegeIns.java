@@ -36,28 +36,28 @@ public class PrivilegeIns implements Comparable<PrivilegeIns> {
         this.orId = orId;
     }
 
-    public int getForSystem() {
-        return forSystem;
+    public int getForURL() {
+        return forURL;
     }
 
-    public void setForSystem(int forSystem) {
-        this.forSystem = forSystem;
+    public void setForURL(int forURL) {
+        this.forURL = forURL;
     }
 
-    public int getForAny() {
-        return forAny;
+    public int getForData() {
+        return forData;
     }
 
-    public void setForAny(int forAny) {
-        this.forAny = forAny;
+    public void setForData(int forData) {
+        this.forData = forData;
     }
 
-    public int getForObject() {
-        return forObject;
+    public int getForService() {
+        return forService;
     }
 
-    public void setForObject(int forObject) {
-        this.forObject = forObject;
+    public void setForService(int forService) {
+        this.forService = forService;
     }
 
     public int getForPaobj() {
@@ -83,17 +83,28 @@ public class PrivilegeIns implements Comparable<PrivilegeIns> {
     // 资源类型id
     private String restypeId;
 
+    public int getResType() {
+        return resType;
+    }
+
+    public void setResType(int resType) {
+        this.resType = resType;
+    }
+
+    // 资源类型
+    private int resType;
+
     // 操作类型id
     private String orId;
 
     // 系统功能权限
-    private int forSystem;
+    private int forURL;
 
     // 资源类型功能权限
-    private int forAny;
+    private int forData;
 
     // 对象权限
-    private int forObject;
+    private int forService;
 
     // 上级对象权限
     private int forPaobj;
@@ -107,13 +118,74 @@ public class PrivilegeIns implements Comparable<PrivilegeIns> {
     @NotEmpty(message="创建时间不能为空")
     private Date createdTime;
 
-    public PrivilegeIns(String resId, String restypeId, String orId, int forSystem, int forAny, int forObject, int forPaobj, String decInfo) {
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public boolean isCanRead() {
+        return canRead;
+    }
+
+    public void setCanRead(boolean canRead) {
+        this.canRead = canRead;
+    }
+
+    public boolean isCanWrite() {
+        return canWrite;
+    }
+
+    public void setCanWrite(boolean canWrite) {
+        this.canWrite = canWrite;
+    }
+
+    public boolean isCanExcute() {
+        return canExcute;
+    }
+
+    public void setCanExcute(boolean canExcute) {
+        this.canExcute = canExcute;
+    }
+
+    // 读取权限
+    private boolean canRead;
+
+    // 写入权限
+    private boolean canWrite;
+
+    // 执行权限
+    private boolean canExcute;
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public String getRoleid() {
+        return roleid;
+    }
+
+    public void setRoleid(String roleid) {
+        this.roleid = roleid;
+    }
+
+    // 用户id
+    private String userid;
+
+    // 角色id
+    private String roleid;
+
+
+
+    public PrivilegeIns(String resId, String restypeId, String orId, int forURL, int forData, int forService, int forPaobj, String decInfo) {
         this.resId = resId;
         this.restypeId = restypeId;
         this.orId = orId;
-        this.forSystem = forSystem;
-        this.forAny = forAny;
-        this.forObject = forObject;
+        this.forURL = forURL;
+        this.forData = forData;
+        this.forService = forService;
         this.forPaobj = forPaobj;
         this.decInfo = decInfo;
     }
