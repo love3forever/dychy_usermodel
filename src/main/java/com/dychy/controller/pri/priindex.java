@@ -1,10 +1,7 @@
 package com.dychy.controller.pri;
 
 import com.dychy.controller.indexTemplate;
-import com.dychy.model.Department;
-import com.dychy.model.PrivilegeIns;
-import com.dychy.model.User;
-import com.dychy.model.UserPriRel;
+import com.dychy.model.*;
 import com.dychy.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -16,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -39,7 +37,8 @@ public class priindex {
     @Autowired
     private PrivilegeInsService privilegeInsService;
 
-
+    @Autowired
+    private ResourceService resourceService;
 
 
     @RequestMapping("/pri")
@@ -78,17 +77,18 @@ public class priindex {
         modelMap.addAttribute("user", map.get("user"));
         modelMap.addAttribute("urls", map.get("urls"));
 
-        // 获取部门已有权限和所有权限列表
+        // 获取当前用户的所有权限和当前部门的已有权限
         if (depname != null) {
             Department department = departmentService.getDepartmentByname(depname);
 
             if (department != null) {
                 modelMap.addAttribute("depname", department);
 
-                List<PrivilegeIns> depPrivs = depPrivRelService.getPrivsByDepartmentId(department.getId());
+                List<PrivilegeIns> depPrivs = privilegeInsService.getDepPrivs(department.getId());
                 modelMap.addAttribute("depPrivs", depPrivs);
 
-                List<PrivilegeIns> allPrivs = privilegeInsService.getAllPrivs();
+                User u = (User) map.get("user");
+                List<PrivilegeIns> allPrivs = privilegeInsService.getUserPrivs(u.getId());
                 modelMap.addAttribute("allPrivs", allPrivs);
             }
         }
@@ -104,11 +104,15 @@ public class priindex {
 
         for (String s:
              addprivs) {
-            PrivilegeIns pri = privilegeInsService.getPrivByresId(s);
-            UserPriRel depPriRel = new UserPriRel();
-            depPriRel.setDepId(depid);
-            depPriRel.setPriInsId(pri.getId());
-            userPrivRelService.saveUserPrivsRel(depPriRel);
+            Resource resource = resourceService.getResbyid(s);
+            PrivilegeIns privilegeIns = new PrivilegeIns();
+            privilegeIns.setDecInfo(resource.getResDesc());
+            privilegeIns.setCreatedTime(new Date());
+            privilegeIns.setResType(resource.getResType());
+            privilegeIns.setUserid(depid);
+            privilegeIns.setResId(resource.getId());
+
+            privilegeInsService.savePrivs(privilegeIns);
         }
 
         return "redirect:/dep/"+depname;
@@ -128,12 +132,12 @@ public class priindex {
         // 获取用户已有权限和所有权限列表
         if (username != null) {
             User userpriv = userService.getUserByLoginName(username);
-
+            User currentUser = (User) map.get("user");
             if (userpriv != null) {
                 modelMap.addAttribute("username", userpriv);
 
-                List<PrivilegeIns> userPrivs = userPrivRelService.getPrivsByUserId(userpriv.getId());
-                List<PrivilegeIns> allPrivs = privilegeInsService.getAllPrivs();
+                List<PrivilegeIns> userPrivs = privilegeInsService.getUserPrivs(userpriv.getId());
+                List<PrivilegeIns> allPrivs = privilegeInsService.getUserPrivs(currentUser.getId());
                 modelMap.addAttribute("userPrivs", userPrivs);
                 modelMap.addAttribute("allPrivs", allPrivs);
             }
@@ -151,11 +155,15 @@ public class priindex {
 
         for (String s:
                 addprivs) {
-            PrivilegeIns pri = privilegeInsService.getPrivByresId(s);
-            UserPriRel depPriRel = new UserPriRel();
-            depPriRel.setUserId(userid);
-            depPriRel.setPriInsId(pri.getId());
-            userPrivRelService.saveUserPrivsRel(depPriRel);
+            Resource resource = resourceService.getResbyid(s);
+            PrivilegeIns privilegeIns = new PrivilegeIns();
+            privilegeIns.setDecInfo(resource.getResDesc());
+            privilegeIns.setCreatedTime(new Date());
+            privilegeIns.setResType(resource.getResType());
+            privilegeIns.setUserid(userid);
+            privilegeIns.setResId(resource.getId());
+
+            privilegeInsService.savePrivs(privilegeIns);
         }
 
         return "redirect:/dep/"+username;

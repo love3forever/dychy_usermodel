@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by eclipse on 2017/2/6.
  */
-public class Resource {
+public class Resource implements Comparable<Resource>{
     public String getId() {
         return id;
     }
@@ -91,5 +91,10 @@ public class Resource {
     }
 
     public Resource() {
+    }
+
+    @Override
+    public int compareTo(Resource o) {
+        return getCreatedTime().compareTo(o.getCreatedTime());
     }
 }

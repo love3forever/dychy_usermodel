@@ -1,13 +1,11 @@
 package com.dychy.controller.dep;
 
 import com.dychy.controller.indexTemplate;
-import com.dychy.model.Department;
-import com.dychy.model.PrivilegeIns;
-import com.dychy.model.User;
-import com.dychy.model.UserPriRel;
+import com.dychy.model.*;
 import com.dychy.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +32,9 @@ public class depindex {
 
     @Autowired
     private PrivilegeInsService privilegeInsService;
+
+    @Autowired
+    private ResourceService resourceService;
 
     @RequestMapping("/dep")
     @PreAuthorize("hasAnyAuthority('root','dep')")
@@ -71,21 +72,49 @@ public class depindex {
         department.setDepartmentStatus(1);
         departmentService.saveDepartment(department);
 
-        // 完成deparment创建之后，增加对应的权限实例
+        // 完成deparment创建之后，增加对应的资源
+        Resource resource = new Resource();
+        resource.setResDesc(department.getDepartmentName());
+        resource.setResType(0);
+        resource.setResURL("dep/" + department.getDepartmentName());
+        resource.setCreatedTime(new Date());
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User u = userService.getUserByLoginName(username);
+        resource.setOwnerId(u.getId());
+        resource.setId(department.getId());
+
+        resourceService.saveRes(resource);
+
+        // department resource创建之后，增加root用户和owner对department的权限以及部门自身对部门的权限
+        if (!username.equals("root")){
+            PrivilegeIns privilegeIns = new PrivilegeIns();
+            privilegeIns.setCreatedTime(new Date());
+            privilegeIns.setResId(resource.getId());
+            privilegeIns.setUserid(u.getId());
+            privilegeIns.setResType(resource.getResType());
+            privilegeIns.setDecInfo(resource.getResDesc());
+            privilegeInsService.savePrivs(privilegeIns);
+        }
+        // 增加root用户对其权限
+        User root = userService.getUserByLoginName("root");
         PrivilegeIns privilegeIns = new PrivilegeIns();
-        privilegeIns.setResId(department.getId());
         privilegeIns.setCreatedTime(new Date());
-        privilegeIns.setDecInfo(department.getDepartmentName());
+        privilegeIns.setResId(resource.getId());
+        privilegeIns.setUserid(root.getId());
+        privilegeIns.setResType(resource.getResType());
+        privilegeIns.setDecInfo(resource.getResDesc());
         privilegeInsService.savePrivs(privilegeIns);
 
-        // 权限实例增加之后，对root用户增加该权限实例的关联
-        UserPriRel userPriRel = new UserPriRel();
-        User user = (User) map.get("user");
-        userPriRel.setUserId(user.getId());
-        userPriRel.setPriInsId(privilegeIns.getId());
-        userPriRel.setCreatedTime(new Date());
+        // 增加部门自身权限
+        PrivilegeIns depPrivs = new PrivilegeIns();
+        depPrivs.setCreatedTime(new Date());
+        depPrivs.setResId(resource.getId());
+        depPrivs.setUserid(department.getId());
+        depPrivs.setResType(resource.getResType());
+        depPrivs.setDecInfo(resource.getResDesc());
+        privilegeInsService.savePrivs(depPrivs);
 
-        userPrivRelService.saveUserPrivsRel(userPriRel);
+
 
         return "redirect:/dep";
     }
@@ -109,7 +138,7 @@ public class depindex {
         System.out.println(depname);
         if (department != null) {
 
-            if (userPrivRelService.isUserHasPrivs(user.getId(), department.getId())) {
+            if (privilegeInsService.isUserHasPriv(user.getId(), department.getId())) {
                 List<User> depUsers = userDepRelService.getUsersBydepId(department.getId());
                 modelMap.addAttribute("depusers", depUsers);
                 modelMap.addAttribute("depname", department);
@@ -128,14 +157,14 @@ public class depindex {
     @PreAuthorize("hasAnyAuthority('root','dep')")
     public String addUser2Dep(@PathVariable String depname, @RequestBody String[] addusers) {
         System.out.println(depname);
-        String depid = departmentService.getDepartmentByname(depname).getId();
+        Department department = departmentService.getDepartmentByname(depname);
+        String depid = department.getId();
 
         for (String s:
              addusers) {
             System.out.println(s);
             String userid = userService.getUserByLoginName(s).getId();
             if(userDepRelService.addUserToDepartment(userid, depid)){
-
             }
         }
         return "redirect:/dep/"+depname;

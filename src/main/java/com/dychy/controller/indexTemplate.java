@@ -6,6 +6,7 @@ import com.dychy.model.User;
 import com.dychy.service.impl.UserPrivRelService;
 import com.dychy.service.impl.UserService;
 import com.sun.org.apache.regexp.internal.RE;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.ArrayList;

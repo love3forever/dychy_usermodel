@@ -24,4 +24,10 @@ public interface IPrivilegeInsService {
     List<PrivilegeIns> getAllPrivs();
 
     List<PrivilegeIns> getPrivsByuserid(String userid);
+
+    boolean isUserHasPriv(String uid, String pid);
+
+    List<PrivilegeIns> getDepPrivs(String depid);
+
+    List<PrivilegeIns> getUserPrivs(String uid);
 }

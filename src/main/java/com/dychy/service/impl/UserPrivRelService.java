@@ -42,6 +42,9 @@ public class UserPrivRelService implements IUserPrivInsService {
     private ResourceService resourceService;
 
     @Autowired
+    private PrivilegeInsService privilegeInsService;
+
+    @Autowired
     private MongoTemplate mongoTemplate;
 
     @Override
@@ -99,14 +102,13 @@ public class UserPrivRelService implements IUserPrivInsService {
 
     @Override
     public List<Resource> getResourceByuserid(String id) {
-        List<PrivilegeIns> privs = priInsRepository.findByuserid(id);
-        Collections.sort(privs);
+        List<PrivilegeIns> privs = privilegeInsService.getUserPrivs(id);
         List<Resource> resource = new ArrayList<Resource>();
         for (PrivilegeIns p:
              privs) {
             resource.add(resourceService.getResbyid(p.getResId()));
         }
-
+        Collections.sort(resource);
         return resource;
     }
 
