@@ -39,16 +39,86 @@
     </div>
     <div class="row" id="pageheader">
         <div class="page-header">
-            <h1>用户管理模块<small>科研开发室</small></h1>
+            <h1 style="float: left;">资源管理模块<small>科研开发室</small></h1> 
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="float: right;margin-bottom: 10px;margin-top: 20px;margin-right: 15px;">
+              上传数据资源
+            </button>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">数据上传</h4>
+              </div>
+              <div class="modal-body">
+                <input id="lefile" type="file" style="display:none"></input>
+                <div class="input-append">  
+                    <input id="photoCover" class="input-large" type="text" style="height:30px;width: 70%;margin-left: 5%;"></input>
+                    <a class="btn" onclick="$('input[id=lefile]').click();">Browse</a>  
+                </div>   
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary">上传</button>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
     <div class="row" id="grouppanel">
         <div class="panel panel-default">
             <div class="panel-heading">
-                所属分组
+                用户权限
             </div>
             <div class="panel-body">
-
+                <table class="table" th:if="${not #lists.isEmpty(ownRes)}">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>资源描述</th>
+                        <th>资源URL</th>
+                        <th>创建时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="res,stat:${ownRes}">
+                        <td th:text="${stat.count}"></td>
+                        <td th:text="${res.resDesc}"></td>
+                        <td><a th:text="${res.resURL}" th:href="@{'/'+${res.resURL}}"></a></td>
+                        <td th:text="${#dates.format(res.createdTime, 'yyyy-MM-dd')}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h1 th:if="${#lists.isEmpty(ownRes)}">该用户当前没有私有权限</h1>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                部门权限
+            </div>
+            <div class="panel-body">
+                <table class="table" th:if="${not #lists.isEmpty(depRes)}">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>资源描述</th>
+                        <th>资源URL</th>
+                        <th>创建时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="res,stat:${depRes}">
+                        <td th:text="${stat.count}"></td>
+                        <td th:text="${res.resDesc}"></td>
+                        <td><a th:text="${res.resURL}" th:href="@{'/'+${res.resURL}}"></a></td>
+                        <td th:text="${#dates.format(res.createdTime, 'yyyy-MM-dd')}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h1 th:if="${#lists.isEmpty(depRes)}">该用户不在任何部门</h1>
             </div>
         </div>
     </div>
@@ -59,5 +129,11 @@
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">  
+        $('input[id=lefile]').change(function() {  
+        $('#photoCover').val($(this).val());  
+        });  
+    </script>
 </footer>
 </html>

@@ -30,4 +30,5 @@ public interface IPrivilegeInsService {
     List<PrivilegeIns> getDepPrivs(String depid);
 
     List<PrivilegeIns> getUserPrivs(String uid);
+
 }

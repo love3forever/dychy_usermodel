@@ -66,7 +66,7 @@ public class loginIndex {
 
 
         String[] privs = new String[]{
-                "root", "home", "dis", "dep", "resource", "pri", "map"
+                "root", "home", "dis", "dep", "res", "pri", "map"
         };
 
         String[] desc = new String[]{

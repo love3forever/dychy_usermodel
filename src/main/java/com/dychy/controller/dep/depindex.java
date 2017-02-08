@@ -82,6 +82,7 @@ public class depindex {
         User u = userService.getUserByLoginName(username);
         resource.setOwnerId(u.getId());
         resource.setId(department.getId());
+        resource.setDepId(department.getId());
 
         resourceService.saveRes(resource);
 

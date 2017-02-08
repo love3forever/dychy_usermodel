@@ -43,8 +43,11 @@ public class UserDepRelService implements IUserDepRelService {
     @Override
     public Department getDepartmentByUserId(String userId) {
         UserDeptRel userdepRel = userDepRelRepository.findByuserId(userId);
-        Department department = depRepository.findByid(userdepRel.getDeptId());
-        return department;
+        if (userdepRel!=null){
+            Department department = depRepository.findByid(userdepRel.getDeptId());
+            return department;
+        }
+        return null;
     }
 
     @Override

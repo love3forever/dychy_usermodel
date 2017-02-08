@@ -1,11 +1,9 @@
 package com.dychy.service.impl;
 
-import com.dychy.model.Department;
 import com.dychy.model.PrivilegeIns;
 import com.dychy.model.UserDeptRel;
 import com.dychy.repository.PriInsRepository;
 import com.dychy.repository.UserDepRelRepository;
-import com.dychy.repository.UserRepository;
 import com.dychy.service.dao.IPrivilegeInsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -78,7 +76,7 @@ public class PrivilegeInsService implements IPrivilegeInsService {
 
     @Override
     public List<PrivilegeIns> getPrivsByuserid(String userid) {
-        return null;
+        return mongoTemplate.find(new Query(Criteria.where("userid").is(userid)), PrivilegeIns.class);
     }
 
     @Override
