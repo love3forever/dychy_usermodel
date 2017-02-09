@@ -54,11 +54,12 @@
                 <h4 class="modal-title" id="myModalLabel">数据上传</h4>
               </div>
               <div class="modal-body">
-                <input id="lefile" type="file" style="display:none"></input>
-                <div class="input-append">  
-                    <input id="photoCover" class="input-large" type="text" style="height:30px;width: 70%;margin-left: 5%;"></input>
-                    <a class="btn" onclick="$('input[id=lefile]').click();">Browse</a>  
-                </div>   
+                <form method="POST" th:action="@{/res/addfile}" enctype="multipart/form-data">
+                    Upload File: <input type="file" name="file"></input>
+                    <br></br>
+                    Description: <input type="text" name="desc"></input>
+                    <br></br><input type="submit" value="Upload"></input>
+                </form>  
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -87,7 +88,7 @@
                     <tr th:each="res,stat:${ownRes}">
                         <td th:text="${stat.count}"></td>
                         <td th:text="${res.resDesc}"></td>
-                        <td><a th:text="${res.resURL}" th:href="@{'/'+${res.resURL}}"></a></td>
+                        <td><a th:text="${res.resDesc}" th:href="@{'/'+${res.resURL}}"></a></td>
                         <td th:text="${#dates.format(res.createdTime, 'yyyy-MM-dd')}"></td>
                     </tr>
                     </tbody>
@@ -113,7 +114,7 @@
                     <tr th:each="res,stat:${depRes}">
                         <td th:text="${stat.count}"></td>
                         <td th:text="${res.resDesc}"></td>
-                        <td><a th:text="${res.resURL}" th:href="@{'/'+${res.resURL}}"></a></td>
+                        <td><a th:text="${res.resDesc}" th:href="@{'/'+${res.resURL}}"></a></td>
                         <td th:text="${#dates.format(res.createdTime, 'yyyy-MM-dd')}"></td>
                     </tr>
                     </tbody>
@@ -129,11 +130,5 @@
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-    <script type="text/javascript">  
-        $('input[id=lefile]').change(function() {  
-        $('#photoCover').val($(this).val());  
-        });  
-    </script>
 </footer>
 </html>

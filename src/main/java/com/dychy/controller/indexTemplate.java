@@ -47,14 +47,6 @@ public class indexTemplate {
         for (Resource r:
                 res) {
             if (r.getResType() == 0 && page.contains(r.getResURL())) {
-//                boolean isExists = false;
-//                for (Resource signleR :
-//                        urls) {
-//                    if (signleR.getId().equals(r.getId()))
-//                        isExists = true;
-//                }
-//                if (!isExists)
-//                    urls.add(r);
                 if (!urls.contains(r))
                     urls.add(r);
             }
