@@ -84,6 +84,7 @@ public class depindex {
         resource.setId(department.getId());
         resource.setDepId(department.getId());
 
+
         resourceService.saveRes(resource);
 
         // department resource创建之后，增加root用户和owner对department的权限以及部门自身对部门的权限
@@ -156,7 +157,8 @@ public class depindex {
 
     @RequestMapping(value = "/dep/{depname}", method = RequestMethod.POST)
     @PreAuthorize("hasAnyAuthority('root','dep')")
-    public String addUser2Dep(@PathVariable String depname, @RequestBody String[] addusers) {
+    @ResponseBody
+    public boolean addUser2Dep(@PathVariable String depname, @RequestBody String[] addusers) {
         System.out.println(depname);
         Department department = departmentService.getDepartmentByname(depname);
         String depid = department.getId();
@@ -166,9 +168,10 @@ public class depindex {
             System.out.println(s);
             String userid = userService.getUserByLoginName(s).getId();
             if(userDepRelService.addUserToDepartment(userid, depid)){
+                return true;
             }
         }
-        return "redirect:/dep/"+depname;
+        return false;
     }
 }
 

@@ -5,6 +5,7 @@ import com.dychy.model.Resource;
 import com.dychy.model.User;
 import com.dychy.service.impl.UserPrivRelService;
 import com.dychy.service.impl.UserService;
+import com.sun.javafx.scene.control.behavior.TableRowBehavior;
 import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -46,7 +47,16 @@ public class indexTemplate {
         for (Resource r:
                 res) {
             if (r.getResType() == 0 && page.contains(r.getResURL())) {
-                urls.add(r);
+//                boolean isExists = false;
+//                for (Resource signleR :
+//                        urls) {
+//                    if (signleR.getId().equals(r.getId()))
+//                        isExists = true;
+//                }
+//                if (!isExists)
+//                    urls.add(r);
+                if (!urls.contains(r))
+                    urls.add(r);
             }
         }
         indexMap.put("urls", urls);

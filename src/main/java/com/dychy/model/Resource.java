@@ -93,8 +93,19 @@ public class Resource implements Comparable<Resource>{
     public Resource() {
     }
 
+    // 重写compareTo方法，用于List<Resource> 按照资源创建时间排序
     @Override
     public int compareTo(Resource o) {
         return getCreatedTime().compareTo(o.getCreatedTime());
+    }
+
+    // 重写 equals方法，用于List<Resource> 去重
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Resource) {
+            Resource r = (Resource) obj;
+            return this.getId().equals(r.getId());
+        }
+        return super.equals(obj);
     }
 }

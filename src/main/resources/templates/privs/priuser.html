@@ -129,11 +129,8 @@
             var button = $('#addButton');
             var username = button.attr("name");
             var addusers = [];
-            alert(username);
-
             var newusers = $('#newUser').children();
             for (var i = newusers.length - 1; i >= 0; i--) {
-                alert(newusers[i].getAttribute("id"));
                 addusers.push(newusers[i].getAttribute("id"));
             }
 
@@ -144,12 +141,14 @@
                 type:"post",
                 contentType: "application/json; charset=utf-8",
                 dataType:"json",
-                success:function(responseText){
+                success:function(responeValue){
                         // $('#myModal').modal('hide');
                         // var groupid = responseText.redirect;
                         //     var url = "http://cas.eclipsesv.com:9000/group/"+groupid;
                         //     window.location.href = url
-                            alert("添加成功");
+                            if (responeValue) {
+                                location.reload();
+                            }
                         }
             });
         }

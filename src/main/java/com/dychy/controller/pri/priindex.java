@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -98,7 +95,8 @@ public class priindex {
 
     @RequestMapping(value = "/pri/dep/{depname}", method = RequestMethod.POST)
     @PreAuthorize("hasAnyAuthority('root','pri')")
-    public String addPrivs2Dep(@PathVariable String depname, @RequestBody String[] addprivs) {
+    @ResponseBody
+    public boolean addPrivs2Dep(@PathVariable String depname, @RequestBody String[] addprivs) {
         System.out.println(depname);
         String depid = departmentService.getDepartmentByname(depname).getId();
 
@@ -114,8 +112,7 @@ public class priindex {
 
             privilegeInsService.savePrivs(privilegeIns);
         }
-
-        return "redirect:/dep/"+depname;
+        return true;
     }
 
     @RequestMapping("/pri/user/{username}")
@@ -149,7 +146,8 @@ public class priindex {
 
     @RequestMapping(value = "/pri/user/{username}", method = RequestMethod.POST)
     @PreAuthorize("hasAnyAuthority('root','pri')")
-    public String addPrivs2User(@PathVariable String username, @RequestBody String[] addprivs) {
+    @ResponseBody
+    public boolean addPrivs2User(@PathVariable String username, @RequestBody String[] addprivs) {
         System.out.println(username);
         String userid = userService.getUserByLoginName(username).getId();
 
@@ -166,7 +164,7 @@ public class priindex {
             privilegeInsService.savePrivs(privilegeIns);
         }
 
-        return "redirect:/dep/"+username;
+        return true;
     }
 }
 
