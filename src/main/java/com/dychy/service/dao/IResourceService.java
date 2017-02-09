@@ -1,8 +1,10 @@
 package com.dychy.service.dao;
 
 import com.dychy.model.Resource;
+import com.mongodb.gridfs.GridFSDBFile;
 import org.springframework.stereotype.Service;
 
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -21,4 +23,8 @@ public interface IResourceService {
     List<Resource> getResbyType(int type);
 
     void saveRes(Resource resource);
+
+    void saveFileRes(Resource resource, InputStream inputStream);
+
+    GridFSDBFile getFileRes(String fileid);
 }
