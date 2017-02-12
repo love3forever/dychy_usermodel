@@ -71,6 +71,8 @@ public class Resource implements Comparable<Resource>{
     @NotEmpty(message="资源类型不能为空")
     private int resType;
 
+    private String resMIME;
+
     private String resURL;
 
     private String resDesc;
@@ -107,5 +109,13 @@ public class Resource implements Comparable<Resource>{
             return this.getId().equals(r.getId());
         }
         return super.equals(obj);
+    }
+
+    public String getResMIME() {
+        return resMIME;
+    }
+
+    public void setResMIME(String resMIME) {
+        this.resMIME = resMIME;
     }
 }

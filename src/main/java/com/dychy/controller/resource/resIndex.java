@@ -98,12 +98,14 @@ public class resIndex {
                 // 接受前端post的文件并转化为InputStream
                 fileName = file.getOriginalFilename();
                 byte[] bytes = file.getBytes();
+
                 InputStream inputStream = new ByteArrayInputStream(bytes);
 
                 // 创建新的资源
                 Resource fileResource = new Resource();
                 fileResource.setCreatedTime(new Date());
                 fileResource.setResDesc(fileName);
+                fileResource.setResMIME(file.getContentType());
                 String username = SecurityContextHolder.getContext().getAuthentication().getName();
                 User currentUser = userService.getUserByLoginName(username);
                 fileResource.setOwnerId(currentUser.getId());
@@ -131,7 +133,7 @@ public class resIndex {
 
     @RequestMapping(value = "/res/getfile/{fileid}",method = RequestMethod.GET)
     @PreAuthorize("hasAnyAuthority('root','res')")
-    public String getfile(@PathVariable("fileid") String id,HttpServletResponse response){
+    public void getfile(@PathVariable("fileid") String id,HttpServletResponse response){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User currentUser = userService.getUserByLoginName(username);
         if (privilegeInsService.isUserHasPriv(currentUser.getId(), id)) {
@@ -142,7 +144,7 @@ public class resIndex {
                 // copy it to response's OutputStream
                 String filename = gridFSDBFile.getFilename();
                 String[] files = filename.split("\\.",2);
-                response.setContentType("application/"+files[1]+";charset=utf-8");
+                response.setContentType(gridFSDBFile.getContentType());
                 response.setCharacterEncoding("utf-8");
                 response.setHeader("Content-Disposition", "attachment; filename="+filename);
                 FileCopyUtils.copy(gridFSDBFile.getInputStream(), response.getOutputStream());
@@ -150,13 +152,7 @@ public class resIndex {
             } catch (IOException ex) {
                 throw new RuntimeException("IOError writing file to output stream");
             }
-            return "redirect:/res";
         }
-
-        return "redirect:/403";
-
-
     }
-
 
 }

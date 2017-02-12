@@ -54,7 +54,7 @@ public class ResourceService implements IResourceService{
 
     @Override
     public void saveFileRes(Resource resource, InputStream inputStream) {
-        String id = gridFsTemplate.store(inputStream, resource.getResDesc()).getId().toString();
+        String id = gridFsTemplate.store(inputStream, resource.getResDesc(), resource.getResMIME()).getId().toString();
         if (id != null) {
             System.out.println("File: "+resource.getResDesc()+" has been saved!");
             resource.setId(id);
