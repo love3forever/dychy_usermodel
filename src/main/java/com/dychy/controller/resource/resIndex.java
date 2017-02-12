@@ -98,7 +98,6 @@ public class resIndex {
                 // 接受前端post的文件并转化为InputStream
                 fileName = file.getOriginalFilename();
                 byte[] bytes = file.getBytes();
-
                 InputStream inputStream = new ByteArrayInputStream(bytes);
 
                 // 创建新的资源
