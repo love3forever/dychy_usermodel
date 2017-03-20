@@ -14,9 +14,11 @@ import java.util.*;
 
 /**
  * Created by eclipse on 2017/1/12.
+ * 这里主要是对部门管理中的页面进行控制
  */
 @Controller
 public class depindex {
+    // 这里带有@Autowired注解的都是和数据库操作相关的东西
     @Autowired
     private UserService userService;
 
@@ -36,6 +38,8 @@ public class depindex {
     @Autowired
     private ResourceService resourceService;
 
+    // RequestMapping中参数为实际访问中的路由地址
+    // PreAuthorize中hasAnyAuthority可以自动控制当前用户是否拥有所选权限
     @RequestMapping("/dep")
     @PreAuthorize("hasAnyAuthority('root','dep')")
     public String priIndex(ModelMap modelMap) {
@@ -121,7 +125,7 @@ public class depindex {
         return "redirect:/dep";
     }
 
-
+    // 在RequestMapping中url以{xx}形式存在的，是可以将xx作为参数作为url一部分的
     @RequestMapping(value = "/dep/{depname}", method = RequestMethod.GET)
     @PreAuthorize("hasAnyAuthority('root','dep')")
     public String depInfo(@PathVariable String depname, ModelMap modelMap) {

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 
 /**
  * Created by eclipse on 2017/1/11.
+ * 通过这里的配置，可以将错误状态和自定义的错误页面关联
  */
 @Configuration
 public class ErrorPageConfig {
@@ -21,6 +22,7 @@ public class ErrorPageConfig {
 
         @Override
         public void customize(ConfigurableEmbeddedServletContainer container) {
+            // 通过HttpStatus可以获取到当前访问的状态码
             container.addErrorPages(new ErrorPage(HttpStatus.FORBIDDEN, "/403"));
             container.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND,"/404"));
         }

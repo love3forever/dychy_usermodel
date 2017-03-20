@@ -37,7 +37,7 @@ public class priindex {
     @Autowired
     private ResourceService resourceService;
 
-
+    // 权限管理首页
     @RequestMapping("/pri")
     @PreAuthorize("hasAnyAuthority('root','pri')")
     public String priIndex(ModelMap modelMap) {
@@ -63,6 +63,7 @@ public class priindex {
     }
 
 
+    // 某个部门权限的列表
     @RequestMapping(value = "/pri/dep/{depname}",method = RequestMethod.GET)
     @PreAuthorize("hasAnyAuthority('root','pri')")
     public String grantPri2Dep(@PathVariable String depname, ModelMap modelMap) {
@@ -92,7 +93,7 @@ public class priindex {
         return "privs/pridep";
     }
 
-
+    // 为某个部门增加权限
     @RequestMapping(value = "/pri/dep/{depname}", method = RequestMethod.POST)
     @PreAuthorize("hasAnyAuthority('root','pri')")
     @ResponseBody
@@ -115,6 +116,7 @@ public class priindex {
         return true;
     }
 
+    // 获取某个用户的权限列表
     @RequestMapping("/pri/user/{username}")
     @PreAuthorize("hasAnyAuthority('root','pri')")
     public String grantPri2User(@PathVariable String username,ModelMap modelMap) {
@@ -143,7 +145,7 @@ public class priindex {
     }
 
 
-
+    // 给某个用户增加权限
     @RequestMapping(value = "/pri/user/{username}", method = RequestMethod.POST)
     @PreAuthorize("hasAnyAuthority('root','pri')")
     @ResponseBody

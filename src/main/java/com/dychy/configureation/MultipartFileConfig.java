@@ -8,6 +8,7 @@ import javax.servlet.MultipartConfigElement;
 
 /**
  * Created by eclipse on 2017/2/12.
+ * 通过这里可以配置springboot的上传文件大小
  */
 @Configuration
 public class MultipartFileConfig {
@@ -19,7 +20,6 @@ public class MultipartFileConfig {
         /// 设置总上传数据总大小
         factory.setMaxRequestSize("2048MB");
         //Sets the directory location where files will be stored.
-        //factory.setLocation("路径地址");
         return factory.createMultipartConfig();
     }
 }

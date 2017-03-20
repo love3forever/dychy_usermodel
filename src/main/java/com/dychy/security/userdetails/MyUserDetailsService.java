@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by eclipse on 2017/1/10.
+ * 完成UserDetailsService中loadUserByUsername()方法的实现
  */
 @Service("MyUserDetailsImpl")
 public class MyUserDetailsService implements UserDetailsService {

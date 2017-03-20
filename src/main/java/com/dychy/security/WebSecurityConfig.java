@@ -42,17 +42,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements A
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
+            // 通过antMatchers()将不需要过滤的url添加进来
             .antMatchers("/addprivs","/initdb","/logout","/register","/static/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .formLogin()
+            // 修改默认登陆页面的url
             .loginPage("/login")
+            // 修改成功登陆后的跳转页面url
             .defaultSuccessUrl("/")
             .permitAll()
             .and()
             .logout()
             .permitAll()
+            // 默认的登出页面
             .logoutUrl("/logout")
+            // 完成登出之后跳转的页面
             .logoutSuccessUrl("/login");
 
         http.csrf().disable();

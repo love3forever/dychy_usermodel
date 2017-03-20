@@ -27,6 +27,7 @@ import java.util.*;
 
 /**
  * Created by eclipse on 2017/1/12.
+ * 控制管理系统可访问的资源
  */
 @Controller
 public class resIndex {
@@ -46,10 +47,10 @@ public class resIndex {
     @Autowired
     private PrivilegeInsService privilegeInsService;
 
-
+    // 权限管理页面首页
     @RequestMapping("/res")
     @PreAuthorize("hasAnyAuthority('root','res')")
-    public String priIndex(ModelMap modelMap) {
+    public String resIndex(ModelMap modelMap) {
         // 通用模板渲染
         indexTemplate template = new indexTemplate(userPrivRelService,userService);
         HashMap<String,Object> map = template.getModelMap();
@@ -88,6 +89,7 @@ public class resIndex {
         return "res/resIndex";
     }
 
+    // 上传数据资源
     @RequestMapping(value = "/res/addfile",method = RequestMethod.POST)
     @PreAuthorize("hasAnyAuthority('root','res')")
     public String addFile(@RequestParam("file") MultipartFile file, @RequestParam("desc") String desc){
@@ -130,6 +132,7 @@ public class resIndex {
         return "redirect:/res";
     }
 
+    // 下载数据
     @RequestMapping(value = "/res/getfile/{fileid}",method = RequestMethod.GET)
     @PreAuthorize("hasAnyAuthority('root','res')")
     public void getfile(@PathVariable("fileid") String id,HttpServletResponse response){
